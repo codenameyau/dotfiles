@@ -2,7 +2,8 @@ Custom vimrc
 =====
 
 ###Colorscheme
-molokai
+[molokai](https://github.com/tomasr/molokai)
+
 
 ###Plugins
-ctrP
+[ctrP fuzzy search](https://github.com/kien/ctrlp.vim)
