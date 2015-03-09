@@ -1,15 +1,27 @@
 {
-    "color_scheme": "Packages/User/Cobalt (SL).tmTheme",
-    "ensure_newline_at_eof_on_save": true,
-    "font_size": 11,
-    "highlight_line": true,
-    "ignored_packages":
-    [
-        "Vintage"
-    ],
-    "scroll_past_end": true,
-    "translate_tabs_to_spaces": true,
-    "line_padding_bottom": 2,
-    "trim_trailing_white_space_on_save": true,
-    "highlight_line": true
+  "auto_complete_delay": 100,
+  "color_scheme": "Packages/User/SublimeLinter/Cobalt (SL).tmTheme",
+  "ensure_newline_at_eof_on_save": true,
+  "folder_exclude_patterns":
+  [
+    ".svn",
+    ".git",
+    ".hg",
+    "CVS",
+    "node_modules"
+  ],
+  "font_size": 11,
+  "highlight_line": true,
+  "hot_exit": false,
+  "ignored_packages":
+  [
+    "Vintage"
+  ],
+  "line_padding_bottom": 4,
+  "remember_open_files": false,
+  "tab_size": 2,
+  "translate_tabs_to_spaces": true,
+  "scroll_past_end": true,
+  "trim_trailing_white_space_on_save": true,
+  "folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", "node_modules"]
 }
