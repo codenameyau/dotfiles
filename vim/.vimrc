@@ -54,6 +54,7 @@ set t_vb=
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
 
+
 "---------
 " Plugins
 "---------
@@ -63,14 +64,14 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 "----------------
 " Disable arrows
 "----------------
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
+"inoremap  <Up>     <NOP>
+"inoremap  <Down>   <NOP>
+"inoremap  <Left>   <NOP>
+"inoremap  <Right>  <NOP>
+"noremap   <Up>     <NOP>
+"noremap   <Down>   <NOP>
+"noremap   <Left>   <NOP>
+"noremap   <Right>  <NOP>
 
 
 "--------------------
@@ -79,4 +80,3 @@ noremap   <Right>  <NOP>
 :imap jj <Esc>
 :imap uu <BS>
 :imap hh <Enter>
-
