@@ -1,0 +1,11 @@
+# This is Git's per-user configuration file.
+[core]
+        
+[user]
+        email = jyau01@citymail.cuny.edu
+        name = Jorge Yau
+[grep]
+        lineNumber = true
+        extendRegexp = true
+[alias]
+        g = grep --break --heading --line-number
