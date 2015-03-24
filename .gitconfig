@@ -1,11 +1,38 @@
-# This is Git's per-user configuration file.
-[core]
-        
+; git-grep - get count and filter by file
+; git g -c "match" -- '*.py'
+
 [user]
-        email = jyau01@citymail.cuny.edu
-        name = Jorge Yau
-[grep]
-        lineNumber = true
-        extendRegexp = true
+  email = jyau01@citymail.cuny.edu
+  name = Jorge Yau
+
 [alias]
-        g = grep --break --heading --line-number
+  g = grep --break --heading --line-number
+  ls = log --pretty=format:"%C(yellow)[%cn]\\ %C(green)%ad%C(red)\\ %C(reset)%s" --decorate --date=relative
+  ll = log --pretty=format:"%C(yellow)[%cn]\\ %C(green)%s%Cblue" --decorate --numstat
+
+[grep]
+  lineNumber = true
+  extendRegexp = true
+
+[color]
+  ui = true
+  interactive = auto
+  branch = auto
+  diff = auto
+  status = auto
+
+[color "branch"]
+  current = green bold
+  local = green
+  remote = red bold
+
+[color "diff"]
+  meta = yellow bold ul
+  frag = cyan bold ul
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = green bold
+  changed = yellow bold
+  untracked = red bold
