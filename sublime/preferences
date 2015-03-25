@@ -1,4 +1,5 @@
 {
+	"update_check": false,
   "auto_complete_delay": 100,
   "color_scheme": "Packages/User/SublimeLinter/Cobalt (SL).tmTheme",
   "ensure_newline_at_eof_on_save": true,
@@ -17,7 +18,7 @@
   [
     "Vintage"
   ],
-  "line_padding_bottom": 4,
+  "line_padding_bottom": 6,
   "remember_open_files": false,
   "tab_size": 2,
   "translate_tabs_to_spaces": true,
