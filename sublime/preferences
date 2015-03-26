@@ -1,5 +1,5 @@
 {
-	"update_check": false,
+  "update_check": false,
   "auto_complete_delay": 100,
   "color_scheme": "Packages/User/SublimeLinter/Cobalt (SL).tmTheme",
   "ensure_newline_at_eof_on_save": true,
@@ -23,6 +23,8 @@
   "tab_size": 2,
   "translate_tabs_to_spaces": true,
   "scroll_past_end": true,
+  "gutter": true,
+  "fold_buttons": false,
   "trim_trailing_white_space_on_save": true,
   "folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", "node_modules"]
 }
