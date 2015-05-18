@@ -11,7 +11,7 @@
     "CVS",
     "node_modules"
   ],
-  "font_size": 11,
+  "font_size": 14,
   "highlight_line": true,
   "hot_exit": false,
   "ignored_packages":
@@ -26,5 +26,5 @@
   "gutter": true,
   "fold_buttons": false,
   "trim_trailing_white_space_on_save": true,
-  "folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", "node_modules"]
+  "rulers": [80]
 }
