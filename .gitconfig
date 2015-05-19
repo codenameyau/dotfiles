@@ -7,8 +7,10 @@
 
 [alias]
   g = grep --break --heading --line-number
+  la="!git config -l | grep alias | cut -c 7-"
   ls = log --pretty=format:"%C(yellow)[%cn]\\ %C(green)%ad%C(red)\\ %C(reset)%s" --decorate --date=relative
   ll = log --pretty=format:"%C(yellow)[%cn]\\ %C(green)%s%Cblue" --decorate --numstat
+  lg = log --graph --pretty=oneline --abbrev-commit
 
 [grep]
   lineNumber = true
