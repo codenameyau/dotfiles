@@ -1,5 +1,4 @@
 {
-  "update_check": false,
   "auto_complete_delay": 100,
   "color_scheme": "Packages/User/SublimeLinter/Cobalt (SL).tmTheme",
   "ensure_newline_at_eof_on_save": true,
@@ -9,22 +8,26 @@
     ".git",
     ".hg",
     "CVS",
-    "node_modules"
+    "node_modules",
+    ".sass-cache"
   ],
-  "font_size": 14,
+  "font_size": 11,
   "highlight_line": true,
   "hot_exit": false,
   "ignored_packages":
   [
-    "Vintage"
+    "SublimeCodeIntel",
+    "SublimeLinter-pylint",
+    "Node Completions",
+    "Vintage",
+    "D3.js Snippets"
   ],
-  "line_padding_bottom": 6,
+  "line_padding_bottom": 8,
   "remember_open_files": false,
+  "rulers": [80],
+  "scroll_past_end": true,
   "tab_size": 2,
   "translate_tabs_to_spaces": true,
-  "scroll_past_end": true,
-  "gutter": true,
-  "fold_buttons": false,
   "trim_trailing_white_space_on_save": true,
-  "rulers": [80]
+  "update_check": false
 }
