@@ -1,16 +1,13 @@
-; git-grep - get count and filter by file
-; git g -c "match" -- '*.py'
-
 [user]
   email = jyau01@citymail.cuny.edu
   name = Jorge Yau
 
 [alias]
   g = grep --break --heading --line-number
-  la="!git config -l | grep alias | cut -c 7-"
+  s = status
+  d = diff
   ls = log --pretty=format:"%C(yellow)[%cn]\\ %C(green)%ad%C(red)\\ %C(reset)%s" --decorate --date=relative
   ll = log --pretty=format:"%C(yellow)[%cn]\\ %C(green)%s%Cblue" --decorate --numstat
-  lg = log --graph --pretty=oneline --abbrev-commit
 
 [grep]
   lineNumber = true
