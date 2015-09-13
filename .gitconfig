@@ -2,6 +2,9 @@
   email = jyau01@citymail.cuny.edu
   name = Jorge Yau
 
+[core]
+  editor = vim
+
 [alias]
   g = grep --break --heading --line-number
   s = status
@@ -35,3 +38,4 @@
   added = green bold
   changed = yellow bold
   untracked = red bold
+
