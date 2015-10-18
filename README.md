@@ -1,16 +1,9 @@
-# Editor Configuration
+# dotfiles
 
-## Sublime
-Ah Sublime. Life would not be the same without you. I wouldn't know
-what to do if multi-edit did not exist. Coding is just not the same.
-Here is the link to my 
-[Sublime User Preferences](https://github.com/codenameyau/editor/blob/master/sublime/preferences)
+A collection of my dotfiles. I run Linux at home and OSX at work and use
+[zsh with Pretzo](https://github.com/sorin-ionescu/prezto) for my shell.
+I use Sublime as my primary text editor and use vim for quick edits and notetaking.
 
-## Vim
-Vim is my second favorite editor that I like to use to edit configuration
-files and take notes in everyday life. I love vim's navigation features.
-Here is the [link to my .vimrc](https://github.com/codenameyau/editor/blob/master/vim/.vimrc)
-
-#### Plugins
+## Vim Plugins
 - [molokai color scheme](https://github.com/tomasr/molokai)
 - [ctrP fuzzy search](https://github.com/kien/ctrlp.vim)
