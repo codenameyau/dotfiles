@@ -1,7 +1,24 @@
 "----------------------------------------------------------
-" Plugins
+" Vim Plugins
 "----------------------------------------------------------
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+
+"----------------------------------------------------------
+" File Ignores
+"----------------------------------------------------------
+
+" Ignore version control directories.
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+
+" Ignore compiled files.
+set wildignore+=*.pyc*
+
+" Ignore miscellaneous files.
+set wildignore+=*/.DS_Store,*~
+
+" Ignore packages.
+set wildignore+=*node_modules*,*bower_components*,*/vendor,
 
 
 "----------------------------------------------------------
@@ -11,12 +28,7 @@ syntax on
 colorscheme molokai
 set t_Co=256
 hi Normal ctermfg=252 ctermbg=none
-
-
-"----------------------------------------------------------
-" Mapping Keystrokes
-"----------------------------------------------------------
-:imap jj <Esc>
+let g:molokai_original = 1
 
 
 "----------------------------------------------------------
@@ -63,18 +75,13 @@ set visualbell
 set mouse=a
 set t_vb=
 
-" Time out on keycodes, but never on mappings
+" Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
 
 
 "----------------------------------------------------------
-" Disable arrows
+" Mapping Keystrokes
 "----------------------------------------------------------
-"inoremap  <Up>     <NOP>
-"inoremap  <Down>   <NOP>
-"inoremap  <Left>   <NOP>
-"inoremap  <Right>  <NOP>
-"noremap   <Up>     <NOP>
-"noremap   <Down>   <NOP>
-"noremap   <Left>   <NOP>
-"noremap   <Right>  <NOP>
+:imap jj <Esc>
+:imap uu <BS>
+:imap hh <Enter>
