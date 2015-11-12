@@ -1,5 +1,7 @@
 # dotfiles
 
-A collection of my dotfiles. I run Linux Mint at home and OSX at work,
-and use bash or zsh for my shell. I use Sublime as my primary text editor
-and use vim for quick edits and notetaking.
+My collection of my dotfiles. 
+
+- I run Linux Mint at home and OSX at work.
+- I use bash and zsh. I prefer using bash with [shiny-prompt](https://github.com/codenameyau/shiny-prompt).
+- I use Sublime as my text editor and vim on the side.
