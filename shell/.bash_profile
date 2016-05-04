@@ -3,6 +3,7 @@
 # https://github.com/codenameyau/shiny-prompt
 source ~/.bash_prompt
 source ~/.bash_alias
+source ~/.bash_extras
 
 # Ignore history
 HISTIGNORE='cd*:ls*:rm*'
