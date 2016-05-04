@@ -1,13 +1,12 @@
-#####################################################################
-# SHELL ALIASES
-#####################################################################
+#!/bin/bash
 
 # Useful aliases
-alias source-profile='source ~/.zshrc'
-alias pbcopy='xsel --clipboard --input'
-alias pbpaste='xsel --clipboard --output'
+alias source-profile='source ~/.bashrc'
 alias ports='netstat -tulanp'
 
-# Personal alias
-alias killzsnes='/home/yau/Workspace/scripts/bash-scripts/scripts/process/kill-zsnes.sh'
-alias cdm='cd /home/yau/Workspace/github/music'
+# Shortcuts
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias ..2="cd ../.."
+alias ..3="cd ../../.."
