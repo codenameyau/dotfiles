@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Colorful terminal
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+
 # https://github.com/codenameyau/shiny-prompt
 source ~/.bash_prompt
 source ~/.bash_alias
