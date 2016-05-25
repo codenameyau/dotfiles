@@ -9,8 +9,8 @@
   g = grep --break --heading --line-number
   s = status
   d = diff
-  ls = log --pretty=format:"%C(yellow)[%cn]\\ %C(green)%ad%C(red)\\ %C(reset)%s" --decorate --date=relative
-  ll = log --pretty=format:"%C(yellow)[%cn]\\ %C(green)%s%Cblue" --decorate --numstat
+  ls = log --pretty=format:'%C(green)(%cr) %Cred%h%Creset - %s%C(bold blue)<%an>%Creset %C(yellow)%d%Creset' --abbrev-commit
+  search = log -i -E --pretty=format:'%Cred%h %C(green)(%cr)%Creset - %s %C(bold blue)<%an>%Creset%C(yellow)%d%Creset' --no-merges --grep
 
 [grep]
   lineNumber = true
@@ -39,3 +39,7 @@
   changed = yellow bold
   untracked = red bold
 
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f
