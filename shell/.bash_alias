@@ -10,3 +10,9 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ..2="cd ../.."
 alias ..3="cd ../../.."
+
+# Print timestamps with string. ex. timestamps 4 "-CREATE-"
+function timestamps() {
+  for ((i=0; i<$1; i++)); do echo "$(($(date +%s) + $i))"$2; done
+}
+alias timestamps=timestamps
