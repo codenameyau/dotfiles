@@ -24,19 +24,25 @@ test/e2e/dist
 .grunt
 dist
 
-# CONFIGURATION
-.lock-wscript
-.idea
-
 # BINARY
 build/Release
+
+# LOAD TESTING
+artillery_report*
 
 
 #####################################################################
 # PYTHON
 #####################################################################
-*.pyc
-*.pyo
+*.py[cod]
+*.egg
+
+
+#####################################################################
+# SASS / CSS
+#####################################################################
+.sass-cache
+*.css.map
 
 
 #####################################################################
@@ -48,11 +54,13 @@ build/Release
 
 # TEMP / CACHE
 temp
-.sass-cache
 .cache
 *.spec
 *.tmp
 *~
+
+# IDE
+.idea*
 
 # RUNTIME DATA
 pids
@@ -71,6 +79,3 @@ thumbs.db
 # DEVOPS
 .vagrant
 *.retry
-
-# LOAD TESTING
-artillery_report*
