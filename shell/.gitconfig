@@ -4,6 +4,8 @@
 
 [core]
   editor = vim
+  ignorecase = false
+  excludesfile = ~/.gitignore_global
 
 [alias]
   g = grep --break --heading --line-number
