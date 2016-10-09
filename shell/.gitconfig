@@ -11,10 +11,11 @@
   g = grep --break --heading --line-number
   s = status
   d = diff
-  ls = log --pretty=format:'%C(green)(%cr) %Cred%h%Creset - %s%C(bold blue)<%an>%Creset %C(yellow)%d%Creset' --abbrev-commit
-  search = log -i -E --pretty=format:'%Cred%h %C(green)(%cr)%Creset - %s %C(bold blue)<%an>%Creset%C(yellow)%d%Creset' --no-merges --grep
+  ls = log --abbrev-commit --no-merges --pretty='%C(green)(%cr) %Cred%h%Creset - %s%C(bold blue)<%an>%Creset %C(yellow)%d%Creset'
+  ll = log --no-merges --pretty='\n\n%C(bold yellow)[%cn] %C(bold red)(%cr) %C(bold green)%s' --decorate --numstat
+  search = log --no-merges -i -E --pretty='%Cred%h %C(green)(%cr)%Creset - %s %C(bold blue)<%an>%Creset%C(yellow)%d%Creset' --grep
   contributions = log --no-merges --author="codenameyau" --pretty='%C(bold blue)%ad %C(bold green)- %s' --date=format:'%b %d %Y (%I:%M %p)'
-  flow = log --no-merges --author="codenameyau" --stat --pretty='\n\n%C(bold blue)[%h] %C(bold red)%ad (%cr) %C(green)- %s' --date=format:'%b %d %Y'
+  flow = log --no-merges --author="codenameyau" --stat --pretty='\n\n%C(bold blue)[%h] %C(bold yellow)%ad (%cr) %C(green)- %s' --date=format:'%b %d %Y'
 
 [grep]
   lineNumber = true
