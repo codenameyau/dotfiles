@@ -1,0 +1,26 @@
+#####################################################################
+# GENERAL SETTINGS
+#####################################################################
+
+# Only use smart case if search has mixed cases.
+# --smart-case
+
+
+#####################################################################
+# IGNORE DIRECTORIES
+#####################################################################
+
+--ignore-dir=node_modules
+--ignore-dir=bower_components
+--ignore-dir=jspm_packages
+
+
+#####################################################################
+# ADDITIONAL TYPE SETS
+#####################################################################
+
+# Plaintext for markdown and reStructuredText.
+--type-set=plaintext=.md,.markdown,.rst,.txt
+
+# Sass has two file extensions .sass and .scss
+--type-set=sass=.sass,.scss
