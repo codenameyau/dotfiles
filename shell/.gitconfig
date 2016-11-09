@@ -8,6 +8,7 @@
   excludesfile = ~/.gitignore_global
 
 [alias]
+  c = commit
   g = grep --break --heading --line-number
   s = status
   d = diff
