@@ -29,4 +29,17 @@ shift-i
 
 # Move to end of line and switch to insert mode.
 shift-a
+
+# Jump to line.
+<num> + shift-g
+<num> + gg
+
+# Join newlines into one line separated by space.
+shift-j
+
+# [plugin] Multi-edit.
+ctr-n
+
+# Select block of code.
+vip
 ```

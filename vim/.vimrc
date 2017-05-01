@@ -25,6 +25,9 @@ Plugin 'vim-scripts/molokai'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'valloric/youcompleteme'
+Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'terryma/vim-multiple-cursors'
 
 " Plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
