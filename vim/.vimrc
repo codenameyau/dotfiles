@@ -24,7 +24,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'vim-scripts/molokai'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
-Plugin 'powerline/powerline'
+Plugin 'valloric/youcompleteme'
 
 " Plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -128,5 +128,4 @@ set notimeout ttimeout ttimeoutlen=200
 " Mapping Keystrokes
 "--------------------------------------------------------------------
 :imap jj <Esc>
-:imap uu <BS>
-:imap hh <Enter>
+:imap kk <Esc>
