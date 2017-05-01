@@ -1,9 +1,8 @@
 "--------------------------------------------------------------------
 " VundleVim
 "--------------------------------------------------------------------
-set nocompatible  # required
-filetype off      # required
-
+set nocompatible  " required
+filetype off      " required
 
 " Set the runtime path to include Vundle and initialize.
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -22,6 +21,10 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin on GitHub repo.
 " Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
+Plugin 'vim-scripts/molokai'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'powerline/powerline'
 
 " Plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
