@@ -24,21 +24,24 @@ cd ~/.vim/bundle/youcompleteme
 ### Keyboard shortcuts
 
 ```bash
-# Move to beginning of line and switch to insert mode.
+# Move to beginning of line and switch to insert mode (I=insert)
 shift-i
 
-# Move to end of line and switch to insert mode.
+# Move to end of line and switch to insert mode (A=append)
 shift-a
 
-# Jump to line.
+# Join newlines into one line separated by space (J=join)
+shift-j
+
+# Jump to line (G=goto)
 <num> + shift-g
 <num> + gg
 
-# Join newlines into one line separated by space.
-shift-j
-
 # [plugin] Multi-edit.
 ctr-n
+
+# Cut line.
+dd
 
 # Select block of code.
 vip
