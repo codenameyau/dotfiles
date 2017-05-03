@@ -12,6 +12,7 @@
   g = grep --break --heading --line-number
   s = status
   d = diff
+  changes = log develop..HEAD --oneline --no-merges --author="codenameyau" --pretty='%s'
   ls = log --abbrev-commit --no-merges --pretty='%h (%ad) - [%an] %s %d' --date=format:'%b %d %Y'
   ll = log --no-merges --pretty='\n\n%C(bold yellow)[%cn] %C(bold red)(%cr) %C(bold green)%s' --decorate --numstat
   search = log --no-merges -i -E --pretty='%h (%ad) - [%an] %s %d' --date=format:'%b %d %Y' --grep
@@ -51,5 +52,4 @@
   clean = git-lfs clean %f
 
 [push]
-  default = simple
-  
+  default = current
