@@ -37,12 +37,15 @@ shift-j
 <num> + shift-g
 <num> + gg
 
-# [plugin] Multi-edit.
-ctr-n
+# Save and exit vim
+ZZ
 
 # Cut line.
 dd
 
 # Select block of code.
 vip
+
+# [plugin] Multi-edit.
+ctr-n
 ```
