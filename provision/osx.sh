@@ -13,6 +13,9 @@ brew install coreutils cmake
 # Brew other unix commands.
 brew install ack wget curl htop
 
+# Brew install vim and override vi.
+brew install vim --with-override-system-vi
+
 # Brew GNU default commands.
 brew install gnu-sed --with-default-names
 
@@ -20,7 +23,7 @@ brew install gnu-sed --with-default-names
 brew install git python python3 ruby nvm
 
 # Brew terminal plugins (requires .bash_profile).
-brew install source-highlight bash-completion the_silver_searcher
+brew install source-highlight bash-completion the_silver_searcher git-extras
 
 # Lastly run brew doctor and fix package dependencies.
 brew doctor
