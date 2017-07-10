@@ -30,9 +30,7 @@ brew doctor
 brew prune
 
 # Install useful python third-party tools.
-pip3 install tldr
-pip3 install requests
-pip3 install virtualenv
+pip3 install tldr requests virtualenv
 
 # Install useful nodejs third-party tools.
 node install -g gulp mocha http-server eslint
