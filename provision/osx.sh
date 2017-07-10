@@ -36,6 +36,7 @@ pip3 install tldr requests virtualenv
 node install -g gulp mocha http-server eslint webpack
 
 # Download personal dotfiles from github.
+wget https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt -P ~
 wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.ackrc -P ~
 wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_alias -P ~
 wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_extras -P ~
