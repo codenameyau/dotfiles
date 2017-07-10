@@ -33,7 +33,7 @@ brew prune
 pip3 install tldr requests virtualenv
 
 # Install useful nodejs third-party tools.
-node install -g gulp mocha http-server eslint
+node install -g gulp mocha http-server eslint webpack
 
 # Download personal dotfiles from github.
 wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.ackrc -P ~
