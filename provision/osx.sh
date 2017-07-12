@@ -20,7 +20,10 @@ brew install vim --with-override-system-vi
 brew install gnu-sed --with-default-names
 
 # Brew dev packages.
-brew install git python python3 ruby nvm
+brew install git python python3 ruby n
+
+# Set nodejs version.
+sudo n 8
 
 # Brew terminal plugins (requires .bash_profile).
 brew install source-highlight bash-completion the_silver_searcher git-extras
