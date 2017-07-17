@@ -19,9 +19,6 @@ setopt HIST_IGNORE_ALL_DUPS
 # SHELL CONFIGURATION
 #####################################################################
 
-# Virtualenvwrapper
-source /usr/local/bin/virtualenvwrapper.sh
-
 # Source environment variables.
 source ~/.shell_envs
 

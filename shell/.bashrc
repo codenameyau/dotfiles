@@ -10,6 +10,3 @@ alias pbpaste='xsel --clipboard --output'
 
 # Ignore history
 HISTIGNORE='cd*:ls*:rm*'
-
-# Virtualenvwrapper
-source /usr/local/bin/virtualenvwrapper.sh
