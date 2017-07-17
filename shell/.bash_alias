@@ -3,6 +3,8 @@
 # Useful aliases
 alias source-profile='source ~/.bashrc'
 alias ports='netstat -tulanp'
+alias git-pull-all='find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull'
+alias git-delete-merged='git branch --merged | grep -v "\*" | xargs -n1 git branch -d'
 
 # Shortcuts
 alias ..="cd .."
