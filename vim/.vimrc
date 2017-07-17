@@ -18,16 +18,19 @@ Plugin 'VundleVim/Vundle.vim'
 " Place all plugins here. Here are examples of different formats
 "--------------------------------------------------------------------
 
-" Plugin on GitHub repo.
-" Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'vim-scripts/molokai'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
-Plugin 'valloric/youcompleteme'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-multiple-cursors'
+
+" Plugin on GitHub repo.
+" Plugin 'tpope/vim-fugitive'
+
+" Large plugin for auto completion.
+" Plugin 'valloric/youcompleteme'
 
 " Plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
