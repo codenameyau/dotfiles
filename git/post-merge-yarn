@@ -1,0 +1,16 @@
+#/usr/bin/env bash
+
+# Installation:
+# curl -O https://raw.githubusercontent.com/codenameyau/dotfiles/master/git/post-merge-yarn && chmod ug+x post-merge-yarn && mv post-merge-yarn .git/hooks/post-merge
+
+# Description:
+# Git hook to run a command after `git pull` if a package file was changed
+# Run `chmod +x post-merge` to make it executable then put it into `.git/hooks/`.
+
+changed_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
+
+check_run() {
+  echo "$changed_files" | grep --quiet "$1" && eval "$2"
+}
+
+check_run yarn.lock "yarn install"
