@@ -1,12 +1,14 @@
 #!/bin/bash
 
-# Source custom bash settings.
+# Ignore history
+HISTIGNORE='cd*:ls*:rm*'
+
+# https://github.com/codenameyau/shiny-prompt
 source ~/.bash_prompt
-source ~/.bash_envs
+source ~/.bash_alias
+source ~/.bash_extras
 
 # Linux version of OSX' pbcopy, pbpaste.
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
-
-# Ignore history
-HISTIGNORE='cd*:ls*:rm*'
+alias find-quickly="find -not \( -path *node_modules* -o -path *bower* \) -name"

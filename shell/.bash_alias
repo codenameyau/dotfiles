@@ -1,10 +1,18 @@
 #!/bin/bash
 
-# Useful aliases
-alias source-profile='source ~/.bashrc'
-alias ports='netstat -tulanp'
+# Sourcing alias.
+if [ -f ~/.bashrc ]; then
+  alias source-profile='source ~/.bashrc'
+elif [ -f ~/.bash_profile ]; then
+  alias source-profile='source ~/.bash_profile'
+fi
+
+# Git command aliases
 alias git-pull-all='find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull'
 alias git-delete-merged='git branch --merged | grep -v "\*" | xargs -n1 git branch -d'
+alias git-hide='git update-index --assume-unchanged'
+alias git-hide-undo='git update-index --no-assume-unchanged'
+alias git-hide-list='git ls-files -v | grep ^h'
 
 # Shortcuts
 alias ..="cd .."
@@ -15,6 +23,9 @@ alias ..3="cd ../../.."
 
 # Print timestamps with string. ex. timestamps 4 "-CREATE-"
 function timestamps() {
-  for ((i=0; i<$1; i++)); do echo "$(($(date +%s) + $i))"$2; done
+  if [ -z $1 ]; then
+    echo "Usage: timestamp 4"
+  else
+    for ((i=0; i<$1; i++)); do echo "$(($(date +%s) + $i))"$2; done
+  fi
 }
-alias timestamps=timestamps

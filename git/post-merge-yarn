@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/bin/bash
 
 # Installation:
 # curl -O https://raw.githubusercontent.com/codenameyau/dotfiles/master/git/post-merge-yarn && chmod ug+x post-merge-yarn && mv post-merge-yarn .git/hooks/post-merge

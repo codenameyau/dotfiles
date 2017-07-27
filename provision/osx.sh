@@ -26,7 +26,7 @@ brew install git python python3 ruby n
 sudo n 8
 
 # Brew terminal plugins (requires .bash_profile).
-brew install source-highlight bash-completion the_silver_searcher git-extras
+brew install source-highlight bash-completion the_silver_searcher git-extras shellcheck
 
 # Lastly run brew doctor and fix package dependencies.
 brew doctor

@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/bin/bash
 
 # Installation:
 # curl -O https://raw.githubusercontent.com/codenameyau/dotfiles/master/git/post-merge-npm && chmod ug+x post-merge-npm && mv post-merge-npm .git/hooks/post-merge
