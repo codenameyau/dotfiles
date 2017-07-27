@@ -8,7 +8,7 @@
 
 changed_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
 
-check_run() {
+run_if_updated() {
   echo "$changed_files" | grep --quiet "$1" && eval "$2"
 }
 
@@ -16,20 +16,20 @@ echo "Running post-commit hook on dotfiles"
 
 # Copy bash_alias if it exists.
 if [ -f ~/.bash_alias ]; then
-  check_run "shell/.bash_alias" "cat shell/.bash_alias > ~/.bash_alias"
+  run_if_updated "shell/.bash_alias" "cat shell/.bash_alias > ~/.bash_alias"
   echo "[+] Updated ~/.bash_alias"
 fi
 
 # Copy bashrc if it exists.
 if [ -f ~/.bashrc ]; then
-  check_run "shell/.bashrc" "cat shell/.bashrc > ~/.bashrc"
+  run_if_updated "shell/.bashrc" "cat shell/.bashrc > ~/.bashrc"
   echo "[+] Updated ~/.bashrc"
   source ~/.bashrc
 fi
 
 # Copy bash_profile if it exists.
 if [ -f ~/.bash_profile ]; then
-  check_run "shell/.bash_profile" "cat shell/.bash_profile > ~/.bash_profile"
+  run_if_updated "shell/.bash_profile" "cat shell/.bash_profile > ~/.bash_profile"
   echo "[+] Updated ~/.bash_profile"
   source ~/.bash_profile
 fi

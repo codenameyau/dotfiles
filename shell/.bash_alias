@@ -29,3 +29,10 @@ function timestamps() {
     for ((i=0; i<$1; i++)); do echo "$(($(date +%s) + $i))"$2; done
   fi
 }
+
+# Usuage: git-replace 'src/js' 'my_string' 'myString'
+function git-replace() {
+  echo "Updated files:"
+  git ls-files | grep $1 | xargs -n1 grep $2 -l
+  git ls-files | grep $1 | xargs -n1 grep $2 -l | xargs -n1 sed -i "s/$2/$3/g"
+}
