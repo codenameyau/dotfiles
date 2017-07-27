@@ -24,12 +24,10 @@ fi
 if [ -f ~/.bashrc ]; then
   run_if_updated "shell/.bashrc" "cat shell/.bashrc > ~/.bashrc"
   echo "[+] Updated ~/.bashrc"
-  source ~/.bashrc
 fi
 
 # Copy bash_profile if it exists.
 if [ -f ~/.bash_profile ]; then
   run_if_updated "shell/.bash_profile" "cat shell/.bash_profile > ~/.bash_profile"
   echo "[+] Updated ~/.bash_profile"
-  source ~/.bash_profile
 fi
