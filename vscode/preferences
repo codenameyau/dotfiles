@@ -1,0 +1,18 @@
+{
+    "workbench.colorTheme": "Monokai",
+    "editor.fontSize": 14,
+    "editor.fontFamily": "Inconsolata, Menlo, Monaco, Consolas, 'Courier New', Courier",
+    "editor.renderWhitespace": "boundary",
+    "editor.tabSize": 2,
+    "atomKeymap.promptV3Features": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true,
+    "window.zoomLevel": 0,
+    "files.trimTrailingWhitespace": true,
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/.git": true,
+        "**/lib": true
+    }
+}
