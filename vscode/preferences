@@ -13,6 +13,8 @@
         "**/node_modules": true,
         "**/bower_components": true,
         "**/.git": true,
-        "**/lib": true
-    }
+        "**/lib": true,
+        "**/coverage": true
+    },
+    "editor.rulers": [80]
 }
