@@ -16,5 +16,17 @@
         "**/lib": true,
         "**/coverage": true
     },
-    "editor.rulers": [80]
+    "files.exclude": {
+        "**/.git": true, // default value
+        "**/.DS_Store": true, // default value
+        "**/node_modules": true,
+        "node_modules": true,
+        "**/lib": true,
+        "**/log*": true,
+    },
+    "editor.rulers": [
+        80
+    ],
+    "editor.minimap.enabled": false,
+    "editor.showFoldingControls": "mouseover"
 }
