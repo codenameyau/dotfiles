@@ -36,7 +36,7 @@ brew prune
 pip3 install tldr requests virtualenv
 
 # Install useful nodejs third-party tools.
-node install -g gulp mocha http-server eslint webpack
+node install -g gulp mocha http-server eslint webpack jest cost-of-modules rollup
 
 # Download personal dotfiles from github.
 wget https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt -P ~
