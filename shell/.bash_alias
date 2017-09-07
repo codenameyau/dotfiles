@@ -8,6 +8,10 @@ elif [ -f ~/.bash_profile ]; then
 fi
 
 # Git command aliases
+alias gp='git pull'
+alias ga='git add -A'
+alias gc='git commit'
+alias gs='git status'
 alias gg='git checkout -'
 alias git-pull-all='find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull'
 alias git-delete-merged='git branch --merged | grep -v "\*" | xargs -n1 git branch -d'
