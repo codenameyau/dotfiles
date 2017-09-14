@@ -2,9 +2,9 @@
 
 # Sourcing alias.
 if [ -f ~/.bashrc ]; then
-  alias source-profile="source ~/.bashrc"
+  alias sp="source ~/.bashrc"
 elif [ -f ~/.bash_profile ]; then
-  alias source-profile="source ~/.bash_profile"
+  alias sp="source ~/.bash_profile"
 fi
 
 # Git command aliases
@@ -15,7 +15,7 @@ alias gs="git status"
 alias gg="git checkout -"
 alias gd="git diff HEAD~1 HEAD"
 alias git-pull-all="find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull"
-alias git-delete-merged="git branch --merged | grep -v '\*' | xargs -n1 git branch -d"
+alias git-prune="git branch --merged | grep -v '\*' | xargs -n1 git branch -d && git fetch origin --prune"
 alias git-hide="git update-index --skip-worktree"
 alias git-hide-undo="git update-index --no-skip-worktree"
 alias git-ignore="git update-index --assume-unchanged"
