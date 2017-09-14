@@ -26,7 +26,7 @@ brew install git python python3 ruby n
 sudo n 8
 
 # Brew terminal plugins (requires .bash_profile).
-brew install source-highlight bash-completion the_silver_searcher git-extras shellcheck
+brew install source-highlight bash-completion the_silver_searcher git-extras shellcheck gpg
 
 # Lastly run brew doctor and fix package dependencies.
 brew doctor
@@ -36,7 +36,7 @@ brew prune
 pip3 install tldr requests virtualenv
 
 # Install useful nodejs third-party tools.
-node install -g gulp mocha http-server eslint webpack jest cost-of-modules rollup
+node install -g gulp mocha http-server eslint webpack jest cost-of-modules
 
 # Download personal dotfiles from github.
 wget https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt -P ~
