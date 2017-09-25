@@ -22,12 +22,9 @@ alias git-ignore="git update-index --assume-unchanged"
 alias git-ignore-undo="git update-index --no-assume-unchanged"
 alias git-ignore-list="git ls-files -v | grep ^h"
 
-# Shortcuts
+# Shortcuts. Use "cd -" for longer directories.
 alias ..="cd .."
 alias ...="cd ../.."
-alias ....="cd ../../.."
-alias ..2="cd ../.."
-alias ..3="cd ../../.."
 
 # Print timestamps with string. ex. timestamps 4 "-CREATE-"
 function timestamps() {

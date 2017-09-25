@@ -21,8 +21,7 @@
         "**/.DS_Store": true, // default value
         "**/node_modules": true,
         "node_modules": true,
-        "**/lib": true,
-        "**/log*": true,
+        "**/lib": true
     },
     "editor.rulers": [
         80
