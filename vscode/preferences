@@ -27,5 +27,9 @@
         80
     ],
     "editor.minimap.enabled": false,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "vue-html": "html"
+    },
     "editor.showFoldingControls": "mouseover"
 }
