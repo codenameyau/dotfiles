@@ -31,5 +31,6 @@
         "javascript": "javascriptreact",
         "vue-html": "html"
     },
-    "editor.showFoldingControls": "mouseover"
+    "editor.showFoldingControls": "mouseover",
+    "files.insertFinalNewline": true
 }
