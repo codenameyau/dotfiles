@@ -6,28 +6,38 @@
 # Description:
 # Hook to update the dotfiles when changes to this repo are commited.
 
-changed_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
+commited_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
 
 run_if_updated() {
-  echo "$changed_files" | grep --quiet "$1" && eval "$2"
+  echo "$commited_files" | grep --quiet "$1" && eval "$2"
+}
+
+run_if_different() {
+  ! cmp --silent "$1" "$2" && eval "$3"
 }
 
 echo "Running post-commit hook on dotfiles"
 
-# Copy bash_alias if it exists.
 if [ -f ~/.bash_alias ]; then
-  run_if_updated "shell/.bash_alias" "cat shell/.bash_alias > ~/.bash_alias"
+  run_if_different "shell/.bash_alias" "~/.bash_alias" "cp shell/.bash_alias ~/.bash_alias"
   echo "[+] Updated ~/.bash_alias"
 fi
 
-# Copy bashrc if it exists.
-if [ -f ~/.bashrc ]; then
-  run_if_updated "shell/.bashrc" "cat shell/.bashrc > ~/.bashrc"
-  echo "[+] Updated ~/.bashrc"
+if [ -f ~/.gitconfig ]; then
+  run_if_different "shell/.gitconfig" "~/.gitconfig" "cp shell/.gitconfig ~/.gitconfig"
+  echo "[+] Updated ~/.gitconfig"
 fi
 
-# Copy bash_profile if it exists.
-if [ -f ~/.bash_profile ]; then
-  run_if_updated "shell/.bash_profile" "cat shell/.bash_profile > ~/.bash_profile"
-  echo "[+] Updated ~/.bash_profile"
+if [ -f ~/.bashrc ]; then
+  run_if_updated "shell/.bashrc" "cp shell/.bashrc ~/.bashrc"
+  echo "[+] Updated ~/.bashrc"
+  source ~/.bashrc
 fi
+
+if [ -f ~/.bash_profile ]; then
+  run_if_updated "shell/.bash_profile" "cp shell/.bash_profile ~/.bash_profile"
+  echo "[+] Updated ~/.bash_profile"
+  source ~/.bash_profile
+fi
+
+echo

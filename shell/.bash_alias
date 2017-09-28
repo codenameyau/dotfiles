@@ -8,7 +8,6 @@ elif [ -f ~/.bash_profile ]; then
 fi
 
 # Git command aliases
-alias gp="git pull"
 alias ga="git add -A"
 alias gc="git commit"
 alias gs="git status"
@@ -25,6 +24,10 @@ alias git-ignore-list="git ls-files -v | grep ^h"
 # Shortcuts. Use "cd -" for longer directories.
 alias ..="cd .."
 alias ...="cd ../.."
+
+# Utilities.
+alias projects="ls -d -1 $PWD/*/*/"
+alias find-quickly="find . -maxdepth 3 -not \( -path *node_modules* -o -path *bower* \) -name"
 
 # Print timestamps with string. ex. timestamps 4 "-CREATE-"
 function timestamps() {

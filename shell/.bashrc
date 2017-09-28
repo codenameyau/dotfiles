@@ -11,4 +11,4 @@ source ~/.bash_extras
 # Linux version of OSX' pbcopy, pbpaste.
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
-alias find-quickly="find -not \( -path *node_modules* -o -path *bower* \) -name"
+
