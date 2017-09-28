@@ -8,9 +8,17 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 HISTIGNORE='cd*:ls*:rm*'
 
 # https://github.com/codenameyau/shiny-prompt
-source ~/.bash_prompt
-source ~/.bash_alias
-source ~/.bash_extras
+if [ -f ~/.bash_prompt ]; then
+  source ~/.bash_prompt
+fi
+
+if [ -f ~/.bash_alias ]; then
+  source ~/.bash_alias
+fi
+
+if [ -f ~/.bash_extras ]; then
+  source ~/.bash_extras
+fi
 
 # Brew: source-highlight
 # https://ole.michelsen.dk/blog/syntax-highlight-files-macos-terminal-less.html
