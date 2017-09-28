@@ -2,6 +2,12 @@
 
 My collection of dotfiles.
 
+Installation steps
+```bash
+git clone git@github.com:codenameyau/dotfiles.git
+./setup.sh
+```
+
 ### gitignore
 ```bash
 #####################################################################

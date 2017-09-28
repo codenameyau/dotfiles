@@ -40,23 +40,11 @@ artillery_report*
 
 # TEMP / CACHE
 .cache
-*.tmp
 *~
 
 # IDE
 .idea*
 
-# RUNTIME DATA
-pids
-*.pid
-*.seed
-
 # OS CRUFT
 .DS_Store
 thumbs.db
-
-# DEVOPS
-.vagrant
-
-# ANSIBLE
-*.retry
