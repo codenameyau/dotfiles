@@ -15,10 +15,10 @@ to be part of the bash executable path.
 
 ```bash
 # Add the following line in your .bashrc (linux) / .bash_profile (OS X)
-export PATH="<bash-scripts-path-bin>":$PATH
+export PATH="<my-directory>":$PATH
 
 # Example:
-export PATH="~/.bash-scripts/bin":$PATH
+export PATH="~/dotfiles/scripts/bin":$PATH
 ```
 
 
