@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ -e ~/.bashrc ]; then
+  source $HOME/.bashrc
+
+if [ -e ~/.bash_profile ]; then
+  source $HOME/.bash_profile
+fi
