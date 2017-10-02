@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Description:
+# Kills all process with argument.
+#
+# Example:
+# ./kill-all chrome
+
+if [ -z $1 ]; then
+  ps aux | grep $1 | awk '{ print $1 }' | xargs kill
+fi

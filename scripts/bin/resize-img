@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Description:
+# Resizes all jpg and png images in given directory
+#
+# Examples:
+# Resize images to width of 900px, keeping height ratio
+#  ./resize-img -w 900
+#
+# Resize images to height of 700px, keeping width ratio
+#  ./resize-img -h 700
+
+while getopts ":w:h:" opt; do
+  case $opt in
+  w)
+    echo "Resizing images to width: $OPTARG" >&2
+    ls | egrep '\.jpg|\.png' | xargs mogrify -resize $OPTARG
+  ;;
+
+  h)
+    echo "Resizing images to height: $OPTARG" >&2
+    ls | egrep '\.jpg|\.png' | xargs mogrify -resize "x"$OPTARG
+  ;;
+
+  \?)
+    echo "Invalid option: -$OPTARG" >&2
+    exit 1
+  ;;
+
+  :)
+    echo "Option -$OPTARG requires an argument." >&2
+    exit 1
+  ;;
+  esac
+done
