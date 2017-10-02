@@ -33,10 +33,13 @@ brew doctor
 brew prune
 
 # Install useful python third-party tools.
-pip3 install tldr requests virtualenv
+sudo pip3 install tldr requests virtualenv
 
-# Install useful nodejs third-party tools.
-node install -g gulp mocha http-server eslint webpack jest cost-of-modules
+# Install common nodejs third-party tools.
+sudo npm install -g http-server eslint webpack jest
+
+# Install optional nodejs tools.
+sudo npm install -g gulp mocha cost-of-modules artillery
 
 # Download personal dotfiles from github.
 wget https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt -P ~
