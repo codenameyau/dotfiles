@@ -1,6 +1,6 @@
 {
     "workbench.colorTheme": "Monokai",
-    "editor.fontSize": 14,
+    "editor.fontSize": 15,
     "editor.fontFamily": "Inconsolata, Menlo, Monaco, Consolas, 'Courier New', Courier",
     "editor.renderWhitespace": "boundary",
     "editor.tabSize": 2,
@@ -32,5 +32,8 @@
         "vue-html": "html"
     },
     "editor.showFoldingControls": "mouseover",
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    "[python]": {
+        "editor.tabSize": 4
+    }
 }
