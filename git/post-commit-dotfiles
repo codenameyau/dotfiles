@@ -13,7 +13,9 @@ run_if_updated() {
 }
 
 run_if_different() {
-  ! cmp --silent "$1" "$2" && eval "$3"
+  if [ ! cmp --silent $1 $2 ]; then
+    eval $3
+  fi
 }
 
 echo "Running post-commit hook on dotfiles"
@@ -40,4 +42,4 @@ if [ -f ~/.bash_profile ]; then
   source ~/.bash_profile
 fi
 
-echo
+echo # new line
