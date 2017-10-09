@@ -24,19 +24,5 @@
 - Remap `cmd+q` to set inverse colors in accessibility.
 
 ### Dev Environment Setup
+
 Run automated script: https://github.com/codenameyau/dotfiles/blob/master/provision/osx.sh
-
-Install bash completion
-```bash
-brew install bash-completion
-
-# Add to .bashrc or .bash_profile
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
-```
-
-Install shiny prompt
-```
-wget https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt && echo "source ~/.bash_prompt" >> "~/.bash_profile"
-```
