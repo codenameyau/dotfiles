@@ -38,13 +38,16 @@ sudo npm install -g http-server eslint webpack jest
 # Install optional nodejs tools.
 sudo npm install -g gulp mocha cost-of-modules artillery
 
-# Download personal dotfiles from github.
-if [ ! -f $HOME/.bash_extras ]; then
-  wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_extras -P ~
-fi
+# Download files via wget to home directory.
+wget_file() {
+  if [ ! -f "$HOME/$1" ]; then
+    wget $2 -P $HOME
+  fi
+}
 
-wget https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt -P ~
-wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_alias -P ~
-wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_profile -P ~
-wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig -P ~
-wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global -P ~
+wget_file .bash_extras https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_extras
+wget_file .bash_prompt https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt
+wget_file .bash_alias https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_alias
+wget_file .bash_profile https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_profile
+wget_file .gitconfig https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig
+wget_file .gitignore_global https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global
