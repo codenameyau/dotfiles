@@ -20,8 +20,8 @@
 
 ### Map Keyboard Shortcuts
 - Remap terminal keyboard shortcuts: https://stackoverflow.com/a/81299
-- Remap iTerm2 `alt+left` and `alt+right` to escape sequence `esc+b` and `esc+f` in `Profiles > Default > Keys`.
-- Remap `cmd+q` to set inverse colors in accessibility.
+- Remap iTerm2 `alt+left` and `alt+right` to escape sequence `esc+b` and `esc+f` in `Profiles > Default > Keys`. This will not work if you only change global `Keys`.
+- Remap `cmd+q` to set inverse colors in accessibility or show desktop.
 
 ### Dev Environment Setup
 
