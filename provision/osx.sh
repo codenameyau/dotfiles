@@ -7,11 +7,11 @@ mkdir -p $HOME/Workspace
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 
-# Brew core packages.
-brew install coreutils cmake
+# Brew install default packages.
+brew install coreutils cmake ack wget curl htop git python python3 ruby n
 
-# Brew other unix commands.
-brew install ack wget curl htop
+# Brew terminal plugins (requires .bash_profile).
+brew install source-highlight bash-completion the_silver_searcher git-extras shellcheck gpg
 
 # Brew install vim and override vi.
 brew install vim --with-override-system-vi
@@ -19,14 +19,8 @@ brew install vim --with-override-system-vi
 # Brew GNU default commands.
 brew install gnu-sed --with-default-names
 
-# Brew dev packages.
-brew install git python python3 ruby n
-
 # Set nodejs version.
 sudo n 8
-
-# Brew terminal plugins (requires .bash_profile).
-brew install source-highlight bash-completion the_silver_searcher git-extras shellcheck gpg
 
 # Lastly run brew doctor and fix package dependencies.
 brew doctor
