@@ -1,10 +1,13 @@
 #!/bin/bash
 
-# Make certain useful folders.
+# Make directories if not exist.
 mkdir -p $HOME/Workspace
 
 # Install Homebrew.
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if [ ! -x "$(command -v brew)" ]; then
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
 brew update
 
 # Brew install default packages.
@@ -36,10 +39,12 @@ sudo npm install -g http-server eslint webpack jest
 sudo npm install -g gulp mocha cost-of-modules artillery
 
 # Download personal dotfiles from github.
+if [ ! -f $HOME/.bash_extras ]; then
+  wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_extras -P ~
+fi
+
 wget https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt -P ~
-wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.ackrc -P ~
 wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_alias -P ~
-wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_extras -P ~
 wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_profile -P ~
 wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig -P ~
 wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global -P ~
