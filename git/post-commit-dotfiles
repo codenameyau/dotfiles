@@ -13,8 +13,8 @@ run_if_updated() {
 }
 
 run_if_different() {
-  if [ ! cmp --silent $1 $2 ]; then
-    eval $3
+  if [ ! cmp --silent "$1" "$2" ]; then
+    eval "$3"
   fi
 }
 
