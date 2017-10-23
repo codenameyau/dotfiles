@@ -14,7 +14,7 @@ brew update
 brew install coreutils cmake ack wget curl htop git python python3 ruby n
 
 # Brew terminal plugins (requires .bash_profile).
-brew install source-highlight bash-completion the_silver_searcher git-extras shellcheck gpg
+brew install source-highlight bash-completion the_silver_searcher git-extras shellcheck gpg watchman
 
 # Brew install vim and override vi.
 brew install vim --with-override-system-vi
