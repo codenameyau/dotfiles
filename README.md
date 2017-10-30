@@ -40,6 +40,9 @@ sudo mv <file> /usr/local/bin/
 ```bash
 sudo chmod u+x <file>
 sudo ln -s <file> /usr/local/bin/<file>
+
+# Example
+sudo ln -s /usr/local/android-studio/bin/studio.sh /usr/local/bin/android-studio
 ```
 
 #### Method 3: Aliases
