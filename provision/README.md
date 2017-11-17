@@ -26,3 +26,55 @@
 ### Dev Environment Setup
 
 Run automated script: https://github.com/codenameyau/dotfiles/blob/master/provision/osx.sh
+
+
+## Ruby Installation
+
+#### Install Brew and brew packages
+```bash
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew update
+brew doctor
+```
+
+#### Install RVM
+```bash
+brew install redis
+brew install gpg
+
+# Install security key for RVM
+command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+
+# Install RVM and update to latest package
+curl -L https://get.rvm.io | sudo bash -s stable
+rvm get stable --autolibs=enable
+source ~/.rvm/scripts/rvm
+```
+
+#### Install Ruby and Gem
+```bash
+# Install Ruby
+rvm install ruby-2.2.7
+rvm use 2.2.7 --default
+ruby -v
+
+# Update gem
+gem -v
+gem update --system
+rvm gemset use global
+gem outdated
+gem update
+
+# Install bundler to manage gem for rails
+gem install bundler
+
+# Install nokogiri
+gem install nokogiri
+```
+
+#### Install Ruby on Rails
+```bash
+rvm use ruby-2.2.7@rails4.2.8 --create
+gem install rails --version=4.2.8
+rails -v
+```
