@@ -16,12 +16,12 @@ chmod u+x git/*
 cp git/post-commit-dotfiles .git/hooks/post-commit
 
 # Copy and overwrite dotfiles.
-cp shell/.bash_alias ~/.bash_alias
+cp shell/.bash_aliases ~/.bash_aliases
 cp shell/.gitconfig ~/.gitconfig
 cp shell/.gitignore_global ~/.gitignore_global
 
 # Log outputs.
-print_update "shell/.bash_alias" "~/.bash_alias"
+print_update "shell/.bash_aliases" "~/.bash_aliases"
 print_update "shell/.gitconfig" "~/.gitconfig"
 print_update "shell/.gitignore_global" "~/.gitignore_global"
 
