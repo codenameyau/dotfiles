@@ -21,9 +21,9 @@ check_if_different() {
 
 echo "Running post-commit hook on dotfiles"
 
-if [ -f ~/.bash_alias ]; then
-  run_if_updated "./shell/.bash_alias" "~/.bash_alias" "cp shell/.bash_alias ~/.bash_alias"
-  echo "[+] Updated ~/.bash_alias"
+if [ -f ~/.bash_aliases ]; then
+  run_if_updated "./shell/.bash_aliases" "~/.bash_aliases" "cp shell/.bash_aliases ~/.bash_aliases"
+  echo "[+] Updated ~/.bash_aliases"
 fi
 
 if [ -f ~/.gitconfig ]; then
