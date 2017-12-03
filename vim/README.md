@@ -47,6 +47,9 @@ dd
 # Select block of code.
 vip
 
+# Substitute all ocurrences
+:%s/string/replaced_string/g
+
 # [plugin] Multi-edit.
 ctr-n
 ```
