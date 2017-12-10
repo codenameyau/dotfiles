@@ -29,9 +29,9 @@ sudo apt-get install -y xsel terminator
 mkdir -p $HOME/Workspace
 
 # Add dotfiles.
-wget .bash_extras https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_extras
-wget .bash_prompt https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt
-wget .bash_aliases https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_aliases
-wget .bashrc https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bashrc
-wget .gitconfig https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig
-wget .gitignore_global https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global
+wget -P $HOME https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt
+wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_extras
+wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_aliases
+wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bashrc
+wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig
+wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global
