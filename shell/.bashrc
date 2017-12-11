@@ -20,9 +20,11 @@ HISTIGNORE='cd*:ls*:rm*'
 shopt -s histappend
 
 # For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
+HISTSIZE=500
 HISTFILESIZE=2000
 
+# Clear history when exiting a session.
+unset HISTFILE
 
 #####################################################################
 # TERMINAL PROFILE
