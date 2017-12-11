@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Installation:
-# curl -O https://raw.githubusercontent.com/codenameyau/dotfiles/master/git/post-merge-npm && chmod ug+x post-merge-npm && mv post-merge-npm .git/hooks/post-merge
+# curl -O https://raw.githubusercontent.com/codenameyau/dotfiles/master/git/post-merge--npm && chmod ug+x post-merge--npm && mv post-merge--npm .git/hooks/post-merge
 
 # Description:
 # Git hook to run a command after `git pull` if a specified file was changed
