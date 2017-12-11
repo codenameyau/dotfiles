@@ -90,12 +90,12 @@ if [ -x /usr/bin/dircolors ]; then
   alias egrep='egrep --color=auto'
 fi
 
-# colored GCC warnings and errors
+# Colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# Enable programmable completion features
+# Usually already enabled in: '/etc/bash.bashrc' and '/etc/profile'
+# Add more autocompletions in: '/etc/bash_completion.d'
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -107,6 +107,10 @@ fi
 #####################################################################
 # UNIVERSAL ALIASES
 #####################################################################
+
+# Shortcuts. Use "cd -" for longer directories.
+alias ..="cd .."
+alias ...="cd ../.."
 
 # ls aliases
 alias ll='ls -alF'
