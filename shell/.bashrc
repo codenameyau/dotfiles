@@ -14,17 +14,17 @@ esac
 HISTCONTROL=ignoreboth
 
 # Ignore history
-HISTIGNORE='cd*:ls*:rm*'
+HISTIGNORE='cd*:rm*'
 
 # Append to the history file, don't overwrite it
 shopt -s histappend
 
-# For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=500
-HISTFILESIZE=2000
+# See HISTSIZE and HISTFILESIZE in docs.
+HISTSIZE=100
+HISTFILESIZE=200
 
 # Clear history when exiting a session.
-unset HISTFILE
+# unset HISTFILE
 
 #####################################################################
 # TERMINAL PROFILE
@@ -136,7 +136,7 @@ if [ -f ~/.bash_aliases ]; then
   source ~/.bash_aliases
 fi
 
-# Put computer specifc commands here.
+# Put custom commands in this file.
 if [ -f ~/.bash_extras ]; then
   source ~/.bash_extras
 fi
