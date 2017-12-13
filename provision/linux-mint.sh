@@ -16,12 +16,15 @@ sudo apt-get install -y heroku
 # Install git.
 sudo apt-get install -y git
 
+# Install other third party packages.
+sudo apt-get install -y xsel terminator
+
 # Install node.js
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-# Install other third party packages.
-sudo apt-get install -y xsel terminator
+# Install npm packages.
+sudo npm install -g tldr http-server
 
 # Enable trackpad gestures.
 
