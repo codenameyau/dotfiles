@@ -30,10 +30,10 @@ brew doctor
 brew prune
 
 # Install useful python third-party tools.
-sudo pip3 install tldr requests virtualenv
+sudo pip3 install requests virtualenv
 
 # Install common nodejs third-party tools.
-sudo npm install -g http-server eslint webpack jest
+sudo npm install -g http-server eslint webpack jest tldr
 
 # Install optional nodejs tools.
 sudo npm install -g gulp mocha cost-of-modules artillery
