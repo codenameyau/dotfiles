@@ -10,9 +10,6 @@ HISTCONTROL=ignoreboth
 # Ignore history
 HISTIGNORE='cd*:rm*'
 
-# Append to the history file, don't overwrite it
-shopt -s histappend
-
 # See HISTSIZE and HISTFILESIZE in docs.
 HISTSIZE=100
 HISTFILESIZE=200
@@ -23,14 +20,6 @@ HISTFILESIZE=200
 #####################################################################
 # TERMINAL PROFILE
 #####################################################################
-
-# Check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-shopt -s globstar
 
 # Colorful terminal
 export CLICOLOR=1
@@ -68,3 +57,4 @@ fi
 if [ -f ~/.bash_extras ]; then
   source ~/.bash_extras
 fi
+
