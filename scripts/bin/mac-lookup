@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# Description:
+# Looks up MAC Address manufacturer from: /var/lib/ieee-data/oui.txt
+#
+# Example:
+# ./mac-lookup D0:B2:C4:3E:8C:9F
+
+# Requires sudoer: download oui file if not exist.
+if [ ! -e /var/lib/ieee-data/oui.txt ]; then
+  mkdir -p /var/lib/ieee-data
+  wget -P /var/lib/ieee-data http://standards-oui.ieee.org/oui.txt  
+fi
+
+if [ ! $1 ]; then
+  echo "Please specify a mac address"
+  exit 1
+fi
+
+# Replace colons and trim mac address.
+# http://tldp.org/LDP/abs/html/string-manipulation.html
+mac_prefix=${1//:/}
+mac_prefix=${mac_prefix:0:6}
+grep -A 3 $mac_prefix /var/lib/ieee-data/oui.txt
