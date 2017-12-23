@@ -21,4 +21,4 @@ fi
 # http://tldp.org/LDP/abs/html/string-manipulation.html
 mac_prefix=${1//:/}
 mac_prefix=${mac_prefix:0:6}
-grep -A 3 $mac_prefix /var/lib/ieee-data/oui.txt
+grep -i -A 3 $mac_prefix /var/lib/ieee-data/oui.txt
