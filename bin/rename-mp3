@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Description:
+# Lowercase all mp3 files and removes spaces
+# 
+shopt -s globstar
+rename -n 's/ft\.//g; y/A-Z/a-z/; s/[\s|-]+/-/g' **/*.mp3
+rename 's/ft\.//g; y/A-Z/a-z/; s/[\s|-]+/-/g' **/*.mp3
