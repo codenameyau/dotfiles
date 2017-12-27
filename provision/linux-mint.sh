@@ -24,7 +24,7 @@ sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get update -y
 sudo apt-get install -y git
 sudo apt-get install -y software-properties-common
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | os=ubuntu dist=trusty sudo -E bash
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | os=linuxmint dist=sonya sudo -E bash
 sudo apt-get install git-lfs
 git lfs install
 
