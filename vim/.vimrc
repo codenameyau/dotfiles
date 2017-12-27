@@ -84,8 +84,8 @@ set wildignore+=*node_modules*,*bower_components*,*/vendor,
 syntax on
 colorscheme molokai
 set t_Co=256
-hi Normal ctermfg=252 ctermbg=none
 let g:molokai_original = 1
+
 
 "--------------------------------------------------------------------
 " System Settings
