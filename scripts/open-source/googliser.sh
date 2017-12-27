@@ -1,4 +1,6 @@
 #!/bin/bash
+# https://github.com/teracow/googliser
+# fast BASH downloader for multiple images sourced from Google Images
 
 # Copyright (C) 2016 Teracow Software
 

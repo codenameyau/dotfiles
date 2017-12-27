@@ -1,4 +1,5 @@
 #!/bin/bash
+# https://packagecloud.io/github/git-lfs/install
 
 unknown_os ()
 {
