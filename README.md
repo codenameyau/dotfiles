@@ -90,6 +90,6 @@ You can also add any directory to be part of the bash executable path: `$PATH`
 # Add the following line in your .bashrc (linux) / .bash_profile (OS X)
 export PATH="<my-directory>":$PATH
 
-# Example:
-export PATH="~/dotfiles/scripts/bin":$PATH
+# Example
+export PATH="~/Workspace/dotfiles/bin":$PATH
 ```
