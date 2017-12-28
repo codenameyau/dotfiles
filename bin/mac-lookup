@@ -8,8 +8,8 @@
 
 # Requires sudoer: download oui file if not exist.
 if [ ! -e /var/lib/ieee-data/oui.txt ]; then
-  mkdir -p /var/lib/ieee-data
-  wget -P /var/lib/ieee-data http://standards-oui.ieee.org/oui.txt  
+  sudo mkdir -p /var/lib/ieee-data
+  sudo wget -P /var/lib/ieee-data http://standards-oui.ieee.org/oui.txt
 fi
 
 if [ ! $1 ]; then
