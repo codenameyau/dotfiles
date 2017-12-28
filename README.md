@@ -1,31 +1,44 @@
 # dotfiles
 
 
-### Dotfiles installation
+## Nifty terminal commands
 
+### Brace expansion
+https://unix.stackexchange.com/questions/6035/when-do-you-use-brace-expansion
 ```bash
-git clone git@github.com:codenameyau/dotfiles.git
-./setup.sh
+# Rename file (no spaces between commas).
+mv myfile.{js,jsx}
+
+# Create files with different extension.
+touch myfile.{html,css,js,test.js,stories.js}
 ```
 
-## How to run script in terminal
-
-You will need executable permission to run a script.
+### Symbolic Links
+https://stackoverflow.com/questions/1951742/how-to-symlink-a-file-in-linux
 
 ```bash
-# Run ls to see what permissions a file has. Colors indicate permissions.
+# Create a new symbolic link (will fail if already exist).
+ln -s /path/to/file /path/to/symlink
+
+# Create or update symbolic link.
+ln -sf /path/to/file /path/to/symlink
+```
+
+## Running script anywhere from terminal
+
+First you will need executable permission to run a script.
+
+```bash
+# Check to see what permissions files havev. Colors indicate permissions.
 ls -la
 
-# Grant user executable permission and run the file.
+# Grant user executable permission.
 sudo chmod u+x <file-or-dir>
-./<file>
-
-# Example:
 sudo chmod u+x script.sh
+
+# Then run the script.
 ./script.sh
 ```
-
-Here's how you can run a script globally in your terminal.
 
 #### Method 1: Bin Executable
 Add the script to your local bin directory with executable permission.
@@ -52,7 +65,7 @@ If you don't have root permission, you can create an alias in your `.bashrc`
 alias <alias-name>='<script-path>'
 ```
 
-### Extending path
+#### Method 4: Extend path
 
 You can also add any directory to be part of the bash executable path: `$PATH`
 
