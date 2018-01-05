@@ -1,6 +1,6 @@
 # Raspberry Pi
 
-Provisioning script coming soon.
+**Provisioning script coming soon.**
 
 - Recent headless setup: https://howtoraspberrypi.com/how-to-raspberry-pi-headless-setup/
 - Create SD card image: https://howtoraspberrypi.com/create-sd-card-raspberry-pi-command-line-linux/
@@ -8,6 +8,10 @@ Provisioning script coming soon.
 - Configure wireless connection: https://askubuntu.com/q/406166
 
 ### Headless Raspbian Installation
+
+It is recommended to follow these steps for Windows with Win32DiskImager
+if you do not have a linux system or sufficient linux experience. Insert your
+your SD card to your computer (not the Raspberry Pi) to get started.
 
 ```bash
 # Download and unzip the raspbian lite image.
@@ -21,15 +25,15 @@ unzip 2017-11-29-raspbian-stretch-lite.zip
 #
 df -h
 
-# Optional: Write zeros to reformat the SD card.
-sudo dd if=/dev/zero of=/dev/mmcblk0 bs=512
-
-# Copy downloaded image into SD card.
+# Copy Raspbian image file to SD card.
+# Optional: reformat SD card beforehand.
 sudo dd bs=1M if=2017-11-29-raspbian-stretch-lite.img of=/dev/mmcblk0
 ```
 
-Afterwards, visit the `/boot` volume of your SD card and create a blank file called ssh to enable ssh.
-```
+Afterwards, visit the `/boot` volume of your SD card and create a
+blank file called `ssh` to enable ssh when Raspbian boots.
+```bash
+cd /media/boot # it may be named differently.
 touch ssh
 ```
 
@@ -154,12 +158,12 @@ Make sure that **all** of these bullets are checked.
 - Change the default password of your `pi` user. Create a very long password.
 - Setup SSH keys and always use them to ssh into your Pi.
 
-SSH into your Pi and update this file.
+#### SSH into your Pi and update this file.
 ```
 nano /etc/ssh/sshd_config
 ```
 
-Update these lines to these values.
+#### Update these lines to these values.
 ```bash
 # Disable password authentication. Make sure to set up SSH keys beforehand.
 PasswordAuthentication no
@@ -177,7 +181,7 @@ X11Forwarding no
 AllowTcpForwarding no
 ```
 
-Restart your SSH daemon.
+#### Restart your SSH daemon.
 ```
 /etc/init.d/sshd restart
 ```
