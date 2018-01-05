@@ -9,9 +9,10 @@
 
 ### Headless Raspbian Installation
 
-It is recommended to follow these steps for Windows with Win32DiskImager
-if you do not have a linux system or sufficient linux experience. Insert your
-your SD card to your computer (not the Raspberry Pi) to get started.
+It is recommended to follow these steps for Windows with
+[Win32DiskImager](https://sourceforge.net/projects/win32diskimager/)
+if you do not have a linux system or sufficient experience setting up linux.
+Insert your SD card to your computer (not the Raspberry Pi) to get started.
 
 ```bash
 # Download and unzip the raspbian lite image.
