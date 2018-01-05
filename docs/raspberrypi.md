@@ -1,5 +1,7 @@
 # Raspberry Pi
 
+Provisioning script coming soon.
+
 - Recent headless setup: https://howtoraspberrypi.com/how-to-raspberry-pi-headless-setup/
 - Create SD card image: https://howtoraspberrypi.com/create-sd-card-raspberry-pi-command-line-linux/
 - Connect to WiFi on headless machine: https://howtoraspberrypi.com/connect-wifi-raspberry-pi-3-others/
@@ -95,6 +97,20 @@ vim ~/.ssh/config
 ssh pi@raspberrypi -i ~/.ssh/id_rsa
 ```
 
+Update `~/.ssh/config`
+
+```
+Host pi
+  HostName raspberrypi
+  User pi
+  IdentityFile ~/.ssh/id_rsa
+```
+
+This will allow you to SSH into your Pi with this simple command
+```
+ssh pi
+```
+
 ### Copying Files
 ```bash
 # Copy from our computer to Raspberry Pi.
@@ -139,12 +155,12 @@ Make sure that **all** of these bullets are checked.
 - Change the default password of your `pi` user. Create a very long password.
 - Disallow PasswordAuthentication.
 - Setup and always use SSH keys to log into your machine.
-- Restart your Pi everytime you finish updating your SSH settings.
 
 ```
 nano /etc/ssh/sshd_config
 ```
 
+Make these changes.
 ```bash
 # Disable password authentication. Make sure to set up SSH keys beforehand.
 PasswordAuthentication no
@@ -160,4 +176,9 @@ X11Forwarding no
 
 # Disable if you do not have a TCP web server running on port 80.
 AllowTcpForwarding no
+```
+
+Restart your SSH daemon.
+```
+/etc/init.d/sshd restart
 ```
