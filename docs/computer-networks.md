@@ -48,8 +48,8 @@ $ sudo lspci -v
 ## Address Resolution Protocol
 Machines communicate to each other within an internal network by broadcasting messages
 with their MAC addresses. However since wireless communication occurs using IP addresses
-instead of MAC addressess, your router must first assign your machine's MAC addresses
-to an IP address either automatically via **DHCP** or by requesting a **Static IP Address**.
+instead of MAC addresses, your router must first assign your machine's MAC addresses
+to an IP address either automatically via **DHCP** or manually via **Static IP Address**.
 This process of assigning and translating MAC addresses to IP addresses
 is called the **Address Resolution Protocol** (ARP) and will be subsequently
 cached by your router and machine.
@@ -68,3 +68,10 @@ arp | tail -n +3 | awk '{ print $3 }' | xargs -t mac-lookup 2> /dev/null
 View with host and mac address.
 arp | tail -n +3 | awk '{ print $1, $3 }' | xargs -I{} -- sh -c 'echo {}; mac-lookup {}'
 ```
+
+### ARP Spoofing
+The Address Resolution Protocol however can be spoofed to allow machines
+to impersonate other machines to send and intercept packets. This is a technique known
+as **ARP Spoofing**. There are defenses and detection systems to protect against this techique.
+
+https://en.wikipedia.org/wiki/ARP_spoofing
