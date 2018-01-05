@@ -49,9 +49,10 @@ $ sudo lspci -v
 Machines communicate to each other within an internal network by broadcasting messages
 with their MAC addresses. However since wireless communication occurs using IP addresses
 instead of MAC addressess, your router must first assign your machine's MAC addresses
-to an IP address either via DHCP or Static IP. This process of assigning and
-translating MAC addresses to IP addresses is called the Address Resolution Protocol
-(ARP) and will be subsequently cached by your router and machine.
+to an IP address either automatically via **DHCP** or by requesting a **Static IP Address**.
+This process of assigning and translating MAC addresses to IP addresses
+is called the **Address Resolution Protocol** (ARP) and will be subsequently
+cached by your router and machine.
 
 #### View the ARP cache
 ```bash
