@@ -33,14 +33,13 @@ Afterwards, visit the `/boot` volume of your SD card and create a blank file cal
 touch ssh
 ```
 
-
 ### Connect via Ethernet to Computer
 - Turn off Raspberry Pi.
-- Plug in ethernet from your Pi to your linux mint computer.
+- Plug in ethernet from your Pi to your computer.
 - In computer, go to Network Connections.
 - Find Ethernet connection, click edit.
 - Find IPv4 setting and change Method to "Shared to other computers".
-- SSH to your Raspberry Pi
+- SSH to your Raspberry Pi.
 
 ```bash
 # The default raspbian password will be "raspberry"
@@ -121,7 +120,7 @@ scp -r pi@raspberrypi:~/myfile ~
 ```
 
 ### Configure DHCP Static IP
-If you want your Raspberry Pi to request a static private IP address, then:
+If you want your Raspberry Pi to request a static **private** IP address, then:
 
 ```bash
 sudo nano /etc/network/interfaces
@@ -137,6 +136,9 @@ gateway 192.168.1.1  # the ip address of the router
 ```
 
 ### SSH to Home Network
+- [Setting up SSH server on home network](https://dev.to/zduey/how-to-set-up-an-ssh-server-on-a-home-computer)
+- [SSH outside of private network](https://raspberrypi.stackexchange.com/questions/6757/how-to-use-ssh-out-of-home-network)
+
 To ssh into your Raspberry Pi from anywhere, you'll need to adjust your wireless
 router settings to allow incoming traffic for port 22 (ssh) and enable port forwarding.
 You'll want to set up a static IP address for your Pi although a static hostname will
@@ -148,19 +150,16 @@ secure your firewall and **all** your machines that expose port 22.
 
 Make sure that **all** of these bullets are checked.
 
-- [Setting up SSH server on home network](https://dev.to/zduey/how-to-set-up-an-ssh-server-on-a-home-computer)
-- [Disallow root SSH login](https://www.howtogeek.com/howto/linux/security-tip-disable-root-ssh-login-on-linux/)
-- Only allow a max of 3 SSH attempts to your Raspberry Pi.
 - Change the hostname of your Raspberry Pi to something other than `raspberrypi`
 - Change the default password of your `pi` user. Create a very long password.
-- Disallow PasswordAuthentication.
-- Setup and always use SSH keys to log into your machine.
+- Setup SSH keys and always use them to ssh into your Pi.
 
+SSH into your Pi and update this file.
 ```
 nano /etc/ssh/sshd_config
 ```
 
-Make these changes.
+Update these lines to these values.
 ```bash
 # Disable password authentication. Make sure to set up SSH keys beforehand.
 PasswordAuthentication no
