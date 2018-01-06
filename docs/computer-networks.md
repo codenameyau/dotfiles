@@ -34,15 +34,20 @@ manufacture by IEEE. You can look this up via:
 - http://www.coffer.com/mac_find/?string=samsung
 - http://hwaddress.com/
 
-You can lookup your device's wireless interface's MAC address via:
+You can lookup the MAC address of devices via:
 
 ```bash
-# Look for "wlan0" for your wireless interface and "eth0" for your wired interface.
+# "wlan0" is your wireless interface while "eth0" is your wired interface.
 ifconfig
 
-# See your machine's hardware specs.
-$ sudo lshw
-$ sudo lspci -v
+# View the arp cache stored on your machine.
+arp
+
+# Use nmap to scan machines on a network in realtime.
+sudo nmap -sn -f 192.168.1.*
+
+# Use this script to get MAC addresses of remote machines.
+sudo nmap -sU -f -p 161 -T4 -d -v -n -Pn --script snmp-interfaces 80.234.33.182
 ```
 
 ## Address Resolution Protocol
@@ -56,8 +61,7 @@ cached by your router and machine.
 
 #### View the ARP cache
 ```bash
-$ arp
-$ arp -a
+arp
 ```
 
 #### View Mac addresses of devices in ARP cache
@@ -71,7 +75,9 @@ arp | tail -n +3 | awk '{ print $1, $3 }' | xargs -I{} -- sh -c 'echo {}; mac-lo
 
 ### ARP Spoofing
 The Address Resolution Protocol however can be spoofed to allow machines
-to impersonate other machines to send and intercept packets. This is a technique known
-as **ARP Spoofing**. There are defenses and detection systems to protect against this techique.
+to impersonate other machines and even routers to send and intercept packets.
+This is a technique known as **ARP Spoofing**. Thankfully, there are defenses
+and detection systems to protect against this techique.
 
-https://en.wikipedia.org/wiki/ARP_spoofing
+- https://en.wikipedia.org/wiki/ARP_spoofing
+- https://www.veracode.com/security/arp-spoofing
