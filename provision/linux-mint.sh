@@ -1,18 +1,6 @@
 #!/bin/bash
 
 #####################################################################
-# Personal Setup
-#####################################################################
-
-mkdir -p $HOME/Workspace
-wget -P $HOME https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt
-wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_extras
-wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_aliases
-wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bashrc
-wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig
-wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global
-
-#####################################################################
 # Package Installation
 #####################################################################
 
@@ -45,3 +33,16 @@ sudo apt-get install -y nodejs
 sudo npm install -g tldr http-server
 
 # TODO: Enable trackpad gestures.
+
+
+#####################################################################
+# Personal Setup
+#####################################################################
+
+mkdir -p $HOME/Workspace
+wget -P $HOME https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt
+wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_extras
+wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_aliases
+wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bashrc
+wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig
+wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global
