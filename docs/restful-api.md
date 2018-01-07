@@ -116,3 +116,8 @@ GET /school/1
   ]
 }
 ```
+
+## Public APIs
+
+### Github
+- [GET] user public keys: https://api.github.com/users/codenameyau/keys
