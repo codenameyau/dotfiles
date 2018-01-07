@@ -23,18 +23,18 @@
 
 ## MAC Addresses
 MAC addresses are strings of six 16-bit hexadecimal numbers (`18:cf:5e:5b:19:f6`)
-that are used to uniquely identify wireless interfaces on devices that connect to a wireless network
-although MAC addresses also be easily falsified in a process called **MAC Spoofing**.
+that are used to uniquely identify wireless devices that connect to a wireless network;
+however MAC addresses also be easily falsified in a process called **MAC Spoofing**.
 Manufactures and vendors interchangeably call MAC addresses as Device Serial Numbers.
 
 The first six characters of a MAC Address are always assigned to the device's
-manufacture by IEEE. You can look this up via:
+manufacture by IEEE, which you can look up via:
 
 - [Bash Script](https://github.com/codenameyau/dotfiles/blob/master/bin/mac-lookup)
 - http://www.coffer.com/mac_find/?string=samsung
 - http://hwaddress.com/
 
-You can lookup the MAC address of devices via:
+You can lookup the MAC addresses of devices via:
 
 ```bash
 # "wlan0" is your wireless interface while "eth0" is your wired interface.
@@ -75,8 +75,8 @@ arp | tail -n +3 | awk '{ print $1, $3 }' | xargs -I{} -- sh -c 'echo {}; mac-lo
 
 ### ARP Spoofing
 The Address Resolution Protocol however can be spoofed to allow machines
-to impersonate other machines and even routers to send and intercept packets.
-This is a technique known as **ARP Spoofing**. Thankfully, there are defenses
+to impersonate other machines and even routers to send and intercept packets
+in a technique known as **ARP Spoofing**. Thankfully, there are defenses
 and detection systems to protect against this techique.
 
 - https://en.wikipedia.org/wiki/ARP_spoofing
