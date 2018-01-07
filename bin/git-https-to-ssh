@@ -1,0 +1,47 @@
+#!/bin/bash
+#
+# =========================================================================
+# Run this script to configure git to use ssh by default:
+#
+# git config --global url."git@github.com:".insteadOf "https://github.com/"
+# =========================================================================
+#
+# DESCRIPTION:
+# Converts git repository remote url from https to ssh
+#
+# Syntax Docs:
+# http://tldp.org/LDP/abs/html/string-manipulation.html
+# http://tldp.org/LDP/abs/html/comparison-ops.html
+#
+# Before:
+#   origin  https://github.com/USERNAME/REPOSITORY.git (fetch)
+#   origin  https://github.com/USERNAME/REPOSITORY.git (push)
+#
+# After:
+#   origin  git@github.com:USERNAME/REPOSITORY.git (fetch)
+#   origin  git@github.com:USERNAME/REPOSITORY.git (push)
+#
+# USAGE:
+# git-https-to-ssh
+#
+validate() {
+  if [ -z "$1" ]; then
+    echo "$2";
+    exit 1
+  fi
+}
+
+remote=$(git remote -v | tail -1)
+remote_url=$(expr "$remote" : .*'\(http.*\) ')
+remote_user=$(expr "$remote_url" : .*github.com/'\(.*\)'/)
+remote_repo=$(expr "$remote_url" : .*/'\(.*\)'.git)
+new_remote_url="git@github.com:$remote_user/$remote_repo.git"
+
+validate "$remote_url" "Could not validate repository https url"
+validate "$remote_user" "Could not validate repository user"
+validate "$remote_repo" "Could not validate repository name"
+
+git remote set-url origin new_remote_url
+
+echo "Old Remote: $remote_url"
+echo "New Remote: $new_remote_url"
