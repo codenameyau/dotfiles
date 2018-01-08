@@ -1,11 +1,19 @@
 # Raspberry Pi
 
+## Table of Contents
+
+- [Headless Raspbian Installation](#headless-raspbian-installation)
+- [Connect via Ethernet to Computer](#connect-via-ethernet-to-computer)
+- [Connect via Wireless Connection](#connect-via-wireless-connection)
+- [Add your SSH public key to Pi](#add-your-ssh-public-key-to-pi)
+- [SSH to Home Network](#ssh-to-home-network)
+
+### Headless Raspbian Installation
+
 - Recent headless setup: https://howtoraspberrypi.com/how-to-raspberry-pi-headless-setup/
 - Create SD card image: https://howtoraspberrypi.com/create-sd-card-raspberry-pi-command-line-linux/
 - Connect to WiFi on headless machine: https://howtoraspberrypi.com/connect-wifi-raspberry-pi-3-others/
 - Configure wireless connection: https://askubuntu.com/q/406166
-
-### Headless Raspbian Installation
 
 It is recommended to follow these steps for Windows with
 [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/)
@@ -149,9 +157,21 @@ To ssh into your Raspberry Pi from anywhere, you'll need to configure your wirel
 router to allow incoming traffic for port 22 (ssh) and enable port forwarding
 to route traffic to your Raspberry pi. Although port 22 is the default SSH port,
 it's highly recommended that you select an arbitary high numbered port between
-`30000~65535` and use that port to forward traffic to your Pi. These settings
-can be found in the "Port Forwading" and "Advanced Filtering" tabs in your
-router's Firewall settings.
+`30000~65535` (which I'll refer to as port `XXXXX`) and use that port to forward
+traffic to your Pi. These settings can be found in the "Port Forwading" and
+"Advanced Filtering" tabs in your router's Firewall settings.
+
+You'll want to add the public key `~/.ssh/id_rsa.pub` of your machine to the
+`~/.ssh/authorized_keys` file of your Raspberry Pi. Then on your machine, you'll
+want to create or update the `~/.ssh/config` file to include your home network.
+
+```bash
+Host home
+  Hostname <your-home-ip-address>
+  Port <port-XXXXX>
+  User pi
+  IdentityFile ~/.ssh/id_rsa
+```
 
 #### Beef Up Security
 Because you're exposing a port from your private network to the internet,
@@ -162,19 +182,7 @@ Make sure that **all** of these bullets are checked.
 
 - Change the hostname of your Raspberry Pi to something other than `raspberrypi`.
 - Change the default password of your `pi` user. Create a very long password.
-- Setup an SSH key with a passphrase and it instead of a password to ssh into your Pi.
-
-You'll want to add the public key `~/.ssh/id_rsa.pub` of your machine to the
-`~/.ssh/authorized_keys` file of your Raspberry Pi. Then on your machine, you'll
-want to create or update the `~/.ssh/config` file to include your home network.
-
-```bash
-Host home
-  Hostname <router-ip-address>
-  Port <port-you-selected>
-  User pi
-  IdentityFile ~/.ssh/id_rsa
-```
+- Setup an SSH key with a passphrase and use it instead of a password to ssh into your Pi.
 
 #### SSH into your Pi and update this file
 ```
@@ -182,6 +190,9 @@ nano /etc/ssh/sshd_config
 ```
 
 ```bash
+# Allow SSH incoming traffic from this port.
+Port XXXXX # Replace this port.
+
 # Disable password authentication. Make sure to set up SSH keys beforehand.
 PasswordAuthentication no
 
