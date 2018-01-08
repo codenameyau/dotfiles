@@ -1,5 +1,17 @@
 # dotfiles
 
+## Table of Contents
+- [Nifty Terminal Commands](#nifty-terminal-commands)
+  * [Brace Expansion](#brace-expansion)
+  * [Expressions](#expressions)
+  * [Generate Timestamps](#generate-timestamps)
+
+- [Running Scripts from Anywhere](#running-scripts-from-anywhere)
+  * [Method 1: Bin Executable](#bin-executable)
+  * [Method 2: Symbolic Link](#symbolic-link)
+  * [Method 3: Aliases](#aliases)
+  * [Method 4: Extend Path](#extend-path)
+
 ## Nifty Terminal Commands
 
 ### Brace Expansion
@@ -59,7 +71,7 @@ sudo chmod u+x script.sh
 ./script.sh
 ```
 
-### Method 1: Bin Executable
+### Bin Executable
 Add the script to your local bin directory with executable permission.
 
 ```bash
@@ -67,7 +79,7 @@ sudo chmod u+x <file>
 sudo mv <file> /usr/local/bin/
 ```
 
-### Method 2: Symbolic Link
+### Symbolic Link
 https://stackoverflow.com/questions/1951742/how-to-symlink-a-file-in-linux
 
 ```bash
@@ -83,14 +95,14 @@ sudo ln -sf <file> /usr/local/bin/<symlink-name>
 sudo ln -s /usr/local/android-studio/bin/studio.sh /usr/local/bin/android-studio
 ```
 
-### Method 3: Aliases
+### Aliases
 If you don't have root permission, you can create an alias in your `.bashrc`
 
 ```bash
 alias <alias-name>='<script-path>'
 ```
 
-### Method 4: Extend Path
+### Extend Path
 
 You can also add any directory to be part of the bash executable path: `$PATH`
 
