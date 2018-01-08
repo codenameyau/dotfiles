@@ -1,7 +1,6 @@
 # dotfiles
 
-
-## Nifty terminal commands
+## Nifty Terminal Commands
 
 ### Brace Expansion
 https://unix.stackexchange.com/questions/6035/when-do-you-use-brace-expansion
@@ -11,6 +10,20 @@ mv myfile.{js,jsx}
 
 # Create files with different extension.
 touch myfile.{html,css,js,test.js,stories.js}
+```
+
+### Expressions
+http://tldp.org/LDP/abs/html/string-manipulation.html
+
+```bash
+# Capturing substring regex group match.
+string="origin  https://github.com/USERNAME/REPOSITORY.git (fetch)"
+
+# Capture the substring USERNAME
+echo $(expr "$string" : .*github.com/'\(.*\)'/)
+
+# Capture the substring REPOSITORY
+echo $(expr "$string" : .*/'\(.*\).git')
 ```
 
 ### Generate Timestamps
@@ -30,18 +43,7 @@ date +%s%3N
 date +%s%N
 ```
 
-### Symbolic Links
-https://stackoverflow.com/questions/1951742/how-to-symlink-a-file-in-linux
-
-```bash
-# Create a new symbolic link (will fail if already exist).
-ln -s /path/to/file /path/to/symlink
-
-# Create or update symbolic link.
-ln -sf /path/to/file /path/to/symlink
-```
-
-## Running scripts from anywhere in terminal
+## Running Scripts from Anywhere
 
 First you will need executable permission to run a script.
 
@@ -66,10 +68,16 @@ sudo mv <file> /usr/local/bin/
 ```
 
 ### Method 2: Symbolic Link
+https://stackoverflow.com/questions/1951742/how-to-symlink-a-file-in-linux
 
 ```bash
 sudo chmod u+x <file>
-sudo ln -s <file> /usr/local/bin/<file>
+
+# Create a new symbolic link (will fail if already exist).
+sudo ln -s <file> /usr/local/bin/<symlink-name>
+
+# Create or update symbolic link.
+sudo ln -sf <file> /usr/local/bin/<symlink-name>
 
 # Example
 sudo ln -s /usr/local/android-studio/bin/studio.sh /usr/local/bin/android-studio

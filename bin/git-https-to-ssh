@@ -1,8 +1,7 @@
 #!/bin/bash
 #
 # =========================================================================
-# Run this script to configure git to use ssh by default:
-#
+# Alternatively, run this line below to configure git to use ssh by default:
 # git config --global url."git@github.com:".insteadOf "https://github.com/"
 # =========================================================================
 #
