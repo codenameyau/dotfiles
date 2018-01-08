@@ -28,7 +28,7 @@ touch myfile.{html,css,js,test.js,stories.js}
 http://tldp.org/LDP/abs/html/string-manipulation.html
 
 ```bash
-# Capturing substring regex group match.
+# Capturing substring in regex group match.
 string="origin  https://github.com/USERNAME/REPOSITORY.git (fetch)"
 
 # Capture the substring USERNAME
@@ -76,7 +76,7 @@ Add the script to your local bin directory with executable permission.
 
 ```bash
 sudo chmod u+x <file>
-sudo mv <file> /usr/local/bin/
+sudo cp <file> /usr/local/bin/
 ```
 
 ### Symbolic Link
