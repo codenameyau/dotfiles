@@ -27,11 +27,27 @@ Crontab template.
 Schedule cron in intervals.
 ```bash
 # Run once a minute.
-*/1 * * * * /usr/bin/python /home/pi/test_cron.py
+*/1 * * * * /usr/bin/python /home/pi/python-project/test.py
 
 # Run once an hour.
-* */1 * * * /usr/bin/python /home/pi/test_cron.py
+* */1 * * * /usr/bin/python /home/pi/python-project/test.py
 
+```
+
+Programming language cheatsheet.
+
+
+```
+which python
+which node
+```
+
+```bash
+# Node.js
+*/30 * * * * /usr/bin/node /home/pi/node-project/test.js
+
+# Python
+*/30 * * * * /usr/bin/python /home/pi/python-project/test.py
 ```
 
 ## Operations
