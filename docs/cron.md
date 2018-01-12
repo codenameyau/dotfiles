@@ -42,18 +42,16 @@ Schedule cron in intervals:
 which node
 ```
 
-Add this line to the top of your node script:
-
 ```bash
 #!/usr/bin/env node
 ```
 
 ```bash
-# Use this if you have a dependencies (node_modules).
-*/30 * * * * /home/pi/node-project/test.js
+chmod ugo+x /home/pi/node-project/test.js
+```
 
-# Use this if you do not have depencies.
-*/30 * * * * /usr/bin/node /home/pi/node-project/test.js
+```bash
+*/30 * * * * /home/pi/node-project/test.js
 ```
 
 ## Operations
