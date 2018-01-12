@@ -1,6 +1,7 @@
 # Cron
 
 - https://tecadmin.net/crontab-in-linux-with-20-examples-of-cron-schedule/
+- https://askubuntu.com/questions/85558/verify-if-crontab-works
 
 ## Crontab
 
@@ -12,7 +13,7 @@ crontab -e
 sudo crontab -e
 ```
 
-Crontab template.
+Crontab template:
 ```bash
 # ┌────────── minute (0 - 59)
 # │ ┌──────── hour (0 - 23)
@@ -24,7 +25,7 @@ Crontab template.
 # * * * * * command to be executed
 ```
 
-Schedule cron in intervals.
+Schedule cron in intervals:
 ```bash
 # Run once a minute.
 */1 * * * * /usr/bin/python /home/pi/python-project/test.py
@@ -34,33 +35,34 @@ Schedule cron in intervals.
 
 ```
 
-Programming language cheatsheet.
+#### Node with Crontab
 
 
 ```
-which python
 which node
 ```
 
-```bash
-# Node.js
-*/30 * * * * /usr/bin/node /home/pi/node-project/test.js
+Add this line to the top of your node script:
 
-# Python
-*/30 * * * * /usr/bin/python /home/pi/python-project/test.py
+```bash
+#!/usr/bin/env node
+```
+
+```bash
+# Use this if you have a dependencies (node_modules).
+*/30 * * * * /home/pi/node-project/test.js
+
+# Use this if you do not have depencies.
+*/30 * * * * /usr/bin/node /home/pi/node-project/test.js
 ```
 
 ## Operations
-Restart cron with the following.
+Restart cron daemon:
 ```bash
-# Restart the cron daemon.
 sudo /etc/init.d/cron restart
-
-# Reload and restart the ccron service.
-sudo service cron reload && sudo service cron restart
 ```
 
-Cron logs can be found in this directory.
+Cron logs can be found here:
 ```bash
 cd /var/log/
 
