@@ -55,18 +55,24 @@ chmod ugo+x /home/pi/node-project/test.js
 ```
 
 ## Operations
-Restart cron daemon:
+
+#### Restart cron daemon:
 ```bash
 sudo /etc/init.d/cron restart
 ```
 
-Cron logs can be found here:
+#### Enable Cron logs:
+By default cron logs are disabled on raspbian. You can enable it
+by editing the ryslog configuration file.
+
 ```bash
-cd /var/log/
+# Uncomment the line that begins with "# cron.*"
+sudo nano /etc/rsyslog.conf
 
-# In most linux distros.
+# Then Restart rsyslog.
+sudo /etc/init.d/rsyslog restart
+```
+
+```bash
 less /var/log/cron
-
-# Raspberry pi.
-less /var/log/syslog
 ```
