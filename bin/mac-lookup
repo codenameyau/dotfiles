@@ -14,7 +14,7 @@ if [ ! -e /var/lib/ieee-data/oui.txt ]; then
   sudo wget -P /var/lib/ieee-data http://standards-oui.ieee.org/oui.txt
 fi
 
-if [ ! $1 ]; then
+if [ ! "$1" ]; then
   echo "Please specify a mac address"
   exit 1
 fi
@@ -23,4 +23,4 @@ fi
 # http://tldp.org/LDP/abs/html/string-manipulation.html
 mac_prefix=${1//:/}
 mac_prefix=${mac_prefix:0:6}
-grep -i -A 3 $mac_prefix /var/lib/ieee-data/oui.txt
+grep -i -A 3 "$mac_prefix" /var/lib/ieee-data/oui.txt

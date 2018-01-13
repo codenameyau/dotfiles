@@ -3,9 +3,9 @@
 # Author: Jorge Yau (https://github.com/codenameyau/dotfiles)
 #
 if [ -e ~/.bashrc ]; then
-  source $HOME/.bashrc
+  source "$HOME/.bashrc"
 fi;
 
 if [ -e ~/.bash_profile ]; then
-  source $HOME/.bash_profile
+  source "$HOME/.bash_profile"
 fi
