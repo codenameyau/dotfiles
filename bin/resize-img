@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# Author: Jorge Yau (https://github.com/codenameyau/dotfiles)
+#
 # Description:
 # Resizes all jpg and png images in given directory
 #

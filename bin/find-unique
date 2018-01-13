@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# Author: Jorge Yau (https://github.com/codenameyau/dotfiles)
+#
 # Description:
 # Finds all unique values returned by grep
 #
