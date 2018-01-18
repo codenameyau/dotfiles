@@ -21,6 +21,7 @@ alias git-hide-undo="git update-index --no-skip-worktree"
 alias git-ignore="git update-index --assume-unchanged"
 alias git-ignore-undo="git update-index --no-assume-unchanged"
 alias git-ignore-list="git ls-files -v | grep ^h"
+alias git-changelog='git log $(git tag | tail -1)..HEAD --no-merges --pretty="[%h] %s"'
 
 # Utilities.
 alias projects="ls -d -1 $PWD/*/*/"
