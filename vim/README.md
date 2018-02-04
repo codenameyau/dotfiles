@@ -38,6 +38,13 @@ shift-j
 <num> + shift-g
 <num> + gg
 
+# Comment multiple lines with visual block.
+ctrl-v
+<move cursor up/down>
+shift-i
+<# for comment / x to uncomment>
+esc
+
 # Save and exit vim
 ZZ
 
