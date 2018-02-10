@@ -1,0 +1,10 @@
+#!/bin/sh
+# vpnautoconnect
+# Place this file in '/etc/network/if-up.d'
+
+autodiscovered_vpn=$(nmcli con show | grep vpn | awk 'BEGIN {FS="  "}; {print $1}' | head -1)
+
+if [ "$autodiscovered_vpn" ]; then
+  nmcli con up id "$autodiscovered_vpn"
+fi
+
