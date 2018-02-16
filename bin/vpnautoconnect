@@ -1,10 +1,14 @@
 #!/bin/sh
 # vpnautoconnect
-# Place this file in '/etc/network/if-up.d'
+# This will locate the first VPN available and autoconnect to it.
+#
+# Place this file in '/etc/network/if-up.d' or run this installation script:
+#
+# sudo wget -P /etc/network/if-up.d/ https://raw.githubusercontent.com/codenameyau/dotfiles/master/bin/vpnautoconnect
+# sudo chmod ugo+x /etc/network/if-up.d/vpnautoconnect
 
 autodiscovered_vpn=$(nmcli con show | grep vpn | awk 'BEGIN {FS="  "}; {print $1}' | head -1)
 
 if [ "$autodiscovered_vpn" ]; then
   nmcli con up id "$autodiscovered_vpn"
 fi
-
