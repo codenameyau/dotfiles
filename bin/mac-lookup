@@ -7,18 +7,18 @@
 # ./mac-lookup D0:B2:C4:3E:8C:9F
 
 # Requires sudoer: download oui file if not exist.
-if [ ! -e /var/lib/ieee-data/oui.txt ]; then
+if ! [ -e /var/lib/ieee-data/oui.txt ]; then
   sudo mkdir -p /var/lib/ieee-data
   sudo wget -P /var/lib/ieee-data http://standards-oui.ieee.org/oui.txt
 fi
 
-if [ ! $1 ]; then
-  echo "Please specify a mac address"
-  exit 1
+if ! [ "$1" ]; then
+  echo "Please specify a mac address" && exit 1
 fi
 
 # Replace colons and trim mac address.
 # http://tldp.org/LDP/abs/html/string-manipulation.html
 mac_prefix=${1//:/}
 mac_prefix=${mac_prefix:0:6}
-grep -i -A 3 $mac_prefix /var/lib/ieee-data/oui.txt
+grep -i -A 3 "$mac_prefix" /var/lib/ieee-data/oui.txt
+
