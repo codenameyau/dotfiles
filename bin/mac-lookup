@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# Author: Jorge Yau (https://github.com/codenameyau/dotfiles)
+#
 # Description:
 # Looks up MAC Address manufacturer from: /var/lib/ieee-data/oui.txt
 #

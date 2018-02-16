@@ -19,7 +19,9 @@ Then open vim (ignore errors) and run:
 Compile [YouCompleteMe](https://github.com/valloric/youcompleteme#installation)
 ```bash
 # It usually takes about 5 minutes to complete.
-~/.vim/bundle/youcompleteme/install.py --all
+sudo apt-get install -y cmake
+cd ~/.vim/bundle/youcompleteme
+python install.py --all
 ```
 
 ### Keyboard shortcuts
@@ -37,6 +39,13 @@ shift-j
 # Jump to line (G=goto)
 <num> + shift-g
 <num> + gg
+
+# Comment multiple lines with visual block.
+ctrl-v
+<move cursor up/down>
+shift-i
+<# for comment / x to uncomment>
+esc
 
 # Save and exit vim
 ZZ

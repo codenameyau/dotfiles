@@ -23,7 +23,7 @@ curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
 sudo apt-get install -y heroku
 
 # Install other third party packages.
-sudo apt-get install -y xsel terminator
+sudo apt-get install -y xsel terminator jq
 
 # Install node.js
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -

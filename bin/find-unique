@@ -1,13 +1,15 @@
 #!/bin/bash
 #
+# Author: Jorge Yau (https://github.com/codenameyau/dotfiles)
+#
 # Description:
 # Finds all unique values returned by grep
 #
 # Example:
 # ./find-unique "datatron-\w+"
 
-if [ $1 ]; then
-  grep -E $1 app/ -rh | tr -d ' ' | sort | uniq
+if [ "$1" ]; then
+  grep -E "$1" app/ -rh | tr -d ' ' | sort | uniq
 else
   echo 'Not enough arguments: <search-pattern>'
 fi

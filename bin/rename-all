@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# Author: Jorge Yau (https://github.com/codenameyau/dotfiles)
+#
 # Description:
 # Renames filenames and text containing string `$1` to `$2`
 #
