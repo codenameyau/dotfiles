@@ -12,6 +12,8 @@
   * [Method 3: Aliases](#aliases)
   * [Method 4: Extend Path](#extend-path)
 
+- [Speed Up Boot Time](#speed-up-boot-time)
+
 ## Nifty Terminal Commands
 
 ### Brace Expansion
@@ -113,3 +115,24 @@ export PATH="<my-directory>":$PATH
 # Example
 export PATH="~/Workspace/dotfiles/bin":$PATH
 ```
+
+## Speed Up Boot Time
+
+Use this script to discover the bottleneck during boot.
+```bash
+systemd-analyze critical-chain
+```
+
+If your boot consistently takes over 90 seconds (1 min 30 seconds) then it
+is likely that the UUID of your partition has changed which causes the boot
+to timeout while waiting to mount the filesystem and swap space.
+
+- Linux Mint slow boot times: https://forums.linuxmint.com/viewtopic.php?t=225743
+- Wrong UUID at boot: https://forums.linuxmint.com/viewtopic.php?t=112685
+
+You can find the UUID in gparted and edit the values in
+
+```bash
+sudo vim /etc/fstab
+```
+
