@@ -124,13 +124,13 @@ systemd-analyze critical-chain
 ```
 
 If your boot consistently takes over 90 seconds (1 min 30 seconds) then it
-is likely that the UUID of your partition has changed which causes the boot
-to timeout while waiting to mount the filesystem and swap space.
+is likely that the UUID of your partition has changed which caused the boot
+to **timeout** while waiting to mount the filesystem and swap space.
 
 - Linux Mint slow boot times: https://forums.linuxmint.com/viewtopic.php?t=225743
 - Wrong UUID at boot: https://forums.linuxmint.com/viewtopic.php?t=112685
 
-You can find the UUID in gparted and edit the values in
+You can find the UUID in gparted and edit the values in to resolve the issue.
 
 ```bash
 sudo vim /etc/fstab
