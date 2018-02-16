@@ -130,9 +130,14 @@ to **timeout** while waiting to mount the filesystem and swap space.
 - Linux Mint slow boot times: https://forums.linuxmint.com/viewtopic.php?t=225743
 - Wrong UUID at boot: https://forums.linuxmint.com/viewtopic.php?t=112685
 
-You can find the UUID in gparted and edit the values in to resolve the issue.
+You can find the UUID in gparted and edit the values to make sure they match.
 
 ```bash
-sudo vim /etc/fstab
+# These will be the correct UUIDs.
+sudo blkid
+
+# Make sure UUIDs match withh values above.
+cat /etc/fstab
+cat /etc/crypttab
 ```
 
