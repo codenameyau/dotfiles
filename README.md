@@ -4,7 +4,7 @@
 - [Nifty Terminal Commands](#nifty-terminal-commands)
   * [Brace Expansion](#brace-expansion)
   * [String Manipulation](#string-manipulation)
-  * [Arithmetic](#arithmetic)
+  * [Arithmetic Expressions](#arithmetic-expressions)
   * [Generate Timestamps](#generate-timestamps)
 
 - [Running Scripts from Anywhere](#running-scripts-from-anywhere)
@@ -14,6 +14,7 @@
   * [Method 4: Extend Path](#extend-path)
 
 - [Speed Up Boot Time](#speed-up-boot-time)
+  * [Correcting UUID](#correcting-uuid)
 
 ## Nifty Terminal Commands
 
@@ -58,9 +59,24 @@ echo $(expr "$string" : .*/'\(.*\).git')
 > REPOSITORY
 ```
 
-### Arithmetic
-- https://mywiki.wooledge.org/ArithmeticExpression
+### Arithmetic Expressions
+- Tutorial: https://mywiki.wooledge.org/ArithmeticExpression
+- Full reference: http://wiki.bash-hackers.org/syntax/arith_expr
 
+```bash
+# Wrap expression with double parens to specify math context.
+echo $((1 + 1))
+> 2
+
+echo $((3 < 2))
+> 1
+
+echo $((1 < 2))
+> 0
+
+# Using for loop. Spaces are allowed for assignment.
+for ((i = 0; i < 10; i++)); do echo "$1"; done
+```
 
 ### Generate Timestamps
 - https://stackoverflow.com/questions/1204669/how-can-i-generate-unix-timestamps
@@ -144,6 +160,8 @@ Use this script to discover bottlenecks during boot.
 ```bash
 systemd-analyze critical-chain
 ```
+
+### Correcting UUID
 
 If your boot consistently takes over 90 seconds (1 min 30 seconds) then it
 is likely that the **UUID** of your partition has changed which causes the boot
