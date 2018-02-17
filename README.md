@@ -3,7 +3,8 @@
 ## Table of Contents
 - [Nifty Terminal Commands](#nifty-terminal-commands)
   * [Brace Expansion](#brace-expansion)
-  * [Expressions](#expressions)
+  * [String Manipulation](#string-manipulation)
+  * [Arithmetic](#arithmetic)
   * [Generate Timestamps](#generate-timestamps)
 
 - [Running Scripts from Anywhere](#running-scripts-from-anywhere)
@@ -17,7 +18,8 @@
 ## Nifty Terminal Commands
 
 ### Brace Expansion
-https://unix.stackexchange.com/questions/6035/when-do-you-use-brace-expansion
+- https://unix.stackexchange.com/questions/6035/when-do-you-use-brace-expansion
+
 ```bash
 # Rename file (no spaces between commas).
 mv myfile.{js,jsx}
@@ -26,22 +28,42 @@ mv myfile.{js,jsx}
 touch myfile.{html,css,js,test.js,stories.js}
 ```
 
-### Expressions
-http://tldp.org/LDP/abs/html/string-manipulation.html
+### String Manipulation
+- https://mywiki.wooledge.org/BashFAQ/100
+- http://tldp.org/LDP/abs/html/string-manipulation.html
+
+```bash
+# Initialize variable with default value.
+fruit=${1:-'orange'}
+
+# String interpolation with variables.
+echo "I want to eat $fruit"
+> I want to eat orange
+
+# Better string interpolation.
+echo "I want to eat ${fruit}s"
+> I want to eat oranges
+```
 
 ```bash
 # Capturing substring in regex group match.
 string="origin  https://github.com/USERNAME/REPOSITORY.git (fetch)"
 
-# Capture the substring USERNAME
+# Capture matched substring USERNAME
 echo $(expr "$string" : .*github.com/'\(.*\)'/)
+> USERNAME
 
-# Capture the substring REPOSITORY
+# Capture matched substring REPOSITORY
 echo $(expr "$string" : .*/'\(.*\).git')
+> REPOSITORY
 ```
 
+### Arithmetic
+- https://mywiki.wooledge.org/ArithmeticExpression
+
+
 ### Generate Timestamps
-https://stackoverflow.com/questions/1204669/how-can-i-generate-unix-timestamps
+- https://stackoverflow.com/questions/1204669/how-can-i-generate-unix-timestamps
 
 ```bash
 # Timestamp: Thu Dec 28 10:44:45 EST 2017
@@ -118,26 +140,25 @@ export PATH="~/Workspace/dotfiles/bin":$PATH
 
 ## Speed Up Boot Time
 
-Use this script to discover the bottleneck during boot.
+Use this script to discover bottlenecks during boot.
 ```bash
 systemd-analyze critical-chain
 ```
 
 If your boot consistently takes over 90 seconds (1 min 30 seconds) then it
-is likely that the UUID of your partition has changed which caused the boot
-to **timeout** while waiting to mount the filesystem and swap space.
+is likely that the **UUID** of your partition has changed which causes the boot
+to wait until the filesystem and swap space have **timeoutd**.
 
 - Linux Mint slow boot times: https://forums.linuxmint.com/viewtopic.php?t=225743
 - Wrong UUID at boot: https://forums.linuxmint.com/viewtopic.php?t=112685
 
-You can find the UUID in gparted and edit the values to make sure they match.
+You can find the UUID in gparted or blkid and to make sure they match.
 
 ```bash
 # These will be the correct UUIDs.
 sudo blkid
 
-# Make sure UUIDs match withh values above.
+# Make sure UUIDs match with values above.
 cat /etc/fstab
 cat /etc/crypttab
 ```
-
