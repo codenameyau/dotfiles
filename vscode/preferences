@@ -17,8 +17,8 @@
         "**/coverage": true
     },
     "files.exclude": {
-        "**/.git": true, // default value
-        "**/.DS_Store": true, // default value
+        "**/.git": true,
+        "**/.DS_Store": true,
         "**/node_modules": true,
         "node_modules": true,
         "**/lib": true
@@ -35,5 +35,10 @@
     "files.insertFinalNewline": true,
     "[python]": {
         "editor.tabSize": 4
-    }
+    },
+    "typescript.check.npmIsInstalled": false,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "problems.decorations.enabled": true,
+    "eslint.run": "onSave"
 }
