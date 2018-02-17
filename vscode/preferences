@@ -36,6 +36,7 @@
     "[python]": {
         "editor.tabSize": 4
     },
+    "explorer.confirmDragAndDrop": false,
     "typescript.check.npmIsInstalled": false,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
