@@ -69,10 +69,10 @@ echo $((1 + 1))
 > 2
 
 echo $((3 < 2))
-> 1
+> 0
 
 echo $((1 < 2))
-> 0
+> 1
 
 # Using for loop. Spaces are allowed for assignment.
 for ((i = 0; i < 10; i++)); do echo "$1"; done
