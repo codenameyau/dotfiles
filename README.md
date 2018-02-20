@@ -14,9 +14,6 @@
   * [Method 3: Aliases](#aliases)
   * [Method 4: Extend Path](#extend-path)
 
-- [Speed Up Boot Time](#speed-up-boot-time)
-  * [Correcting UUID](#correcting-uuid)
-
 ## Nifty Terminal Commands
 
 ### Debugging Scripts
@@ -180,29 +177,3 @@ export PATH="<my-directory>":$PATH
 export PATH="~/Workspace/dotfiles/bin":$PATH
 ```
 
-## Speed Up Boot Time
-
-Use this script to discover bottlenecks during boot.
-```bash
-systemd-analyze critical-chain
-```
-
-### Correcting UUID
-
-If your boot consistently takes over 90 seconds (1 min 30 seconds) then it
-is likely that the **UUID** of your partition has changed which causes the boot
-to wait until the filesystem and swap space have **timeoutd**.
-
-- Linux Mint slow boot times: https://forums.linuxmint.com/viewtopic.php?t=225743
-- Wrong UUID at boot: https://forums.linuxmint.com/viewtopic.php?t=112685
-
-You can find the UUID in gparted or blkid and to make sure they match.
-
-```bash
-# These will be the correct UUIDs.
-sudo blkid
-
-# Make sure UUIDs match with values above.
-cat /etc/fstab
-cat /etc/crypttab
-```
