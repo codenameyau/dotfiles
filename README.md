@@ -22,17 +22,17 @@
 ### Debugging Scripts
 - https://mywiki.wooledge.org/BashGuide/Practices#Debugging
 
-Method 1: Run your script with the `-x` flag.
+**Method 1:** Run your script with the `-x` flag.
 ```bash
 $ bash -x myscript.sh
 ```
 
-Method 2: Modify script's interpreter directive to include the flag.
+**Method 2:** Modify the script's interpreter directive to include the `-x` flag.
 ```bash
 #!/bin/bash -x
 ```
 
-Method 3: Debug sections of code.
+**Method 3:** Selectively debug sections of code.
 ```bash
 #!/bin/bash
 
