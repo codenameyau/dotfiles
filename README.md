@@ -20,7 +20,8 @@
 ## Nifty Terminal Commands
 
 ### Debugging Scripts
-- https://mywiki.wooledge.org/BashGuide/Practices#Debugging
+- [Guide to bash debugging](https://mywiki.wooledge.org/BashGuide/Practices#Debugging)
+- [Always quote variables](https://mywiki.wooledge.org/BashGuide/Practices#Quoting)
 
 **Method 1:** Run your script with the `-x` flag.
 ```bash
