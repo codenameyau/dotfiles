@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Nifty Terminal Commands](#nifty-terminal-commands)
+  * [Debugging Scripts](#debugging-scripts)
   * [Brace Expansion](#brace-expansion)
   * [String Manipulation](#string-manipulation)
   * [Arithmetic Expressions](#arithmetic-expressions)
@@ -17,6 +18,30 @@
   * [Correcting UUID](#correcting-uuid)
 
 ## Nifty Terminal Commands
+
+### Debugging Scripts
+- https://mywiki.wooledge.org/BashGuide/Practices#Debugging
+
+Method 1: Run your script with the `-x` flag.
+```bash
+$ bash -x myscript.sh
+```
+
+Method 2: Modify script's interpreter directive to include the flag.
+```bash
+#!/bin/bash -x
+```
+
+Method 3: Debug sections of code.
+```bash
+#!/bin/bash
+
+# Turn on debugging.
+set -x
+
+# Turn off debugging.
+set +x
+```
 
 ### Brace Expansion
 - https://unix.stackexchange.com/questions/6035/when-do-you-use-brace-expansion
