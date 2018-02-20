@@ -6,6 +6,7 @@
   * [Brace Expansion](#brace-expansion)
   * [String Manipulation](#string-manipulation)
   * [Arithmetic Expressions](#arithmetic-expressions)
+  * [Output Redirection](#output-redirection)
   * [Generate Timestamps](#generate-timestamps)
 
 - [Running Scripts from Anywhere](#running-scripts-from-anywhere)
@@ -15,6 +16,7 @@
   * [Method 4: Extend Path](#extend-path)
 
 ## Nifty Terminal Commands
+- [Bash Reference Sheet](https://mywiki.wooledge.org/BashSheet#Redirection)
 
 ### Debugging Scripts
 - [Guide to bash debugging](https://mywiki.wooledge.org/BashGuide/Practices#Debugging)
@@ -100,6 +102,9 @@ echo $((1 < 2))
 # Using for loop. Spaces are allowed for assignment.
 for ((i = 0; i < 10; i++)); do echo "$1"; done
 ```
+
+### Output Redirection
+
 
 ### Generate Timestamps
 - https://stackoverflow.com/questions/1204669/how-can-i-generate-unix-timestamps
