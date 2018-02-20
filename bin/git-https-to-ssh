@@ -27,8 +27,7 @@
 #
 validate() {
   if [ -z "$1" ]; then
-    echo "$2";
-    exit 1
+    echo "$2" && exit 1
   fi
 }
 
@@ -46,3 +45,4 @@ git remote set-url origin new_remote_url
 
 echo "Old Remote: $remote_url"
 echo "New Remote: $new_remote_url"
+

@@ -8,13 +8,13 @@
 # Example:
 # rename-all Starter Badass
 
-if [ $1 ] && [ $2 ]; then
+if [ "$1" ] && [ "$2" ]; then
   # Recursively rename files in current directory
-  find . -name $1'*' | sed -e 'p;s/'$1'/'$2'/' | xargs -n2 mv
+  find . -name "$1"'*' | sed -e 'p;s/'$1'/'$2'/' | xargs -n2 mv
 
   # Substitute strings found in each file
-  grep -rl $1 ./ | xargs sed -i 's/'$1'/'$2'/g'
+  grep -rl "$1" ./ | xargs sed -i 's/'$1'/'$2'/g'
 
 else
-  echo 'Not enough arguments: <search> <replace>'
+  echo 'Not enough arguments: <search> <replace>' && exit 1
 fi

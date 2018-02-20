@@ -13,15 +13,15 @@
 #  ./resize-img -h 700
 
 while getopts ":w:h:" opt; do
-  case $opt in
+  case "$opt" in
   w)
     echo "Resizing images to width: $OPTARG" >&2
-    ls | egrep '\.jpg|\.png' | xargs mogrify -resize $OPTARG
+    ls | egrep '\.jpg|\.png' | xargs mogrify -resize "$OPTARG"
   ;;
 
   h)
     echo "Resizing images to height: $OPTARG" >&2
-    ls | egrep '\.jpg|\.png' | xargs mogrify -resize "x"$OPTARG
+    ls | egrep '\.jpg|\.png' | xargs mogrify -resize "x${OPTARG}"
   ;;
 
   \?)

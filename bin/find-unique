@@ -11,5 +11,5 @@
 if [ "$1" ]; then
   grep -E "$1" app/ -rh | tr -d ' ' | sort | uniq
 else
-  echo 'Not enough arguments: <search-pattern>'
+  echo 'Not enough arguments: <search-pattern>' && exit 1
 fi
