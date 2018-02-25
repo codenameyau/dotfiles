@@ -41,5 +41,6 @@
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "problems.decorations.enabled": true,
-    "eslint.run": "onSave"
+    "eslint.run": "onSave",
+    "emmet.triggerExpansionOnTab": true
 }
