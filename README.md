@@ -1,13 +1,15 @@
 # dotfiles
 
 ## Table of Contents
-- [Nifty Terminal Commands](#nifty-terminal-commands)
+- [Bash Essentials](#bash-essentials)
   * [Debugging Scripts](#debugging-scripts)
   * [Brace Expansion](#brace-expansion)
   * [String Manipulation](#string-manipulation)
   * [Arithmetic Expressions](#arithmetic-expressions)
   * [Compound Commands](#compound-commands)
   * [Output Redirection](#output-redirection)
+
+- [Nifty Terminal Commands](#nifty-terminal-commands)
   * [Generate Timestamps](#generate-timestamps)
 
 - [Running Scripts from Anywhere](#running-scripts-from-anywhere)
@@ -16,8 +18,11 @@
   * [Method 3: Aliases](#aliases)
   * [Method 4: Extend Path](#extend-path)
 
-## Nifty Terminal Commands
-- [Bash Reference Sheet](https://mywiki.wooledge.org/BashSheet#Redirection)
+- [Bash Reference Sheet](https://mywiki.wooledge.org/BashSheet)
+
+## Bash Essentials
+This is the holy grail of bash reference sheeets:
+https://mywiki.wooledge.org/BashSheet
 
 ### Debugging Scripts
 - [Guide to bash debugging](https://mywiki.wooledge.org/BashGuide/Practices#Debugging)
@@ -137,6 +142,7 @@ to run a series of commands whose final output would be piped to another command
 ### Output Redirection
 
 
+## Nifty Terminal Commands
 
 ### Generate Timestamps
 - https://stackoverflow.com/questions/1204669/how-can-i-generate-unix-timestamps
