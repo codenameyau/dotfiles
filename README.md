@@ -6,6 +6,7 @@
   * [Brace Expansion](#brace-expansion)
   * [String Manipulation](#string-manipulation)
   * [Arithmetic Expressions](#arithmetic-expressions)
+  * [Compound Commands](#compound-commands)
   * [Output Redirection](#output-redirection)
   * [Generate Timestamps](#generate-timestamps)
 
@@ -103,7 +104,38 @@ echo $((1 < 2))
 for ((i = 0; i < 10; i++)); do echo "$1"; done
 ```
 
+### Compound Commands
+- https://mywiki.wooledge.org/BashGuide/CompoundCommands
+- https://mywiki.wooledge.org/BashGuide/TestsAndConditionals#Grouping_Statements
+
+**SubShell:* will launch the command in subshell where cd and variables are not remembered.
+It is always good practice to exit 1 if a directory doesn't exist and
+will terminate the subshell but not the main shell.
+
+```bash
+(cd /tmp || exit 1; date > timestamp)
+```
+
+**Grouping Statements:** you can use short circuiting with guard `&&` and
+default `||` statements for basic command grouping.
+
+```bash
+# Will exit the shell if cd exists.
+cd /tmp && exit 1
+
+# Will exit the shell if cd does not exist.
+cd /tmp || exit 1
+```
+
+**Grouping Commands:** you can group commands with `{}` which you typically use
+to run a series of commands whose final output would be piped to another command.
+
+```bash
+{command_1; command_2; command_3} | command_4
+```
+
 ### Output Redirection
+
 
 
 ### Generate Timestamps
