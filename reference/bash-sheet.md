@@ -2,46 +2,58 @@
 
 Original Wiki: https://mywiki.wooledge.org/BashSheet
 
+## Table of Contents
+- [Syntax](#syntax)
+- [Basic Structures](#basic-structures)
+
 ## Syntax
- * `[word] [space] [word]`
-    - **Spaces separate words**. In bash, a ''word'' is a group of characters that belongs together. Examples are command names and arguments to commands. To put spaces inside an argument (or ''word''), quote the argument (see next point) with single or double quotes.
- * `[command] ; [command] [newline]`
-    - **Semi-colons and newlines separate synchronous commands** from each other.  Use a semi-colon ''or'' a new line to end a command and begin a new one.  The first command will be executed synchronously, which means that Bash will wait for it to end before running the next command.
- * `[command] & [command]`
-    - **A single ampersand terminates an asynchronous command**.  An ampersand does the same thing as a semicolon or newline in that it indicates the end of a command, but it causes Bash to execute the command asynchronously.  That means Bash will run it in the background and run the next command immediately after, without waiting for the former to end.  Only the command before the `&` is executed asynchronously and you must not put a `;` after the `&`, the `&` replaces the `;`.
- * `[command] | [command]`
-    - **A vertical line or `pipe`-symbol connects the output of one command to the input of the next**.  Any characters streamed by the first command on `stdout` will be readable by the second command on `stdin`.
- * `[command] && [command]`
-    - **An ''AND'' conditional** causes the second command to be executed only if the first command ends and exits successfully.
- * `[command] || [command]`
-    - **An ''OR'' conditional** causes the second command to be executed only if the first command ends and exits with a failure exit code (any non-zero exit code).
- * `'` ''[Single quoted string]'' `'`
-  . **Disables syntactical meaning of all characters** inside the string.  Whenever you want literal strings in your code, it's good practice to wrap them in single quotes so you don't run the risk of accidentally using a character that also has a syntactical meaning to Bash.
- * `"` ''[Double quoted string]'' `"`
-  . **Disables syntactical meaning of all characters except expansions** inside the string.  Use this form instead of single quotes if you need to expand a parameter or command substitution into your string.
-  . **Remember**: It's important to always wrap your expansions (`"$var"` or `"$(command)"`) in double quotes.  This will, in turn, safely disable meaning of syntactical characters that may occur inside the expanded result.
+`[word] [space] [word]`
+- **Spaces separate words**. In bash, a ''word'' is a group of characters that belongs together. Examples are command names and arguments to commands. To put spaces inside an argument (or ''word''), quote the argument (see next point) with single or double quotes.
 
-= Basic Structures =
-See BashSheet#Examples:_Basic_Structures for some examples of the syntax below.
+`[command] ; [command] [newline]`
+- **Semi-colons and newlines separate synchronous commands** from each other.  Use a semi-colon ''or'' a new line to end a command and begin a new one.  The first command will be executed synchronously, which means that Bash will wait for it to end before running the next command.
 
-== Compound Commands ==
+`[command] & [command]`
+- **A single ampersand terminates an asynchronous command**.  An ampersand does the same thing as a semicolon or newline in that it indicates the end of a command, but it causes Bash to execute the command asynchronously.  That means Bash will run it in the background and run the next command immediately after, without waiting for the former to end.  Only the command before the `&` is executed asynchronously and you must not put a `;` after the `&`, the `&` replaces the `;`.
+
+`[command] | [command]`
+- **A vertical line or pipe-symbol connects the output of one command to the input of the next**.  Any characters streamed by the first command on `stdout` will be readable by the second command on `stdin`.
+
+`[command] && [command]`
+- **An ''AND'' conditional** causes the second command to be executed only if the first command ends and exits successfully.
+
+`[command] || [command]`
+- **An ''OR'' conditional** causes the second command to be executed only if the first command ends and exits with a failure exit code (any non-zero exit code).
+
+`'[Single quoted string]'`
+- **Disables syntactical meaning of all characters** inside the string.  Whenever you want literal strings in your code, it's good practice to wrap them in single quotes so you don't run the risk of accidentally using a character that also has a syntactical meaning to Bash.
+
+`"[Double quoted string]"`
+- **Disables syntactical meaning of all characters except expansions** inside the string.  Use this form instead of single quotes if you need to expand a parameter or command substitution into your string.
+- **Remember**: It's important to always wrap your expansions (`"$var"` or `"$(command)"`) in double quotes.  This will, in turn, safely disable meaning of syntactical characters that may occur inside the expanded result.
+
+## Basic Structures
+See [Examples Basic Structures](#examples-basic-structures) for some examples of the syntax below.
+
+### Compound Commands
 Compound commands are statements that can execute several commands but are considered as a sort of command group by Bash.
 
-=== Command Lists ===
- * `{` ''[command list]''; `}`
-  . **Execute the list of commands in the current shell as though they were one command**.
-  . Command grouping on its own isn't very useful.  However, it comes into play wherever Bash syntax accepts only one command while you need to execute multiple.  For example, you may want to pass output of multiple commands via a pipe to another command's input:
-  . `{ cmd1; cmd2; } | cmd3`
-  . Or you may want to execute multiple commands after a `||` operator:
-  . `rm file || { echo "Removal failed, aborting."; exit 1; }`
-  . It is also used for function bodies.  Technically, this can also be used for loop bodies though this is **undocumented**, **not portable** and we normally prefer `do ...; done` for this):
-  . `for digit in 1 9 7; { echo "$digit"; }       # non-portable, undocumented, unsupported`
-  . `for digit in 1 9 7; do echo "$digit"; done   # preferred`
-  . Note: You **need** a `;` before the closing `}` (or it must be on a new line).
- * `(` ''[command list]'' `)`
-  . **Execute the list of commands in a subshell**.
-  . This is exactly the same thing as the command grouping above, only, the commands are executed in a subshell.  Any code that affects the environment such as variable assignments, `cd`, `export`, etc. do not affect the main script's environment but are scoped within the brackets.
-  . Note: You **do not** need a `;` before the closing `)`.
+#### Command Lists
+`{ [command list]; }`
+- **Execute the list of commands in the current shell as though they were one command**.
+- It is also used for function bodies.
+- Command grouping on its own isn't very useful.  However, it comes into play wherever Bash syntax accepts only one command while you need to execute multiple.  For example, you may want to pass output of multiple commands via a pipe to another command's input:
+- `{ cmd1; cmd2; } | cmd3`
+- Or you may want to execute multiple commands after a `||` operator:
+```bash
+rm file || { echo "Removal failed, aborting."; exit 1; }
+```
+- Note: You **need** a `;` or newline before the closing `}`.
+
+`( [command list] )`
+- **Execute the list of commands in a subshell**.
+- This is exactly the same thing as the command grouping above, only, the commands are executed in a subshell.  Any code that affects the environment such as variable assignments, `cd`, `export`, etc. do not affect the main script's environment but are scoped within the brackets.
+- Note: You **do not** need a `;` before the closing `)`.
 
 === Expressions ===
  * `((` ''[arithmetic expression]'' `))`
