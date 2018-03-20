@@ -5,6 +5,12 @@ Original Wiki: https://mywiki.wooledge.org/BashSheet
 ## Table of Contents
 - [Syntax](#syntax)
 - [Basic Structures](#basic-structures)
+  - [Compound Commands](#compound-commands)
+    - [Command Lists](#command-lists)
+    - [Expressions](#expressions)
+    - [Loops](#loops)
+  - [Builtins](#builtins)
+    - [Dummies](#dummies)
 
 ## Syntax
 `[word] [space] [word]`
@@ -516,6 +522,3 @@ If you're new to bash or don't fully grasp what arrays are and why one would use
   . **Send all output to standard error from now on to a log file**.
  * `echo "Fatal error occurred!  Terminating!"; exit 1`
   . **Show an error message and exit the script**.
-
-----
-CategoryShell
