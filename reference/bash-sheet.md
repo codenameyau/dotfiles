@@ -11,6 +11,13 @@ Original Wiki: https://mywiki.wooledge.org/BashSheet
     - [Loops](#loops)
   - [Builtins](#builtins)
     - [Dummies](#dummies)
+    - [Declarative](#declarative)
+    - [Input](#input)
+    - [Output](#output)
+    - [Execution](#execution)
+    - [Jobs and Processes](#jobs-and-processes)
+    - [Script Arguments](#script-arguments)
+
 
 ## Syntax
 `[word] [space] [word]`
@@ -100,6 +107,15 @@ rm file || { echo "Removal failed, aborting."; exit 1; }
 - **The next loop will repeat forever, letting the user choose between the given words**.
 - The iteration's commands are executed with the variable denoted by `name`'s value set to the word chosen by the user. Naturally, you can use `break` to end this loop.
 
+`break`
+- **Break out of the current loop**.
+- When more than one loop is active, break out the last one declared.  When a "number" is given as argument to `break`, break out of "number" loops, starting with the last one declared.
+
+`continue`
+- **Skip the code that is left in the current loop** and start a new iteration of that loop.
+- Just like with `break`, a "number" may be given to skip out more loops.
+
+
 ### Builtins
 Builtins are commands that perform a certain function that has been compiled into Bash. Understandably, they are also the only types of commands (other than those above) that can modify the Bash shell's environment.
 
@@ -138,7 +154,7 @@ Builtins are commands that perform a certain function that has been compiled int
 
 `read`
 - **Read a line "(unless the `-d` option is used to change the delimiter from "newline" to something else)" and put it in the variables denoted by the arguments given to `read`**.
-- If more than one variable name is given, split the line up using the characters in [[IFS]] as delimiters.  If less variable names are given than there are split chunks in the line, the last variable gets all data left unsplit.
+- If more than one variable name is given, split the line up using the characters in `IFS` as delimiters.  If less variable names are given than there are split chunks in the line, the last variable gets all data left unsplit.
 
 #### Output
 
@@ -154,54 +170,86 @@ Builtins are commands that perform a certain function that has been compiled int
 - **Output the absolute pathname of the current working directory**.
 - You can use the `-P` option to make `pwd` resolve any symlinks in the pathname.
 
-=== Execution ===
- * `cd`: **Changes the current directory to the given path**.
-  . If the path doesn't start with a slash, it is relative to the current directory.
- * `command`: **Run the first argument as a command**.
-  . This tells Bash to skip looking for an alias, function or keyword by that name; and instead assume the command name is a builtin, or a program in `PATH`.
- * `coproc`: **Run a command or compound command as a co-process**.
-  . Runs in bg, setting up pipes for communication.  See http://wiki.bash-hackers.org/syntax/keywords/coproc for details.
- * `.` "or" `source`: **Makes Bash read the filename given as first argument and execute its contents in the current shell**.
-  . This is kind of like `include` in other languages.  If more arguments are given than just a filename to `source`, those arguments are set as the positional parameters during the execution of the sourced code. If the filename to source has no slash in it, `PATH` is searched for it.
- * `exec`: **Run the command given as first argument and replace the current shell with it**.
-  . Other arguments are passed to the command as its arguments.  If no arguments are given to exec but you do specify "Redirections" on the exec command, the redirections will be applied to the current shell.
- * `exit`: **End the execution of the current script**.
-  . If an argument is given, it is the exit status of the current script (an integer between 0 and 255).
- * `logout`: **End the execution of a "login" shell**.
- * `return`: **End the execution of the current "function**".
-  . An exit status may be specified just like with the `exit` builtin.
- * `ulimit`: **Modify resource limitations of the current shell's process**.
-  . These limits are inherited by child processes.
+#### Execution
+`cd`
+- **Changes the current directory to the given path**.
+- If the path doesn't start with a slash, it is relative to the current directory.
 
-=== Jobs/Processes ===
- * `jobs`: **List the current shell's active jobs**.
- * `bg`: **Send the previous job "(or job denoted by the given argument)" to run in the background**.
-  . The shell continues to run while the job is running.  The shell's input is handled by itself, not the job.
- * `fg`: **Send the previous job "(or job denoted by the given argument)" to run in the foreground**.
-  . The shell waits for the job to end and the job can receive the input from the shell.
- * `kill`: **Send a signal(3) to a process or job**.
-  . As argument, give the process ID of the process or the "jobspec" of the job you want to send the signal to.
- * `trap`: **Handle a signal(3) sent to the current shell**.
-  . The code that is in the first argument is executed whenever a signal is received denoted by any of the other arguments to `trap`.
- * `suspend`: **Stops the execution of the current shell until it receives a "SIGCONT" signal**.
-  . This is much like what happens when the shell receives a "SIGSTOP" signal.
- * `wait`: **Stops the execution of the current shell until active jobs have finished**.
-  . In arguments, you can specify which jobs (by "jobspec") or processes (by "PID") to wait for.
+`command`
+- **Run the first argument as a command**.
+- This tells Bash to skip looking for an alias, function or keyword by that name; and instead assume the command name is a builtin, or a program in `PATH`.
 
-=== Conditionals And Loops ===
- * `break`: **Break out of the current loop**.
-  . When more than one loop is active, break out the last one declared.  When a "number" is given as argument to `break`, break out of "number" loops, starting with the last one declared.
- * `continue`: **Skip the code that is left in the current loop** and start a new iteration of that loop.
-  . Just like with `break`, a "number" may be given to skip out more loops.
+`coproc`
+- **Run a command or compound command as a co-process**.
+- Runs in bg, setting up pipes for communication. See http://wiki.bash-hackers.org/syntax/keywords/coproc for details.
 
-=== Script Arguments ===
- * `set`: **The `set` command normally sets various "Shell options", but can also set "Positional parameters**".
-  . "Shell options" are options that can be passed to the shell, such as `bash -x` or `bash -e`. `set` toggles shell options like this: `set -x`, `set +x`, `set -e`, ... "Positional parameters" are parameters that hold arguments that were passed to the script or shell, such as `bash myscript -foo /bar`. `set` assigns positional parameters like this: `set -- -foo /bar`.
- * `shift`: **Moves all positional parameters' values one parameter back**.
-  . This way, values that were in `$1` are discarted, values from `$2` go into `$1`, values from `$3` go into `$2`, and so on.  You can specify an argument to shift which is an integer that specifies how many times to repeat this shift.
- * `getopts`: **Puts an option specified in the arguments in a variable**.
-  . `getopts` Uses the first argument as a specification for which options to look for in the arguments.  It then takes the first option in the arguments that is mentioned in this option specification (or next option, if getopts has been ran before), and puts this option in the variable denoted by the name in the second argument to `getopts`. This command is pretty much always used in a **loop**:
-  {{{
+`.` or `source`
+- **Makes Bash read the filename given as first argument and execute its contents in the current shell**.
+- This is kind of like `include` in other languages.  If more arguments are given than just a filename to `source`, those arguments are set as the positional parameters during the execution of the sourced code. If the filename to source has no slash in it, `PATH` is searched for it.
+
+`exec`
+- **Run the command given as first argument and replace the current shell with it**.
+- Other arguments are passed to the command as its arguments. If no arguments are given to exec but you do specify "Redirections" on the exec command, the redirections will be applied to the current shell.
+
+`exit`
+- **End the execution of the current script**.
+- If an argument is given, it is the exit status of the current script (an integer between 0 and 255).
+
+`logout`
+- **End the execution of a "login" shell**.
+
+`return`
+- **End the execution of the current "function"**.
+- An exit status may be specified just like with the `exit` builtin.
+
+`ulimit`
+- **Modify resource limitations of the current shell's process**.
+- These limits are inherited by child processes.
+
+#### Jobs and Processes
+
+`jobs`
+- **List the current shell's active jobs**.
+
+`bg`
+- **Send the previous job "(or job denoted by the given argument)" to run in the background**.
+- The shell continues to run while the job is running.  The shell's input is handled by itself, not the job.
+
+`fg`
+- **Send the previous job "(or job denoted by the given argument)" to run in the foreground**.
+- The shell waits for the job to end and the job can receive the input from the shell.
+
+`kill`
+- **Send a signal(3) to a process or job**.
+- As argument, give the process ID of the process or the "jobspec" of the job you want to send the signal to.
+
+`trap`
+- **Handle a signal(3) sent to the current shell**.
+- The code that is in the first argument is executed whenever a signal is received denoted by any of the other arguments to `trap`.
+
+`suspend`
+- **Stops the execution of the current shell until it receives a "SIGCONT" signal**.
+- This is much like what happens when the shell receives a "SIGSTOP" signal.
+
+`wait`
+- **Stops the execution of the current shell until active jobs have finished**.
+- In arguments, you can specify which jobs (by "jobspec") or processes (by "PID") to wait for.
+
+#### Script Arguments
+`set`
+- **The `set` command normally sets various "Shell options", but can also set "Positional parameters**".
+- "Shell options" are options that can be passed to the shell, such as `bash -x` or `bash -e`. `set` toggles shell options like this: `set -x`, `set +x`, `set -e`.
+- "Positional parameters" are parameters that hold arguments that were passed to the script or shell, such as `bash myscript -foo /bar`. `set` assigns positional parameters like this: `set -- -foo /bar`.
+
+`shift`
+- **Moves all positional parameters' values one parameter back**.
+- This way, values that were in `$1` are discarted, values from `$2` go into `$1`, values from `$3` go into `$2`, and so on. You can specify an argument to shift which is an integer that specifies how many times to repeat this shift.
+
+`getopts`
+- **Puts an option specified in the arguments in a variable**.
+- `getopts` uses the first argument as a specification for which options to look for in the arguments.  It then takes the first option in the arguments that is mentioned in this option specification (or next option, if getopts has been ran before), and puts this option in the variable denoted by the name in the second argument to `getopts`.
+- This command is pretty much always used in a **loop**:
+```bash
 while getopts abc opt
 do
    case $opt in
@@ -210,10 +258,10 @@ do
       c) ...;;
    esac
 done
-}}}
-  This way all options in the arguments are parsed and when they are either `-a`, `-b` or `-c`, the respective code in the `case` statement is executed.  Following short style is also valid for specifying multiple options in the arguments that `getopts` parses: `-ac`.
+```
+- This way all options in the arguments are parsed and when they are either `-a`, `-b` or `-c`, the respective code in the `case` statement is executed.  Following short style is also valid for specifying multiple options in the arguments that `getopts` parses: `-ac`.
 
-= Streams =
+## Streams
 If you're new to handling input and output in bash or are looking for more examples, details and/or explanations, go read BashGuide/InputAndOutput.
 
 Bash is an excellent tool for managing streams of data between processes.  Thanks to its excellent operators for connecting file descriptors, we take data from almost anywhere and send it to almost anywhere.  Understanding streams and how you manipulate them in Bash is key to the vastness of Bash's power.
