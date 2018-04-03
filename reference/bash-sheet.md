@@ -330,15 +330,14 @@ A file descriptor is like a road between a file and a process.  It's used by the
 - Note: The word after `<<` "must" be exactly the same as the word after the last line of data, and when you repeat that word after the last line of data, it "must" be in the beginning of the line, and there must be nothing else on that line.
 - Note: You can 'quote' the word after the `<<`. If you do so, anything in the lines of data that looks like expansions will not be expanded by bash.
 
-== Piping ==
- * `[command]" `|` "[othercommand]"
-  . **Pipe: The `|` operator connects the first command's "Standard Output" to the second command's "Standard Input**".
-  . As a result, the second command will read its data from the first command's output.
- * `[command]" `|&` "[othercommand]" "(Bash 4+)"
-  . **Pipe: The `|&` operator connects the first command's "Standard Output" and "Standard Error" to the second command's "Standard Input**".
-  . As a result, the second command will read its data from the first command's output and errors combined.
+### Piping
+`[command] | [othercommand]`
+- **Pipe: The `|` operator connects the first command's "Standard Output" to the second command's "Standard Input**".
 
-== Expansions ==
+`[command] |& [othercommand]`
+- **Pipe: The `|&` operator connects the first command's "Standard Output" and "Standard Error" to the second command's "Standard Input**".
+
+### Expansions
  * `[command]" `"$(` "[command list]" `)"`, "[command]" {{{"`}}} "[command list]" {{{`"}}}
   . **Command Substitution: captures the output of a command and expands it inline**.
   . We only use command substitution inside other commands when we want the output of one command to become part of another statement.  An ancient and ill-advised alternative syntax for command substitution is the back-quote: {{{`command`}}}.  This syntax has the same result, but it does not nest well and it's too easily confused with quotes (back-quotes have nothing to do with quoting!).  Avoid this syntax and replace it with `$(command)` when you find it.
