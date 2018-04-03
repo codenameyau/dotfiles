@@ -338,19 +338,23 @@ A file descriptor is like a road between a file and a process.  It's used by the
 - **Pipe: The `|&` operator connects the first command's "Standard Output" and "Standard Error" to the second command's "Standard Input**".
 
 ### Expansions
- * `[command]" `"$(` "[command list]" `)"`, "[command]" {{{"`}}} "[command list]" {{{`"}}}
-  . **Command Substitution: captures the output of a command and expands it inline**.
-  . We only use command substitution inside other commands when we want the output of one command to become part of another statement.  An ancient and ill-advised alternative syntax for command substitution is the back-quote: {{{`command`}}}.  This syntax has the same result, but it does not nest well and it's too easily confused with quotes (back-quotes have nothing to do with quoting!).  Avoid this syntax and replace it with `$(command)` when you find it.
-  . It's like running the second command, taking its output, and pasting it in the first command where you would put `$(...)`.
- * `[command]" `<(`"[command list]"`)`
-  . **Process substitution: The `<(...)` operator expands into a new file created by bash that contains the other command's output**.
-  . The file provides whomever reads from it with the output from the second command.
-  . It's like redirecting the output of the second command to a file called `foo`, and then running the first command and giving it `foo` as "argument".  Only, in a single statement, and `foo` gets created and cleaned up automatically afterwards.
-  . **NOTE: DO NOT CONFUSE THIS WITH FILE REDIRECTION**.  The `<` here does **not** mean "File Redirection".  It is just a symbol that's part of the `<(...)` operator!  This operator does **not** do "any" redirection.  It "merely" expands into a "path" to a "file".
- * `[command]" `>(`"[command list]"`)`
-  . **Process substitution: The `>(...)` operator expands into a new file created by bash that sends data you write to it to a second command's "Standard Input**".
-  . When the first command writes something to the file, that data is given to the second command as input.
-  . It's like redirecting a file called `foo` to the input of the second command, and then running the first command, giving it `foo` as "argument".  Only, in a single statement, and `foo` gets created and cleaned up automatically afterwards
+`[command] $([command list])`
+
+- **Command Substitution: captures the output of a command and expands it inline**.
+- We only use command substitution inside other commands when we want the output of one command to become part of another statement.
+- An ancient and ill-advised alternative syntax for command substitution is the tick or back-quote. This syntax has the same result, but it does not nest well and it's too easily confused with quotes.
+- It's like running the second command, taking its output, and pasting it in the first command where you would put `$(...)`.
+
+`[command] <([command list])`
+- **Process substitution: The `<(...)` operator expands into a new file created by bash that contains the other command's output**.
+- The file provides whomever reads from it with the output from the second command.
+- It's like redirecting the output of the second command to a file called `foo`, and then running the first command and giving it `foo` as "argument".  Only, in a single statement, and `foo` gets created and cleaned up automatically afterwards.
+- **NOTE: DO NOT CONFUSE THIS WITH FILE REDIRECTION**. The `<` here does **not** mean "File Redirection". It is just a symbol that's part of the `<(...)` operator! This operator does **not** do "any" redirection. It "merely" expands into a "path" to a "file".
+
+`[command] >([command list])`
+- **Process substitution: The `>(...)` operator expands into a new file created by bash that sends data you write to it to a second command's "Standard Input"**.
+- When the first command writes something to the file, that data is given to the second command as input.
+- It's like redirecting a file called `foo` to the input of the second command, and then running the first command, giving it `foo` as "argument".  Only, in a single statement, and `foo` gets created and cleaned up automatically afterwards
 
 == Common Combinations ==
  * `[command]" `<` `<(`"[command list]"`)`
