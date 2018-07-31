@@ -12,7 +12,7 @@
   g = grep --break --heading --line-number
   s = status
   d = diff
-  b = branch -v --sort=committerdate
+  b = branch --sort=committerdate
   prune = fetch origin --prune
   changes = log develop..HEAD --oneline --no-merges --author="codenameyau" --pretty='%s'
   ls = log --abbrev-commit --no-merges --pretty='%h (%ad) - [%an] %s %d' --date=format:'%b %d %Y'
