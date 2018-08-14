@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+# This script automates the guide to deployment found above and performs
+# all the step necessary to get 'staging' to an up-to-date state to be
+# merged to 'master' via PR on GitHub.
+#
+# Examples:
+# ./deploy.sh patch
+# ./deploy.sh minor
+# ./deploy.sh major
+
+update_branch() {
+  git checkout $1 && git pull origin $1
+}
+
+release_type=$1
+
+if [[ -z $1 ]] || ! [[ $1 =~ ^('patch'|'minor'|'major')$ ]]; then
+  echo 'Example Usage:
+  ./deploy.sh patch
+  ./deploy.sh minor
+  ./deploy.sh major'
+  exit 1
+fi
+
+# Ensure your local repository is clean and up-to-date.
+update_branch master
+update_branch staging
+update_branch edge
+
+# Merge master into staging for hotfixes.
+git checkout staging
+git merge origin master
+git push origin staging
+
+# Merge staging into edge for warmfixes / hotfixes.
+git checkout edge
+git merge origin staging
+git push origin edge
+
+# Create release tag and push to GitHub.
+git checkout staging
+yarn version --new-version $release_type
+
+# Merge staging back into edge for new release version.
+git checkout edge
+git merge origin staging
+git push origin edge
+
