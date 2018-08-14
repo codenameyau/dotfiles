@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Description:
+# Runs a sanity check before pushing to CI and GitHub.
+#
+
+# Any subsequent commands will fail if a command fails.
+set -e
+
+# Colors.
+text_red='\033[0;31m'
+text_normal='\033[0m'
+
+# Ignore these environment variables.
+ignored_env_vars="NODE_ENV|PUBLIC_URL"
+
+# Check that these files contain new environment variables.
+files_to_check=('app.json' '.env-template')
+
+# Make sure new environment variables in 'src' are in 'app.json'.
+env_vars=$(git ls-files src/**/*.js | xargs grep -E -o -h "process.env.[A-Z0-9_]+" | uniq | grep -vE "$ignored_env_vars" | cut -d'.' -f3)
+has_missing_env=false
+
+for env_var in $env_vars; do
+  for file in "${files_to_check[@]}"; do
+    if ! git grep -q "$env_var" "$file"; then
+      has_missing_env=true
+      echo -e "${text_red}Please add env variable '$env_var' to $file${text_normal}"
+    fi
+  done
+done
+
+if [ "$has_missing_env" == true ]; then
+  exit 1
+fi
