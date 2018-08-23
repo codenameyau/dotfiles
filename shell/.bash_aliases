@@ -9,6 +9,7 @@ fi
 
 # Git command aliases
 alias ga="git add -A"
+alias gb="git branch --sort=committerdate | tail -20"
 alias gc="git commit"
 alias gs="git status"
 alias gg="git checkout -"
