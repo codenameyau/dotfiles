@@ -32,6 +32,10 @@ sudo apt-get install -y nodejs
 # Install npm packages.
 sudo npm install -g tldr http-server
 
+# Install hardware accelerated chromium
+sudo apt install -y libva-glx1 libva-x11-1 i965-va-driver
+sudo apt install -y chromium-browser
+
 #####################################################################
 # Enable trackpad gestures with fusuma.
 #####################################################################
@@ -52,3 +56,4 @@ wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shel
 wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bashrc
 wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig
 wget -P $HOME https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global
+
