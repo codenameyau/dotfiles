@@ -160,7 +160,7 @@ Builtins are commands that perform a certain function that has been compiled int
 
 `echo`
 - **Output each argument given to `echo` on one line, separated by a single space**.
-- The first arguments can be options that toggle special behaviour (like __n__o newline at end/evaluate __e__scape sequences).
+- The first arguments can be options that toggle special behaviour (like **n**o newline at end/evaluate **e**scape sequences).
 
 `printf`
 - **Use the first argument as a format specifier of how to output the other arguments**.

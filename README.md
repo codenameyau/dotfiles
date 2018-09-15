@@ -8,16 +8,14 @@
   * [Arithmetic Expressions](#arithmetic-expressions)
   * [Compound Commands](#compound-commands)
   * [Output Redirection](#output-redirection)
-
 - [Nifty Terminal Commands](#nifty-terminal-commands)
   * [Generate Timestamps](#generate-timestamps)
-
 - [Running Scripts from Anywhere](#running-scripts-from-anywhere)
   * [Method 1: Bin Executable](#bin-executable)
   * [Method 2: Symbolic Link](#symbolic-link)
   * [Method 3: Aliases](#aliases)
   * [Method 4: Extend Path](#extend-path)
-
+- [Miscellaneous](#miscellaneous)
 - [Bash Reference Sheet](https://mywiki.wooledge.org/BashSheet)
 
 ## Bash Essentials
@@ -218,5 +216,12 @@ export PATH="<my-directory>":$PATH
 
 # Example
 export PATH="~/Workspace/dotfiles/bin":$PATH
+```
+
+## Miscellaneous
+
+Your program's configuration files are stored here. They are not removed by apt purge.
+```
+cd ~/./config
 ```
 
