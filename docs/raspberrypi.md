@@ -96,6 +96,7 @@ arp
 
 # SSH into the Raspberry Pi.
 ssh pi@raspberrypi
+ssh pi@192.168.43.108
 ```
 
 ### Add your SSH public key to Pi
