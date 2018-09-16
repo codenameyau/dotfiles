@@ -58,7 +58,14 @@ ssh pi@raspberrypi.local
 ```
 
 ### Connect via Wireless Connection
+To make this process easier and more portable, you should use a 
+mobile hotspot that your RaspberryPi can connect to in the future by
+saving the connection in your Pi's WPA supplication. This way you
+will not need an ethernet cable.
+
+#### WPA Passphrase
 If you don't want to store your password in plaintext you can create a hash.
+
 ```bash
 wpa_passphrase AndroidAP
 ```
