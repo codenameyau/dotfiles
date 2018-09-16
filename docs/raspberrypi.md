@@ -67,7 +67,8 @@ will not need an ethernet cable.
 If you don't want to store your password in plaintext you can create a hash.
 
 ```bash
-wpa_passphrase AndroidAP
+wpa_passphrase ssid password
+wpa_passphrase ssid
 ```
 
 Create or update `/etc/wpa_supplicant/wpa_supplicant.conf`
