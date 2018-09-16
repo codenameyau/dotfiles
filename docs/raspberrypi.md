@@ -95,6 +95,9 @@ sudo namp -sn 192.168.43.0/24
 # Or display the ARP cache if the Pi has sent ARP requests in the network.
 arp
 
+# Scan wireless access points for debugging.
+sudo iwlist wlan0 scan | less
+
 # SSH into the Raspberry Pi.
 ssh pi@raspberrypi
 ssh pi@192.168.43.108
