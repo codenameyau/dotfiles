@@ -61,7 +61,10 @@ ssh pi@raspberrypi.local
 To make this process easier and more portable, you should use a 
 mobile hotspot that your RaspberryPi can connect to in the future by
 saving the connection in your Pi's WPA supplication. This way you
-will not need an ethernet cable.
+will not need an ethernet cable. 
+
+**Note:** Pi3 only supports 2.4G network connections. You'll need
+a 5G USB wireless network adapter or an ethernet cable.
 
 #### WPA Passphrase
 If you don't want to store your password in plaintext you can create a hash.
@@ -95,7 +98,7 @@ sudo namp -sn 192.168.43.0/24
 # Or display the ARP cache if the Pi has sent ARP requests in the network.
 arp
 
-# Scan wireless access points for debugging.
+# Scan wireless AP for debugging. Pi3 only supports 2G networks.
 sudo iwlist wlan0 scan | less
 
 # SSH into the Raspberry Pi.
