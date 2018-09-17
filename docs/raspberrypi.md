@@ -156,9 +156,20 @@ sudo nano /etc/network/interfaces
 auto lo
 iface lo inet loopback
 iface eth0 inet static
-address 192.168.1.200  # static ip you want for the pi
+address 192.168.0.200  # static ip you want for the pi
 netmask 255.255.255.0
-gateway 192.168.1.1  # the ip address of the router
+gateway 192.168.0.1  # the ip address of the router
+```
+
+```bash
+sudo vim /etc/network/interfaces.d/eth0
+```
+
+```
+iface eth0 inet static
+  address 192.168.0.200 # static ip you want for the pi
+  netmask 255.255.255.0
+  gateway 192.168.0.1 # the ip address of the router
 ```
 
 ### SSH to Home Network
