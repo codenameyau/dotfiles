@@ -6,7 +6,9 @@
 - [Connect via Ethernet to Computer](#connect-via-ethernet-to-computer)
 - [Connect via Wireless Connection](#connect-via-wireless-connection)
 - [Add your SSH public key to Pi](#add-your-ssh-public-key-to-pi)
+- [Changing hostname](#changing-hostname)
 - [SSH to Home Network](#ssh-to-home-network)
+
 
 ### Headless Raspbian Installation
 
@@ -170,6 +172,21 @@ iface eth0 inet static
   address 192.168.0.200 # static ip you want for the pi
   netmask 255.255.255.0
   gateway 192.168.0.1 # the ip address of the router
+```
+
+### Changing Hostname
+```
+$ sudo vim /etc/hostname
+
+# Change this to the desired hostname
+orchid
+```
+
+```
+$ sudo vim /etc/hosts
+
+# Add this line.
+127.0.0.1  orchid
 ```
 
 ### SSH to Home Network
