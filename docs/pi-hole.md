@@ -5,4 +5,18 @@
 - Add additional blocklist to pi-hole: https://discourse.pi-hole.net/t/how-do-i-add-additional-block-lists-to-pi-hole/259
 - Configure DNS: https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245
 
-![pi-hole router settings](https://user-images.githubusercontent.com/3826772/46082360-e789da00-c16c-11e8-8f80-db7ae0c9f6c8.png)
+
+### Update address reservation
+In your router settings -> Advanced Settings -> Lan Setup,
+assign a static IP address reservation for your pi-hole.
+
+![router address reservation](https://user-images.githubusercontent.com/3826772/46258245-14076400-c495-11e8-8250-9321ad449660.png)
+
+
+### Configure router DNS settings
+
+Update the primary DNS server. Make sure that the pi-hole is the only DNS
+server running otherwise your router will resolve any DNS conflicts by
+visiting another DNS servers.
+
+![router dns settings](https://user-images.githubusercontent.com/3826772/46082360-e789da00-c16c-11e8-8f80-db7ae0c9f6c8.png)
