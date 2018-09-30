@@ -20,10 +20,10 @@ server running otherwise your router will resolve any DNS conflicts by
 visiting another DNS server.
 
 
-#### Bad
+#### Bad: has secondary and tertiary DNS servers
 ![router dns settings](https://user-images.githubusercontent.com/3826772/46082360-e789da00-c16c-11e8-8f80-db7ae0c9f6c8.png)
 
-#### Good
+#### Good: secondary and tertiary DNS servers are empty
 ![router dns settings](https://user-images.githubusercontent.com/3826772/46258514-1ae4a580-c49a-11e8-89db-3eed2dc6dc69.png)
 
 ### Reconfigure Pi-hole
@@ -33,3 +33,7 @@ pi-hole by running this command.
 ```
 pihole -r
 ```
+
+That's all! After this step is complete, most DNS queries to advertising servers
+will be blocked thereby speeding up your browsing experience and lowering your
+internet bandwidth usage.
