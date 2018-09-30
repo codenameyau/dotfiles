@@ -1,9 +1,15 @@
 # Pi-Hole
 
+Guides
 - [Simplest Installation Guide](https://www.stakebox.org/blogs/learn/getting-started-with-pi-hole-your-network-wide-ad-blocker)
 - [GitHub and Installation](https://github.com/pi-hole/pi-hole#curl--ssl-httpsinstallpi-holenet--bash)
+
+Blocklists
 - [The Big Blocklist Collection](https://firebog.net/)
 - [Adding Additional Blocklists](https://discourse.pi-hole.net/t/how-do-i-add-additional-block-lists-to-pi-hole/259)
+- [My Personal Blocklist]()
+- [Youtube Ads blocklist](https://raw.githubusercontent.com/HenningVanRaumle/pihole-ytadblock/master/ytadblock.txt)
+- [Concatenated blocklist](https://discourse.pi-hole.net/t/i-concatenated-every-blocklist-i-could-find/5184/23)
 
 ### Update address reservation
 In your router settings -> Advanced Settings -> LAN Setup,
@@ -29,10 +35,22 @@ visiting another DNS server. Your router should reboot after this step.
 Lastly after you've updated your router setting, you must reconfigure your
 pi-hole by running this command.
 
-```
+```bash
 pihole -r
 ```
 
 After this step is complete, most DNS queries to advertising servers
 will be blocked thereby speeding up your browsing experience and lowering your
 internet bandwidth usage. That's all!
+
+### Additional Blocklists
+
+Add your blocklist txt file to this list.
+```bash
+sudo vim /etc/pihole/adlists.list
+```
+
+Then run:
+```bash
+pihole -g
+```
