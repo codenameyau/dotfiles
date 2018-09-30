@@ -9,21 +9,21 @@
 In your router settings -> Advanced Settings -> LAN Setup,
 assign a static IP address reservation for your pi-hole.
 
-![router address reservation](https://user-images.githubusercontent.com/3826772/46258245-14076400-c495-11e8-8250-9321ad449660.png)
+![router address reservation](https://user-images.githubusercontent.com/3826772/46258639-246f0d00-c49c-11e8-88c0-3ca77e0dbb37.png)
 
 
 ### Configure router DNS settings
 
 Update the primary DNS server. Make sure that the pi-hole is the only DNS
 server running otherwise your router will resolve any DNS conflicts by
-visiting another DNS server.
+visiting another DNS server. Your router should reboot after this step.
 
 
-#### Bad: has secondary and tertiary DNS servers
+#### Bad: has backup secondary and tertiary DNS servers
 ![router dns settings](https://user-images.githubusercontent.com/3826772/46082360-e789da00-c16c-11e8-8f80-db7ae0c9f6c8.png)
 
 #### Good: secondary and tertiary DNS servers are empty
-![router dns settings](https://user-images.githubusercontent.com/3826772/46258514-1ae4a580-c49a-11e8-89db-3eed2dc6dc69.png)
+![router dns settings](https://user-images.githubusercontent.com/3826772/46258622-cfcb9200-c49b-11e8-8d08-b4b966895109.png)
 
 ### Reconfigure Pi-hole
 Lastly after you've updated your router setting, you must reconfigure your
@@ -33,6 +33,6 @@ pi-hole by running this command.
 pihole -r
 ```
 
-That's all! After this step is complete, most DNS queries to advertising servers
+After this step is complete, most DNS queries to advertising servers
 will be blocked thereby speeding up your browsing experience and lowering your
-internet bandwidth usage.
+internet bandwidth usage. That's all!
