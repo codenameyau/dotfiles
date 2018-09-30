@@ -14,8 +14,8 @@ assign a static IP address reservation for your pi-hole.
 
 ### Configure router DNS settings
 
-Update the primary DNS server. Make sure that the pi-hole is the only DNS
-server running otherwise your router will resolve any DNS conflicts by
+Update the primary DNS server. **Make sure that the pi-hole is the only DNS
+server running** otherwise your router will resolve any DNS conflicts by
 visiting another DNS server. Your router should reboot after this step.
 
 
