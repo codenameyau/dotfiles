@@ -1,23 +1,24 @@
 # dotfiles
 
 ## Table of Contents
-- [Bash Essentials](#bash-essentials)
-  * [Debugging Scripts](#debugging-scripts)
-  * [Brace Expansion](#brace-expansion)
-  * [String Manipulation](#string-manipulation)
-  * [Arithmetic Expressions](#arithmetic-expressions)
-  * [Compound Commands](#compound-commands)
-  * [Output Redirection](#output-redirection)
-- [Nifty Terminal Commands](#nifty-terminal-commands)
-  * [Generate Timestamps](#generate-timestamps)
-  * [Netstat](#netstat)
-- [Running Scripts from Anywhere](#running-scripts-from-anywhere)
-  * [Method 1: Bin Executable](#bin-executable)
-  * [Method 2: Symbolic Link](#symbolic-link)
-  * [Method 3: Aliases](#aliases)
-  * [Method 4: Extend Path](#extend-path)
-- [Miscellaneous](#miscellaneous)
-- [Bash Reference Sheet](https://mywiki.wooledge.org/BashSheet)
+- [dotfiles](#dotfiles)
+  - [Table of Contents](#table-of-contents)
+  - [Bash Essentials](#bash-essentials)
+    - [Debugging Scripts](#debugging-scripts)
+    - [Brace Expansion](#brace-expansion)
+    - [String Manipulation](#string-manipulation)
+    - [Arithmetic Expressions](#arithmetic-expressions)
+    - [Compound Commands](#compound-commands)
+    - [Output Redirection](#output-redirection)
+  - [Nifty Terminal Commands](#nifty-terminal-commands)
+    - [Generate Timestamps](#generate-timestamps)
+    - [Netstat](#netstat)
+  - [Running Scripts from Anywhere](#running-scripts-from-anywhere)
+    - [Bin Executable](#bin-executable)
+    - [Symbolic Link](#symbolic-link)
+    - [Aliases](#aliases)
+    - [Extend Path](#extend-path)
+  - [Miscellaneous](#miscellaneous)
 
 ## Bash Essentials
 This is the holy grail of bash reference sheeets:
@@ -164,8 +165,8 @@ date +%s%N
 Run this command to see a list of open ports on a system.
 
 ```bash
-# Show tcp, udp, listening ports, pid, numeric hosts
-sudo netstat -tulpn
+# Show tcp, udp, listening ports, pid, numeric hosts, ipv4
+sudo netstat -tulpn4
 ```
 
 ## Running Scripts from Anywhere
