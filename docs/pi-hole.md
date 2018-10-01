@@ -6,9 +6,7 @@ Installation Guides
 
 Blocklists
 - [The Big Blocklist Collection](https://firebog.net/)
-- [Adding Additional Blocklists](https://discourse.pi-hole.net/t/how-do-i-add-additional-block-lists-to-pi-hole/259)
-- [My Personal Blocklist](https://raw.githubusercontent.com/codenameyau/dotfiles/master/docs/pi-hole-blocklist.txt)
-- [Youtube Ads blocklist](https://raw.githubusercontent.com/HenningVanRaumle/pihole-ytadblock/master/ytadblock.txt)
+- [My Personal Blocklists](https://github.com/codenameyau/pi-hole-blacklists)
 - [Concatenated blocklist](https://discourse.pi-hole.net/t/i-concatenated-every-blocklist-i-could-find/5184/23)
 
 ### Update address reservation
@@ -42,13 +40,3 @@ pihole -r
 After this step is complete, most DNS queries to advertising servers
 will be blocked thereby speeding up your browsing experience and lowering your
 internet bandwidth usage. That's all!
-
-## Additional Blocklists
-
-```bash
-sudo vim /etc/pihole/adlists.list
-```
-
-```bash
-pihole -g
-```
