@@ -10,6 +10,7 @@
   * [Output Redirection](#output-redirection)
 - [Nifty Terminal Commands](#nifty-terminal-commands)
   * [Generate Timestamps](#generate-timestamps)
+  * [Netstat](#netstat)
 - [Running Scripts from Anywhere](#running-scripts-from-anywhere)
   * [Method 1: Bin Executable](#bin-executable)
   * [Method 2: Symbolic Link](#symbolic-link)
@@ -157,6 +158,14 @@ date +%s%3N
 
 # Timestamp: 1514476088710684990 (nanoseconds)
 date +%s%N
+```
+
+### Netstat
+Run this command to see a list of open ports on a system.
+
+```bash
+# Show tcp, udp, listening ports, pid, numeric hosts
+sudo netstat -tulpn
 ```
 
 ## Running Scripts from Anywhere
