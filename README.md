@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Bash Essentials](#bash-essentials)
+  * [Set](#set)
   * [Debugging Scripts](#debugging-scripts)
   * [Brace Expansion](#brace-expansion)
   * [String Manipulation](#string-manipulation)
@@ -23,6 +24,26 @@
 ## Bash Essentials
 This is the holy grail of bash reference sheeets:
 https://mywiki.wooledge.org/BashSheet
+
+### Set Arguments
+Use `set -o` to turn on a feature and `set +o` to turn it off.
+
+```bash
+# Exit script if you try to use an uninitialized variable.
+set -o nounset
+
+# Exit script if a statement returns a non-true return value.
+set -o errexit
+
+# Use the error status of the first failure rather than last item in a pipe.
+set -o pipefail
+
+# Export any variables that are defined.
+set -o allexport
+
+# Enable bash history.
+set -o history
+```
 
 ### Debugging Scripts
 - [Guide to bash debugging](https://mywiki.wooledge.org/BashGuide/Practices#Debugging)
