@@ -2,24 +2,22 @@
 
 ## Table of Contents
 - [Bash Essentials](#bash-essentials)
-  * [Set](#set)
-  * [Debugging Scripts](#debugging-scripts)
-  * [Brace Expansion](#brace-expansion)
-  * [String Manipulation](#string-manipulation)
-  * [Arithmetic Expressions](#arithmetic-expressions)
-  * [Compound Commands](#compound-commands)
-  * [Output Redirection](#output-redirection)
-
+  - [Set Arguments](#set-arguments)
+  - [Debugging Scripts](#debugging-scripts)
+  - [Brace Expansion](#brace-expansion)
+  - [String Manipulation](#string-manipulation)
+  - [Arithmetic Expressions](#arithmetic-expressions)
+  - [Compound Commands](#compound-commands)
+  - [Output Redirection](#output-redirection)
 - [Nifty Terminal Commands](#nifty-terminal-commands)
-  * [Generate Timestamps](#generate-timestamps)
-
+  - [Generate Timestamps](#generate-timestamps)
+  - [Netstat](#netstat)
 - [Running Scripts from Anywhere](#running-scripts-from-anywhere)
-  * [Method 1: Bin Executable](#bin-executable)
-  * [Method 2: Symbolic Link](#symbolic-link)
-  * [Method 3: Aliases](#aliases)
-  * [Method 4: Extend Path](#extend-path)
-
-- [Bash Reference Sheet](https://mywiki.wooledge.org/BashSheet)
+  - [Bin Executable](#bin-executable)
+  - [Symbolic Link](#symbolic-link)
+  - [Aliases](#aliases)
+  - [Extend Path](#extend-path)
+- [Miscellaneous](#miscellaneous)
 
 ## Bash Essentials
 This is the holy grail of bash reference sheeets:
@@ -182,6 +180,14 @@ date +%s%3N
 date +%s%N
 ```
 
+### Netstat
+Run this command to see a list of open ports on a system.
+
+```bash
+# Show tcp, udp, listening ports, pid, numeric hosts, ipv4
+sudo netstat -tulpn4
+```
+
 ## Running Scripts from Anywhere
 
 First you will need executable permission to run a script.
@@ -239,5 +245,12 @@ export PATH="<my-directory>":$PATH
 
 # Example
 export PATH="~/Workspace/dotfiles/bin":$PATH
+```
+
+## Miscellaneous
+
+Your program's configuration files are stored here. They are not removed by apt purge.
+```
+cd ~/./config
 ```
 

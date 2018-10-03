@@ -1,0 +1,20 @@
+#!/bin/bash
+# WIP: Get mouse to rotate in a circle around current position.
+
+# explore mousemove_relative
+radius=50
+radius_squared=$(bc -l <<< "$radius^2")
+
+# Get center which is mouse position.
+location=$(xdotool getmouselocation)
+center_x=$(echo "$location" | cut -d' ' -f1 | cut -d':' -f2)
+center_y=$(echo "$location" | cut -d' ' -f2 | cut -d':' -f2)
+
+# Designate the starting and ending x positions.
+x_start=$(bc -l <<< "$center_x - $radius")
+x_end=$(bc -l <<< "$center_x + $radius")
+
+for x in $(seq "$x_start" 1 "$x_end"); do
+  y=$(bc -l <<< "sqrt($radius_squared - $x^2) + $center_y");
+  echo "$x $y"
+done
