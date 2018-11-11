@@ -221,7 +221,7 @@ alias <alias-name>='<script-path>'
 You can also add any directory to be part of the bash executable path: `$PATH`
 
 ```bash
-# Add the following line in your .bashrc (linux) / .bash_profile (OS X)
+# Add the following line in your `.bash_profile`.
 export PATH="<my-directory>":$PATH
 
 # Example
