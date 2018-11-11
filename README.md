@@ -1,28 +1,47 @@
 # dotfiles
 
 ## Table of Contents
-- [dotfiles](#dotfiles)
-  - [Table of Contents](#table-of-contents)
-  - [Bash Essentials](#bash-essentials)
-    - [Debugging Scripts](#debugging-scripts)
-    - [Brace Expansion](#brace-expansion)
-    - [String Manipulation](#string-manipulation)
-    - [Arithmetic Expressions](#arithmetic-expressions)
-    - [Compound Commands](#compound-commands)
-    - [Output Redirection](#output-redirection)
-  - [Nifty Terminal Commands](#nifty-terminal-commands)
-    - [Generate Timestamps](#generate-timestamps)
-    - [Netstat](#netstat)
-  - [Running Scripts from Anywhere](#running-scripts-from-anywhere)
-    - [Bin Executable](#bin-executable)
-    - [Symbolic Link](#symbolic-link)
-    - [Aliases](#aliases)
-    - [Extend Path](#extend-path)
-  - [Miscellaneous](#miscellaneous)
+- [Bash Essentials](#bash-essentials)
+  - [Set Arguments](#set-arguments)
+  - [Debugging Scripts](#debugging-scripts)
+  - [Brace Expansion](#brace-expansion)
+  - [String Manipulation](#string-manipulation)
+  - [Arithmetic Expressions](#arithmetic-expressions)
+  - [Compound Commands](#compound-commands)
+  - [Output Redirection](#output-redirection)
+- [Nifty Terminal Commands](#nifty-terminal-commands)
+  - [Generate Timestamps](#generate-timestamps)
+  - [Netstat](#netstat)
+- [Running Scripts from Anywhere](#running-scripts-from-anywhere)
+  - [Bin Executable](#bin-executable)
+  - [Symbolic Link](#symbolic-link)
+  - [Aliases](#aliases)
+  - [Extend Path](#extend-path)
+- [Miscellaneous](#miscellaneous)
 
 ## Bash Essentials
 This is the holy grail of bash reference sheeets:
 https://mywiki.wooledge.org/BashSheet
+
+### Set Arguments
+Use `set -o` to turn on a feature and `set +o` to turn it off.
+
+```bash
+# Exit script if you try to use an uninitialized variable.
+set -o nounset
+
+# Exit script if a statement returns a non-true return value.
+set -o errexit
+
+# Use the error status of the first failure rather than last item in a pipe.
+set -o pipefail
+
+# Export any variables that are defined.
+set -o allexport
+
+# Enable bash history.
+set -o history
+```
 
 ### Debugging Scripts
 - [Guide to bash debugging](https://mywiki.wooledge.org/BashGuide/Practices#Debugging)
