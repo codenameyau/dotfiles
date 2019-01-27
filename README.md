@@ -225,7 +225,7 @@ sudo ln -s <file> /usr/local/bin/<symlink-name>
 sudo ln -sf <file> /usr/local/bin/<symlink-name>
 
 # Example
-sudo ln -s /usr/local/android-studio/bin/studio.sh /usr/local/bin/android-studio
+sudo ln -s /opt/android-studio/bin/studio.sh /usr/local/bin/android-studio
 ```
 
 ### Aliases
