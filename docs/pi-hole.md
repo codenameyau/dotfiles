@@ -40,3 +40,13 @@ pihole -r
 After this step is complete, most DNS queries to advertising servers
 will be blocked thereby speeding up your browsing experience and lowering your
 internet bandwidth usage. That's all!
+
+### Adding Blocklists
+```bash
+# Add a raw text link here.
+sudo vim /etc/pihole/adlists.list
+
+# Reconfigure pihole.
+pihole -g
+```
+
