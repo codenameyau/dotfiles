@@ -1,6 +1,6 @@
 {
     "workbench.colorTheme": "Monokai",
-    "editor.fontSize": 15,
+    "editor.fontSize": 14,
     "editor.fontFamily": "Inconsolata, Menlo, Monaco, Consolas, 'Courier New', Courier",
     "editor.renderWhitespace": "boundary",
     "editor.tabSize": 2,
