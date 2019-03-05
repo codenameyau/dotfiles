@@ -23,7 +23,7 @@ brew install vim --with-override-system-vi
 brew install gnu-sed --with-default-names
 
 # Set nodejs version.
-sudo n 8
+sudo n 10
 
 # Lastly run brew doctor and fix package dependencies.
 brew doctor
@@ -34,9 +34,6 @@ sudo pip3 install requests virtualenv
 
 # Install common nodejs third-party tools.
 sudo npm install -g http-server eslint webpack jest tldr
-
-# Install optional nodejs tools.
-sudo npm install -g gulp mocha cost-of-modules artillery
 
 # Download files via wget to home directory.
 wget_file() {
