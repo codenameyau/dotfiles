@@ -55,6 +55,7 @@ export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/
 EOF
 
 # Install vim config.
+# https://github.com/codenameyau/dotfiles/tree/master/vim
 wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/vim/.vimrc -P ~
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
