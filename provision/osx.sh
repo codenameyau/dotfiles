@@ -48,3 +48,13 @@ wget_file .bash_aliases https://raw.githubusercontent.com/codenameyau/dotfiles/m
 wget_file .bash_profile https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_profile
 wget_file .gitconfig https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig
 wget_file .gitignore_global https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global
+
+# Add vscode to path.
+cat << EOF >> ~/.bash_extras
+export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+EOF
+
+# Install vim config.
+wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/vim/.vimrc -P ~
+mkdir -p ~/.vim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
