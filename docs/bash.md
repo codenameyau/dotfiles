@@ -45,7 +45,7 @@ is_less_than 2 1
 This is the postfix and well-supported version of testing logical comparisons.
 The `[` bracket `]` is an operator and a synonym of test.
 
-`[ "$1" < "$2" ]` will fail because `<` will try to redirect `"$2"` into `"$1"`
+`[ "$1" < "$2" ]` will fail because `<` will try to redirect `"$2"` into `"$1"`. So use `-lt` instead.
 
 ```sh
 is_less_than_postfix() {
