@@ -7,27 +7,20 @@ These are all the ways to create a function in bash. The first method is preferr
 
 ```sh
 
-echo_hello() {
+echo_hello1() {
   echo ${1:-"hello world"}
 }
-
-echo_hello
-echo_hello "lol"
-
 
 function echo_hello2 {
   echo ${1:-"hello world 2"}
 }
 
-echo_hello2
-echo_hello2 "lol"
-
-
 function echo_hello3() {
   echo ${1:-"hello world 3"}
 }
 
-echo_hello3
+echo_hello1 "lol"
+echo_hello2 "lol"
 echo_hello3 "lol"
 
 ```
