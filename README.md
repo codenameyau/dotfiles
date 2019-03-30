@@ -16,7 +16,8 @@
   - [Output Redirection](#output-redirection)
 - [Nifty Terminal Commands](#nifty-terminal-commands)
   - [Generate Timestamps](#generate-timestamps)
-  - [Netstat](#netstat)
+  - [Ports](#ports)
+  - [Set Operations](#set-operations)
 - [Miscellaneous](#miscellaneous)
 
 ## Running Scripts from Anywhere
@@ -223,9 +224,6 @@ to run a series of commands whose final output would be piped to another command
 {command_1; command_2; command_3} | command_4
 ```
 
-### Output Redirection
-
-
 ## Nifty Terminal Commands
 
 ### Generate Timestamps
@@ -240,12 +238,16 @@ date +%s
 
 # Timestamp: 1514476017560 (milliseconds)
 date +%s%3N
-
-# Timestamp: 1514476088710684990 (nanoseconds)
-date +%s%N
 ```
 
-### Netstat
+### Ports
+Run this command kill a process running on specific port.
+```bash
+lsof -t -i :8000
+
+kill $(lsof -t -i :8000)
+```
+
 Run this command to see a list of open ports on a system.
 
 ```bash
@@ -253,10 +255,30 @@ Run this command to see a list of open ports on a system.
 sudo netstat -tulpn4
 ```
 
+### Set Operations
+
+These operations must have files sorted first.
+
+```bash
+# Get lines common to both files.
+comm -12 file1 file2
+
+# Read from std-in, sort, get lines in common, and copy to clipboard.
+cat | sort | comm -13 - s1 | pbcopy
+
+# Get lines only found in file1.
+comm -23 file1 file2
+
+# Sort files as well.
+comm -13 <(sort file1) <(sort file2)
+comm -23 <(sort file1) <(sort file2)
+```
+
+
 ## Miscellaneous
 
-Your program's configuration files are stored here. They are not removed by apt purge.
+Your program's configuration files are stored here. They are not removed by apt purge
+and may often contain unnecessary application data.
 ```
 cd ~/./config
 ```
-
