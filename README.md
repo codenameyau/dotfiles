@@ -1,22 +1,23 @@
 # dotfiles
 
 ## Table of Contents
-- [Bash Essentials](#bash-essentials)
-  * [Debugging Scripts](#debugging-scripts)
-  * [Brace Expansion](#brace-expansion)
-  * [String Manipulation](#string-manipulation)
-  * [Arithmetic Expressions](#arithmetic-expressions)
-  * [Compound Commands](#compound-commands)
-  * [Output Redirection](#output-redirection)
-- [Nifty Terminal Commands](#nifty-terminal-commands)
-  * [Generate Timestamps](#generate-timestamps)
-- [Running Scripts from Anywhere](#running-scripts-from-anywhere)
-  * [Method 1: Bin Executable](#bin-executable)
-  * [Method 2: Symbolic Link](#symbolic-link)
-  * [Method 3: Aliases](#aliases)
-  * [Method 4: Extend Path](#extend-path)
-- [Miscellaneous](#miscellaneous)
-- [Bash Reference Sheet](https://mywiki.wooledge.org/BashSheet)
+- [dotfiles](#dotfiles)
+  - [Table of Contents](#table-of-contents)
+  - [Bash Essentials](#bash-essentials)
+    - [Debugging Scripts](#debugging-scripts)
+    - [Brace Expansion](#brace-expansion)
+    - [Variable Expansion](#variable-expansion)
+    - [Arithmetic Expressions](#arithmetic-expressions)
+    - [Compound Commands](#compound-commands)
+    - [Output Redirection](#output-redirection)
+  - [Nifty Terminal Commands](#nifty-terminal-commands)
+    - [Generate Timestamps](#generate-timestamps)
+  - [Running Scripts from Anywhere](#running-scripts-from-anywhere)
+    - [Bin Executable](#bin-executable)
+    - [Symbolic Link](#symbolic-link)
+    - [Aliases](#aliases)
+    - [Extend Path](#extend-path)
+  - [Miscellaneous](#miscellaneous)
 
 ## Bash Essentials
 This is the holy grail of bash reference sheeets:
@@ -58,21 +59,47 @@ mv myfile.{js,jsx}
 touch myfile.{html,css,js,test.js,stories.js}
 ```
 
-### String Manipulation
+### Variable Expansion
 - https://mywiki.wooledge.org/BashFAQ/100
-- http://tldp.org/LDP/abs/html/string-manipulation.html
+- http://tldp.org/LDP/abs/html/variable-expansion.html
+- https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
 
+Basic string interpolation.
 ```bash
-# Initialize variable with default value.
-fruit=${1:-'orange'}
-
 # String interpolation with variables.
 echo "I want to eat $fruit"
 > I want to eat orange
+```
 
-# Better string interpolation.
+Default value parameter expansion.
+```bash
+# Initialize variable with default value.
+fruit=${1:-'orange'}
 echo "I want to eat ${fruit}s"
 > I want to eat oranges
+```
+
+Pattern matching parameter expansion.
+```bash
+# Extracting user and repo using pattern matching from beginning (#).
+url='https://github.com/codenameyau/intro-to-bash'
+echo "${url#*//*/}"
+> codenameyau/intro-to-bash
+
+# Extracting repo using greedy pattern matching from beginning (##).
+url='https://github.com/codenameyau/intro-to-bash'
+echo "${url##*/}"
+> intro-to-bash
+
+# Extracting user profile using pattern matching from end (%).
+url='https://github.com/codenameyau/intro-to-bash'
+echo "${url%/*}"
+> https://github.com/codenameyau
+
+# Extracting protocol using greedy pattern matching from end (%%).
+url='https://github.com/codenameyau/intro-to-bash'
+echo "${url%%://*}"
+> https
 ```
 
 ```bash
