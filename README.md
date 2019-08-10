@@ -1,22 +1,31 @@
+## Helpful Resources
+- Official GNU reference: https://www.gnu.org/software/bash/manual/html_node/index.html
+- Bash Guide for Beginners: https://www.tldp.org/LDP/Bash-Beginners-Guide/html/
+- Bash Cheatsheet: https://mywiki.wooledge.org/BashSheet
+
 ## Table of Contents
+
+- [Helpful Resources](#helpful-resources)
 - [Table of Contents](#table-of-contents)
 - [Running Scripts from Anywhere](#running-scripts-from-anywhere)
   - [Bin Executable](#bin-executable)
   - [Symbolic Link](#symbolic-link)
   - [Aliases](#aliases)
   - [Extend Path](#extend-path)
-- [Bash Essentials](#bash-essentials)
-  - [Set Arguments](#set-arguments)
-    - [Bash safe mode](#bash-safe-mode)
-    - [Bash configurations](#bash-configurations)
-  - [Brace Expansion](#brace-expansion)
-  - [Variable Expansion](#variable-expansion)
-    - [String interpolation](#string-interpolation)
-    - [Default values](#default-values)
-    - [Pattern matching](#pattern-matching)
-    - [Regex group pattern matching](#regex-group-pattern-matching)
-  - [Arithmetic Expressions](#arithmetic-expressions)
-  - [Compound Commands](#compound-commands)
+- [Script Configurations](#script-configurations)
+  - [Bash safe mode](#bash-safe-mode)
+  - [Bash configurations](#bash-configurations)
+- [Brace Expansion](#brace-expansion)
+- [Variable Expansion](#variable-expansion)
+  - [String interpolation](#string-interpolation)
+  - [Default values](#default-values)
+  - [Pattern matching](#pattern-matching)
+  - [Regex group pattern matching](#regex-group-pattern-matching)
+- [Arithmetic Expressions](#arithmetic-expressions)
+- [Compound Commands](#compound-commands)
+  - [Grouping Statements](#grouping-statements)
+  - [Sub Shells](#sub-shells)
+  - [Command Groups](#command-groups)
 - [Networks](#networks)
   - [Ports](#ports)
 - [Nifty Terminal Commands](#nifty-terminal-commands)
@@ -89,17 +98,13 @@ export PATH="~/Workspace/dotfiles/bin":$PATH
 ```
 
 
-## Bash Essentials
-This is the holy grail of bash reference sheeets:
-https://mywiki.wooledge.org/BashSheet
-
-### Set Arguments
+## Script Configurations
 Use `set -o` to turn on a feature and `set +o` to turn it off.
 
 
-#### Bash safe mode
+### Bash safe mode
 ```bash
-# Enable bash strict mode.
+# Enable bash safe mode.
 set -euo pipefail
 ```
 
@@ -114,7 +119,7 @@ set -o errexit
 set -o pipefail
 ```
 
-#### Bash configurations
+### Bash configurations
 ```bash
 # Export any variables that are defined.
 set -o allexport
@@ -123,7 +128,7 @@ set -o allexport
 set -o history
 ```
 
-### Brace Expansion
+## Brace Expansion
 - https://unix.stackexchange.com/questions/6035/when-do-you-use-brace-expansion
 
 ```bash
@@ -134,20 +139,20 @@ mv myfile.{js,jsx}
 touch myfile.{html,css,js,test.js,stories.js}
 ```
 
-### Variable Expansion
+## Variable Expansion
 - https://mywiki.wooledge.org/BashFAQ/100
 - http://tldp.org/LDP/abs/html/variable-expansion.html
 - https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
 
 
-#### String interpolation
+### String interpolation
 ```bash
 # String interpolation with variables.
 echo "I want to eat $fruit"
 > I want to eat orange
 ```
 
-#### Default values
+### Default values
 ```bash
 # Initialize variable with default value.
 fruit=${1:-'orange'}
@@ -155,7 +160,7 @@ echo "I want to eat ${fruit}s"
 > I want to eat oranges
 ```
 
-#### Pattern matching
+### Pattern matching
 ```bash
 # Extracting user and repo using pattern matching from beginning (#).
 url='https://github.com/codenameyau/intro-to-bash'
@@ -183,7 +188,7 @@ echo "${url%%://*}"
 > https
 ```
 
-#### Regex group pattern matching
+### Regex group pattern matching
 ```bash
 # Capturing substring in regex group match.
 string="origin  https://github.com/USERNAME/REPOSITORY.git (fetch)"
@@ -197,7 +202,7 @@ echo $(expr "$string" : .*/'\(.*\).git')
 > REPOSITORY
 ```
 
-### Arithmetic Expressions
+## Arithmetic Expressions
 - Tutorial: https://mywiki.wooledge.org/ArithmeticExpression
 - Full reference: http://wiki.bash-hackers.org/syntax/arith_expr
 
@@ -216,19 +221,13 @@ echo $((1 < 2))
 for ((i = 0; i < 10; i++)); do echo "$1"; done
 ```
 
-### Compound Commands
+## Compound Commands
 - https://mywiki.wooledge.org/BashGuide/CompoundCommands
 - https://mywiki.wooledge.org/BashGuide/TestsAndConditionals#Grouping_Statements
 
-**SubShell:* will launch the command in subshell where cd and variables are not remembered.
-It is always good practice to exit 1 if a directory doesn't exist and
-will terminate the subshell but not the main shell.
 
-```bash
-(cd /tmp || exit 1; date > timestamp)
-```
-
-**Grouping Statements:** you can use short circuiting with guard `&&` and
+### Grouping Statements
+You can use short circuiting with guard `&&` and
 default `||` statements for basic command grouping.
 
 ```bash
@@ -239,8 +238,18 @@ cd /tmp && exit 1
 cd /tmp || exit 1
 ```
 
-**Grouping Commands:** you can group commands with `{}` which you typically use
-to run a series of commands whose final output would be piped to another command.
+### Sub Shells
+This will launch the commands inside the parenthesis in subshell where variables have their own scope and will disappear once the command is complete or exits.
+
+```bash
+# The current directory $CWD variable will not be affected.
+(cd /tmp || exit 1; date > timestamp)
+```
+
+### Command Groups
+You can group commands with `{}` to run a series of commands whose
+final output could be used. This shares the same variables as the
+current session.
 
 ```bash
 {command_1; command_2; command_3} | command_4
@@ -266,7 +275,7 @@ sudo netstat -tulpn4
 ## Nifty Terminal Commands
 
 ### Generate Timestamps
-- https://stackoverflow.com/questions/1204669/how-can-i-generate-unix-timestamps
+https://stackoverflow.com/questions/1204669/how-can-i-generate-unix-timestamps
 
 ```bash
 # Timestamp: Thu Dec 28 10:44:45 EST 2017
