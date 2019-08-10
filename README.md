@@ -137,6 +137,14 @@ mv myfile.{js,jsx}
 
 # Create files with different extension.
 touch myfile.{html,css,js,test.js,stories.js}
+
+# Show output of the cartesian product.
+echo {a,b,c}/{1,2,3} | xargs -n1
+echo {1..10}/{1..10} | xargs -n1
+
+# Create cartesian product of directories.
+mkdir -p ./{ComponentA,ComponentB}/{test,stories}
+mkdir -p ./{1..5}/{1..5}
 ```
 
 ## Variable Expansion
