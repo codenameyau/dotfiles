@@ -23,7 +23,7 @@ brew install vim --with-override-system-vi
 brew install gnu-sed --with-default-names
 
 # Set nodejs version.
-sudo n 8
+sudo n 10
 
 # Lastly run brew doctor and fix package dependencies.
 brew doctor
@@ -34,9 +34,6 @@ sudo pip3 install requests virtualenv
 
 # Install common nodejs third-party tools.
 sudo npm install -g http-server eslint webpack jest tldr
-
-# Install optional nodejs tools.
-sudo npm install -g gulp mocha cost-of-modules artillery
 
 # Download files via wget to home directory.
 wget_file() {
@@ -51,3 +48,14 @@ wget_file .bash_aliases https://raw.githubusercontent.com/codenameyau/dotfiles/m
 wget_file .bash_profile https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_profile
 wget_file .gitconfig https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig
 wget_file .gitignore_global https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global
+
+# Add vscode to path.
+cat << EOF >> ~/.bash_extras
+export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+EOF
+
+# Install vim config.
+# https://github.com/codenameyau/dotfiles/tree/master/vim
+wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/vim/.vimrc -P ~
+mkdir -p ~/.vim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

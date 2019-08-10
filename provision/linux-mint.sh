@@ -16,6 +16,9 @@ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.s
 sudo apt-get install git-lfs
 git lfs install
 
+# Install snap.
+sudo apt install snapd
+
 # Install heroku.
 sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
 sudo apt-get update -y

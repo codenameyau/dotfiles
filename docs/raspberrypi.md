@@ -6,7 +6,9 @@
 - [Connect via Ethernet to Computer](#connect-via-ethernet-to-computer)
 - [Connect via Wireless Connection](#connect-via-wireless-connection)
 - [Add your SSH public key to Pi](#add-your-ssh-public-key-to-pi)
+- [Changing hostname](#changing-hostname)
 - [SSH to Home Network](#ssh-to-home-network)
+
 
 ### Headless Raspbian Installation
 
@@ -58,9 +60,20 @@ ssh pi@raspberrypi.local
 ```
 
 ### Connect via Wireless Connection
+To make this process easier and more portable, you should use a 
+mobile hotspot that your RaspberryPi can connect to in the future by
+saving the connection in your Pi's WPA supplication. This way you
+will not need an ethernet cable. 
+
+**Note:** Pi3 only supports 2.4G network connections. You'll need
+a 5G USB wireless network adapter or an ethernet cable.
+
+#### WPA Passphrase
 If you don't want to store your password in plaintext you can create a hash.
+
 ```bash
-wpa_passphrase AndroidAP
+wpa_passphrase ssid password
+wpa_passphrase ssid
 ```
 
 Create or update `/etc/wpa_supplicant/wpa_supplicant.conf`
@@ -87,8 +100,12 @@ sudo namp -sn 192.168.43.0/24
 # Or display the ARP cache if the Pi has sent ARP requests in the network.
 arp
 
+# Scan wireless AP for debugging. Pi3 only supports 2G networks.
+sudo iwlist wlan0 scan | less
+
 # SSH into the Raspberry Pi.
 ssh pi@raspberrypi
+ssh pi@192.168.43.108
 ```
 
 ### Add your SSH public key to Pi
@@ -141,9 +158,35 @@ sudo nano /etc/network/interfaces
 auto lo
 iface lo inet loopback
 iface eth0 inet static
-address 192.168.1.200  # static ip you want for the pi
+address 192.168.0.200  # static ip you want for the pi
 netmask 255.255.255.0
-gateway 192.168.1.1  # the ip address of the router
+gateway 192.168.0.1  # the ip address of the router
+```
+
+```bash
+sudo vim /etc/network/interfaces.d/eth0
+```
+
+```
+iface eth0 inet static
+  address 192.168.0.200 # static ip you want for the pi
+  netmask 255.255.255.0
+  gateway 192.168.0.1 # the ip address of the router
+```
+
+### Changing Hostname
+```
+$ sudo vim /etc/hostname
+
+# Change this to the desired hostname
+orchid
+```
+
+```
+$ sudo vim /etc/hosts
+
+# Add this line.
+127.0.0.1  orchid
 ```
 
 ### SSH to Home Network

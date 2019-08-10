@@ -4,24 +4,23 @@ Original Wiki: https://mywiki.wooledge.org/BashSheet
 
 ## Table of Contents
 - [Syntax](#syntax)
-- [Basic Structures](#basic-structures)
-  - [Compound Commands](#compound-commands)
-    - [Command Lists](#command-lists)
-    - [Expressions](#expressions)
-    - [Loops](#loops)
-  - [Builtins](#builtins)
-    - [Dummies](#dummies)
-    - [Declarative](#declarative)
-    - [Input](#input)
-    - [Output](#output)
-    - [Execution](#execution)
-    - [Jobs and Processes](#jobs-and-processes)
-    - [Script Arguments](#script-arguments)
+- [Compound Commands](#compound-commands)
+  - [Command Lists](#command-lists)
+  - [Expressions](#expressions)
+- [Loops](#loops)
+- [Builtin Commands](#builtin-commands)
+  - [Dummies](#dummies)
+  - [Declarative](#declarative)
+  - [Input Output](#input-output)
+  - [Execution](#execution)
+  - [Jobs and Processes](#jobs-and-processes)
+  - [Script Arguments](#script-arguments)
 
 
 ## Syntax
 `[word] [space] [word]`
-- **Spaces separate words**. In bash, a "word" is a group of characters that belongs together. Examples are command names and arguments to commands. To put spaces inside an argument (or "word"), quote the argument (see next point) with single or double quotes.
+- **Spaces separate words**. In bash, a "word" is a group of characters that belongs together. Examples are command names and arguments.
+- To put spaces inside an argument, quote the argument with single or double quotes. Use a double quote when using a variable.
 
 `[command] ; [command] [newline]`
 - **Semi-colons and newlines separate synchronous commands** from each other.  Use a semi-colon "or" a new line to end a command and begin a new one.  The first command will be executed synchronously, which means that Bash will wait for it to end before running the next command.
@@ -45,13 +44,10 @@ Original Wiki: https://mywiki.wooledge.org/BashSheet
 - **Disables syntactical meaning of all characters except expansions** inside the string.  Use this form instead of single quotes if you need to expand a parameter or command substitution into your string.
 - **Remember**: It's important to always wrap your expansions (`"$var"` or `"$(command)"`) in double quotes.  This will, in turn, safely disable meaning of syntactical characters that may occur inside the expanded result.
 
-## Basic Structures
-See [Examples Basic Structures](#examples-basic-structures) for some examples of the syntax below.
-
-### Compound Commands
+## Compound Commands
 Compound commands are statements that can execute several commands but are considered as a sort of command group by Bash.
 
-#### Command Lists
+### Command Lists
 `{ [command list]; }`
 - **Execute the list of commands in the current shell as though they were one command**.
 - It is also used for function bodies.
@@ -63,12 +59,13 @@ rm file || { echo "Removal failed, aborting."; exit 1; }
 ```
 - Note: You **need** a `;` or newline before the closing `}`.
 
+### Subshell
 `( [command list] )`
 - **Execute the list of commands in a subshell**.
 - This is exactly the same thing as the command grouping above, only, the commands are executed in a subshell.  Any code that affects the environment such as variable assignments, `cd`, `export`, etc. do not affect the main script's environment but are scoped within the brackets.
 - Note: You **do not** need a `;` before the closing `)`.
 
-#### Expressions
+### Expressions
 
 `(( [arithmetic expression] ))`
 - **Evaluates the given "expression" in an arithmetic context**.
@@ -82,7 +79,7 @@ rm file || { echo "Removal failed, aborting."; exit 1; }
 - **Evaluates the given "expression" as a `test`-compatible expression**.
 - All `test` operators are supported but you can also perform "Glob pattern matching" and several other more advanced tests.  It is good to note that word splitting will **not** take place on unquoted parameter expansions here. You should always use this for performing tests on strings and filenames!
 
-#### Loops
+### Loops
 
 `do [command list]; done`
 - **This constitutes the actual loop that is used by the next few commands**
@@ -93,9 +90,9 @@ rm file || { echo "Removal failed, aborting."; exit 1; }
 - The loop's commands will be executed with the value of the variable denoted by `name` set to the word.
 
 `for (( [arithmetic expression]; [arithmetic expression]; [arithmetic expression] ))`
+- Follows C-styled for loop syntax.
 - **The next loop will run as long as the second "arithmetic expression" remains "true**".
 - The first "arithmetic expression" will be run before the loop starts.  The third "arithmetic expression" will be run after the last command in each iteration has been executed.
-- Follows C-styled for loop syntax.
 
 `while [command list]`
 - **The next loop will be repeated for as long as the last command ran in the "command list" exits successfully**.
@@ -116,10 +113,10 @@ rm file || { echo "Removal failed, aborting."; exit 1; }
 - Just like with `break`, a "number" may be given to skip out more loops.
 
 
-### Builtins
+## Builtin Commands
 Builtins are commands that perform a certain function that has been compiled into Bash. Understandably, they are also the only types of commands (other than those above) that can modify the Bash shell's environment.
 
-#### Dummies
+### Dummies
 `true` (or `:`)
 - **These commands do nothing at all**.
 - They are "NOP"s that always return successfully.
@@ -128,7 +125,7 @@ Builtins are commands that perform a certain function that has been compiled int
 - **The same as above, except that the command always fails**.
 - It returns an exit code of `1` indicating failure.
 
-#### Declarative
+### Declarative
 
 `alias`
 - **Sets up a Bash alias**, or print the bash alias with the given name.
@@ -140,23 +137,22 @@ Builtins are commands that perform a certain function that has been compiled int
 
 `export`
 - **Export the given variable to the environment** so that child processes inherit it.
-- This is the same as `declare -x`. Remember that for the child process, the variable is not the same as the one you exported.  It just holds the same data.  Which means, you can't change the variable data and expect it to change in the parent process, too.
+- This is the same as `declare -x`.
+- Remember that for the child process, the variable is not the same as the one you exported.  It just holds the same data.  Which means, you can't change the variable data and expect it to change in the parent process, too.
 
 `local`
 - **Declare a variable to have a scope limited to the current function**.
-- As soon as the function exits, the variable disappears.  Assigning to it in a function also doesn't change a global variable with the same name, should one exist.  The same options as taken by `declare` can be passed to `local`.
+- As soon as the function exits, the variable disappears.  Assigning to it in a function also doesn't change a global variable with the same name, should one exist. The same options as taken by `declare` can be passed to `local`.
 
 `type`
 - **Show the type of the command name specified as argument**.
 - The type can be either: "alias", "keyword", "function", "builtin", or "file".
 
-#### Input
+### Input Output
 
 `read`
 - **Read a line "(unless the `-d` option is used to change the delimiter from "newline" to something else)" and put it in the variables denoted by the arguments given to `read`**.
 - If more than one variable name is given, split the line up using the characters in `IFS` as delimiters.  If less variable names are given than there are split chunks in the line, the last variable gets all data left unsplit.
-
-#### Output
 
 `echo`
 - **Output each argument given to `echo` on one line, separated by a single space**.
@@ -164,13 +160,13 @@ Builtins are commands that perform a certain function that has been compiled int
 
 `printf`
 - **Use the first argument as a format specifier of how to output the other arguments**.
-- See `help printf`.
+- Follows C-styled `printf`.
 
 `pwd`
 - **Output the absolute pathname of the current working directory**.
 - You can use the `-P` option to make `pwd` resolve any symlinks in the pathname.
 
-#### Execution
+### Execution
 `cd`
 - **Changes the current directory to the given path**.
 - If the path doesn't start with a slash, it is relative to the current directory.
@@ -185,7 +181,8 @@ Builtins are commands that perform a certain function that has been compiled int
 
 `source` or `.`
 - **Makes Bash read the filename given as first argument and execute its contents in the current shell**.
-- This is kind of like `include` in other languages.  If more arguments are given than just a filename to `source`, those arguments are set as the positional parameters during the execution of the sourced code. If the filename to source has no slash in it, `PATH` is searched for it.
+- This is kind of like `include` in other languages.
+- If more arguments are given than just a filename to `source`, those arguments are set as the positional parameters during the execution of the sourced code. If the filename to source has no slash in it, `PATH` is searched for it.
 
 `exec`
 - **Run the command given as first argument and replace the current shell with it**.
@@ -206,7 +203,7 @@ Builtins are commands that perform a certain function that has been compiled int
 - **Modify resource limitations of the current shell's process**.
 - These limits are inherited by child processes.
 
-#### Jobs and Processes
+### Jobs and Processes
 
 `jobs`
 - **List the current shell's active jobs**.
@@ -235,7 +232,7 @@ Builtins are commands that perform a certain function that has been compiled int
 - **Stops the execution of the current shell until active jobs have finished**.
 - In arguments, you can specify which jobs (by "jobspec") or processes (by "PID") to wait for.
 
-#### Script Arguments
+### Script Arguments
 `set`
 - **The `set` command normally sets various "Shell options", but can also set "Positional parameters**".
 - "Shell options" are options that can be passed to the shell, such as `bash -x` or `bash -e`. `set` toggles shell options like this: `set -x`, `set +x`, `set -e`.
