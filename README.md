@@ -7,7 +7,8 @@
   - [Extend Path](#extend-path)
 - [Bash Essentials](#bash-essentials)
   - [Set Arguments](#set-arguments)
-  - [Debugging Scripts](#debugging-scripts)
+    - [Bash safe mode](#bash-safe-mode)
+    - [Bash configurations](#bash-configurations)
   - [Brace Expansion](#brace-expansion)
   - [Variable Expansion](#variable-expansion)
   - [Arithmetic Expressions](#arithmetic-expressions)
@@ -19,17 +20,17 @@
 - [Miscellaneous](#miscellaneous)
   - [Config Files](#config-files)
   - [Colors](#colors)
+  - [Debugging Scripts](#debugging-scripts)
 
 ## Running Scripts from Anywhere
 
 First you will need executable permission to run a script.
 
 ```bash
-# Check to see what permissions files havev. Colors indicate permissions.
+# Check to see what permissions files have.
 ls -la
 
 # Grant user executable permission.
-sudo chmod u+x <file-or-dir>
 sudo chmod u+x script.sh
 
 # Then run the script.
@@ -40,8 +41,11 @@ sudo chmod u+x script.sh
 Add the script to your local bin directory with executable permission.
 
 ```bash
-sudo chmod u+x <file>
-sudo cp <file> /usr/local/bin/
+# Usually bin executables do not have file extensions.
+sudo chmod u+x script
+
+# Copy file to user's local binaries folder.
+sudo cp script /usr/local/bin/
 ```
 
 ### Symbolic Link
@@ -61,7 +65,7 @@ sudo ln -s /opt/android-studio/bin/studio.sh /usr/local/bin/android-studio
 ```
 
 ### Aliases
-If you don't have root permission, you can create an alias in your `.bashrc`
+You can create an alias in your `.bashrc`
 
 ```bash
 alias <alias-name>='<script-path>'
@@ -87,51 +91,31 @@ https://mywiki.wooledge.org/BashSheet
 ### Set Arguments
 Use `set -o` to turn on a feature and `set +o` to turn it off.
 
-```bash
-# Bash strict mode shorthand notation.
-set -euo pipefail
 
+#### Bash safe mode
+```bash
+# Enable bash strict mode.
+set -euo pipefail
+```
+
+```bash
 # Exit script if you try to use an uninitialized variable.
 set -o nounset
 
 # Exit script if a statement returns a non-true return value.
 set -o errexit
 
-# Use the error status of the first failure rather than last item in a pipe.
+# Use the error of the first failure rather than last error in pipe.
 set -o pipefail
+```
 
+#### Bash configurations
+```bash
 # Export any variables that are defined.
 set -o allexport
-```
 
-```
 # Enable bash history.
 set -o history
-```
-
-### Debugging Scripts
-- [Guide to bash debugging](https://mywiki.wooledge.org/BashGuide/Practices#Debugging)
-- [Always quote variables](https://mywiki.wooledge.org/BashGuide/Practices#Quoting)
-
-**Method 1:** Run your script with the `-x` flag.
-```bash
-$ bash -x myscript.sh
-```
-
-**Method 2:** Modify the script's interpreter directive to include the `-x` flag.
-```bash
-#!/bin/bash -x
-```
-
-**Method 3:** Selectively debug sections of code.
-```bash
-#!/bin/bash
-
-# Turn on debugging.
-set -x
-
-# Turn off debugging.
-set +x
 ```
 
 ### Brace Expansion
@@ -362,4 +346,29 @@ UBlue='\033[4;34m'        # Blue
 UPurple='\033[4;35m'      # Purple
 UCyan='\033[4;36m'        # Cyan
 UWhite='\033[4;37m'       # White
+```
+
+### Debugging Scripts
+- [Guide to bash debugging](https://mywiki.wooledge.org/BashGuide/Practices#Debugging)
+- [Always quote variables](https://mywiki.wooledge.org/BashGuide/Practices#Quoting)
+
+**Method 1:** Run your script with the `-x` flag.
+```bash
+$ bash -x myscript.sh
+```
+
+**Method 2:** Modify the script's interpreter directive to include the `-x` flag.
+```bash
+#!/bin/bash -x
+```
+
+**Method 3:** Selectively debug sections of code.
+```bash
+#!/bin/bash
+
+# Turn on debugging.
+set -x
+
+# Turn off debugging.
+set +x
 ```
