@@ -11,11 +11,16 @@
     - [Bash configurations](#bash-configurations)
   - [Brace Expansion](#brace-expansion)
   - [Variable Expansion](#variable-expansion)
+    - [String interpolation](#string-interpolation)
+    - [Default values](#default-values)
+    - [Pattern matching](#pattern-matching)
+    - [Regex group pattern matching](#regex-group-pattern-matching)
   - [Arithmetic Expressions](#arithmetic-expressions)
   - [Compound Commands](#compound-commands)
+- [Networks](#networks)
+  - [Ports](#ports)
 - [Nifty Terminal Commands](#nifty-terminal-commands)
   - [Generate Timestamps](#generate-timestamps)
-  - [Ports](#ports)
   - [Set Operations](#set-operations)
 - [Miscellaneous](#miscellaneous)
   - [Config Files](#config-files)
@@ -134,14 +139,15 @@ touch myfile.{html,css,js,test.js,stories.js}
 - http://tldp.org/LDP/abs/html/variable-expansion.html
 - https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
 
-Basic string interpolation.
+
+#### String interpolation
 ```bash
 # String interpolation with variables.
 echo "I want to eat $fruit"
 > I want to eat orange
 ```
 
-Default value parameter expansion.
+#### Default values
 ```bash
 # Initialize variable with default value.
 fruit=${1:-'orange'}
@@ -149,7 +155,7 @@ echo "I want to eat ${fruit}s"
 > I want to eat oranges
 ```
 
-Pattern matching parameter expansion.
+#### Pattern matching
 ```bash
 # Extracting user and repo using pattern matching from beginning (#).
 url='https://github.com/codenameyau/intro-to-bash'
@@ -177,7 +183,7 @@ echo "${url%%://*}"
 > https
 ```
 
-Regex group matching.
+#### Regex group pattern matching
 ```bash
 # Capturing substring in regex group match.
 string="origin  https://github.com/USERNAME/REPOSITORY.git (fetch)"
@@ -240,21 +246,7 @@ to run a series of commands whose final output would be piped to another command
 {command_1; command_2; command_3} | command_4
 ```
 
-## Nifty Terminal Commands
-
-### Generate Timestamps
-- https://stackoverflow.com/questions/1204669/how-can-i-generate-unix-timestamps
-
-```bash
-# Timestamp: Thu Dec 28 10:44:45 EST 2017
-date
-
-# Timestamp: 1514475851 (seconds)
-date +%s
-
-# Timestamp: 1514476017560 (milliseconds)
-date +%s%3N
-```
+## Networks
 
 ### Ports
 Run this command kill a process running on specific port.
@@ -269,6 +261,22 @@ Run this command to see a list of open ports on a system.
 ```bash
 # Show tcp, udp, listening ports, pid, numeric hosts, ipv4
 sudo netstat -tulpn4
+```
+
+## Nifty Terminal Commands
+
+### Generate Timestamps
+- https://stackoverflow.com/questions/1204669/how-can-i-generate-unix-timestamps
+
+```bash
+# Timestamp: Thu Dec 28 10:44:45 EST 2017
+date
+
+# Timestamp: 1514475851 (seconds)
+date +%s
+
+# Timestamp: 1514476017560 (milliseconds)
+date +%s%3N
 ```
 
 ### Set Operations
