@@ -182,12 +182,18 @@ url='https://github.com/codenameyau/intro-to-bash'
 echo "${url%/*}"
 > https://github.com/codenameyau
 
+# Extracting origin using pattern matching from end (%).
+url='https://github.com/codenameyau/intro-to-bash'
+echo "${url%/*/*}"
+> https://github.com
+
 # Extracting protocol using greedy pattern matching from end (%%).
 url='https://github.com/codenameyau/intro-to-bash'
 echo "${url%%://*}"
 > https
 ```
 
+Regex group matching.
 ```bash
 # Capturing substring in regex group match.
 string="origin  https://github.com/USERNAME/REPOSITORY.git (fetch)"
