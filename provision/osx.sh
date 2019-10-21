@@ -45,18 +45,13 @@ sudo npm install -g http-server eslint webpack jest tldr
 #####################################################################
 
 # Download files via wget to home directory.
-wget_file() {
-  if [ ! -f "$HOME/$1" ]; then
-    wget "$2" -P "$HOME"
-  fi
-}
-
-wget_file .bash_extras https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_extras
-wget_file .bash_prompt https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt
-wget_file .bash_aliases https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_aliases
-wget_file .bash_profile https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_profile
-wget_file .gitconfig https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig
-wget_file .gitignore_global https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global
+wget -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt
+wget -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_extras
+wget -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_aliases
+wget -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bashrc
+wget -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_profile
+wget -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig
+wget -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global
 
 # Add vscode to path.
 cat << EOF >> ~/.bash_extras

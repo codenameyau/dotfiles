@@ -50,16 +50,16 @@ sudo gpasswd -a "$USER" input
 sudo apt -y install libinput-tools xdotool
 sudo gem install fusuma
 mkdir -p ~/.config/fusuma
-wget -P "$HOME/.config/fusuma" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.config/fusuma/config.yml
+wget -N -P "$HOME/.config/fusuma" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.config/fusuma/config.yml
 gnome-session-properties
 
 #####################################################################
 # Personal Setup
 #####################################################################
 mkdir -p "$HOME/Workspace"
-wget -P "$HOME" https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt
-wget -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_extras
-wget -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_aliases
-wget -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bashrc
-wget -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig
-wget -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global
+wget -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/shiny-prompt/master/src/.bash_prompt
+wget -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_extras
+wget -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bash_aliases
+wget -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.bashrc
+wget -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig
+wget -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global
