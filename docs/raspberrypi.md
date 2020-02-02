@@ -106,6 +106,9 @@ sudo iwlist wlan0 scan | less
 # SSH into the Raspberry Pi.
 ssh pi@raspberrypi
 ssh pi@192.168.43.108
+
+# If you cannot find your pi, mount your SD caard
+cd /media/yau/rootfs
 ```
 
 ### Add your SSH public key to Pi
