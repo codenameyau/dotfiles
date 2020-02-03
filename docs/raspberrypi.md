@@ -6,11 +6,12 @@
 - [Connect via Ethernet to Computer](#connect-via-ethernet-to-computer)
 - [Connect via Wireless Connection](#connect-via-wireless-connection)
 - [Add your SSH public key to Pi](#add-your-ssh-public-key-to-pi)
+- [Configure DHCP Static IP Address](#configure-dhcp-static-ip)
 - [Changing hostname](#changing-hostname)
 - [SSH to Home Network](#ssh-to-home-network)
 
 
-### Headless Raspbian Installation
+## Headless Raspbian Installation
 
 - Recent headless setup: https://howtoraspberrypi.com/how-to-raspberry-pi-headless-setup/
 - Create SD card image: https://howtoraspberrypi.com/create-sd-card-raspberry-pi-command-line-linux/
@@ -150,7 +151,7 @@ scp -r ~/hello-world pi@raspberrypi:~
 scp -r pi@raspberrypi:~/myfile ~
 ```
 
-### Configure DHCP Static IP
+## Configure DHCP Static IP
 If you want your Raspberry Pi to request a **static private** IP address, then:
 
 ```bash
@@ -194,8 +195,7 @@ static routers=192.168.1.1
 static domain_name_servers=192.168.1.1
 ```
 
-
-### Changing Hostname
+## Changing Hostname
 ```
 $ sudo vim /etc/hostname
 
@@ -210,13 +210,13 @@ $ sudo vim /etc/hosts
 127.0.0.1  orchid
 ```
 
-### SSH to Home Network
+## SSH to Home Network
 - [Setting up SSH server on home network](https://dev.to/zduey/how-to-set-up-an-ssh-server-on-a-home-computer)
 - [SSH outside of private network](https://raspberrypi.stackexchange.com/questions/6757/how-to-use-ssh-out-of-home-network)
 - [SSH Config file](http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/)
 
 
-#### Enable Port Forwarding and Allow Inbound Traffic
+### Enable Port Forwarding and Allow Inbound Traffic
 To ssh into your Raspberry Pi from anywhere, you'll need to configure your wireless
 router to allow incoming traffic for port 22 (ssh) and enable port forwarding
 to route traffic to your Raspberry pi. Although port 22 is the default SSH port,
@@ -237,7 +237,7 @@ Host home
   IdentityFile ~/.ssh/id_rsa
 ```
 
-#### Beef Up Security
+### Beef Up Security
 Because you're exposing a port from your private network to the internet,
 attackers will attempt to bruteforce into your machines so you'll absolutely need to
 secure your firewall and **all** your machines that expose an incoming connection.
@@ -248,7 +248,7 @@ Make sure that **all** of these bullets are checked.
 - Change the default password of your `pi` user. Create a very long password.
 - Setup an SSH key with a passphrase and use it instead of a password to ssh into your Pi.
 
-#### SSH into your Pi and update this file
+### SSH into your Pi and update this file
 ```
 nano /etc/ssh/sshd_config
 ```
@@ -273,12 +273,12 @@ X11Forwarding no
 AllowTcpForwarding no
 ```
 
-#### Restart your SSH daemon
+### Restart your SSH daemon
 ```
 /etc/init.d/sshd restart
 ```
 
-#### Test your connection
+### Test your connection
 If everything is configured correctly, you should now be able to SSH into your
 Raspberry Pi from outside of your home network with this command.
 
