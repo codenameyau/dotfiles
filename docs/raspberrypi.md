@@ -151,10 +151,10 @@ scp -r pi@raspberrypi:~/myfile ~
 ```
 
 ### Configure DHCP Static IP
-If you want your Raspberry Pi to request a static **private** IP address, then:
+If you want your Raspberry Pi to request a **static private** IP address, then:
 
 ```bash
-sudo nano /etc/network/interfaces
+sudo vim /etc/network/interfaces
 ```
 
 ```bash
@@ -176,6 +176,24 @@ iface eth0 inet static
   netmask 255.255.255.0
   gateway 192.168.0.1 # the ip address of the router
 ```
+
+An alternative solution is to append this to the end of the dhcp config file on your pi.
+
+```bash
+sudo vim /etc/hdcpcd.config
+```
+```bash
+eth0 
+static ip_addres =192.168.1.88/24 
+static routers=192.168.1.1 
+static domain_name_servers=192.168.1.1 
+
+wlan0 interface 
+static ip_address=192.168.1.88/24 
+static routers=192.168.1.1 
+static domain_name_servers=192.168.1.1
+```
+
 
 ### Changing Hostname
 ```
