@@ -7,6 +7,11 @@ Copying the extensions you have installed.
 code --list-extensions | pbcopy
 ```
 
+Compare and get unique exensions.
+```
+pbpaste | sort | uniq | pbcopy
+```
+
 Installing extensions from clipboard.
 ```bash
 pbpaste | xargs -L 1 echo code --install-extension
