@@ -14,7 +14,7 @@ pbpaste | sort | uniq | pbcopy
 
 Installing extensions from clipboard.
 ```bash
-pbpaste | xargs -L 1 echo code --install-extension
+cat | xargs -L 1 code --install-extension
 ```
 
 These are my current extensions.
