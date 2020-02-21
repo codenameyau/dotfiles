@@ -33,6 +33,7 @@ mikestead.dotenv
 ms-azuretools.vscode-docker
 ms-python.python
 ms-vscode.atom-keybindings
+nhoizey.gremlins
 pflannery.vscode-versionlens
 redhat.vscode-yaml
 scala-lang.scala
