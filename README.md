@@ -76,6 +76,9 @@ sudo ln -sf <file> /usr/local/bin/<symlink-name>
 
 # Example
 sudo ln -s /opt/android-studio/bin/studio.sh /usr/local/bin/android-studio
+
+# Example with cwd
+sudo ln -s "$(cwd)/sherlock.py" /usr/local/bin/sherlock
 ```
 
 ### Aliases
