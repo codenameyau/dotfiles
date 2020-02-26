@@ -28,6 +28,10 @@ alias git-changelog='git log $(git tag | tail -1)..HEAD --no-merges --pretty="[%
 alias projects="ls -d -1 $PWD/*/*/"
 alias find-quickly="find . -maxdepth 3 -not \( -path *node_modules* -o -path *bower* \) -name"
 
+function kill-port() {
+  lsof -P -i tcp:"$1" | grep 'LISTEN' | awk '{ print $2 }' | xargs -I % sh -c  'echo "Killed port: %"; kill %;'
+}
+
 # Print timestamps with string. ex. timestamps 4 "-CREATE-"
 function timestamps() {
   if [ -z $1 ]; then
