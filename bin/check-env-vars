@@ -31,8 +31,8 @@ private_env_files=(
 )
 
 # Get environment variables in source code are in files to check.
-public_env_vars=$(git ls-files src*.js | xargs grep -E -o -h "process.env.[A-Z0-9_]+" | sort | uniq | grep -vE "$ignored_public_env_vars" | cut -d'.' -f3)
-private_env_vars=$(git ls-files server*.js | xargs grep -E -o -h "process.env.[A-Z0-9_]+" | sort | uniq | grep -vE "$ignored_private_env_vars" | cut -d'.' -f3)
+public_env_vars=$(git ls-files src*.js | xargs grep -E -o -h "process.env.[a-zA-Z0-9_]+" | sort | uniq | grep -vE "$ignored_public_env_vars" | cut -d'.' -f3)
+private_env_vars=$(git ls-files server*.js | xargs grep -E -o -h "process.env.[a-zA-Z0-9_]+" | sort | uniq | grep -vE "$ignored_private_env_vars" | cut -d'.' -f3)
 has_missing_env=false
 
 check_env_vars_in_files() {
