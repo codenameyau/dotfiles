@@ -1,0 +1,60 @@
+#!/bin/bash
+#
+# Description:
+# https://github.com/StashInvest/stash-invest-web/wiki/Guide-to-Deployment
+#
+# Examples:
+# ./quick-deploy.sh patch
+# ./quick-deploy.sh minor
+# ./quick-deploy.sh major
+
+# Enable bash safe mode.
+set -Eeuo pipefail
+
+update_branch() {
+  git checkout "$1" && git pull origin "$1"
+}
+
+release_type="${1:-minor}"
+
+if ! [[ $release_type =~ ^('patch'|'minor'|'major')$ ]]; then
+  echo 'Available Usage:
+  ./deploy.sh patch
+  ./deploy.sh minor
+  ./deploy.sh major'
+  exit 1
+fi
+
+# Ensure that your branch is clean.
+if ! git diff --exit-code &>/dev/null ; then
+  echo "Please run this script on a clean branch."
+  exit 1
+fi
+
+printf '\n[+] Updating branches\n'
+update_branch master
+update_branch edge
+update_branch staging
+
+printf '\n[+] Promoting staging into master\n'
+git checkout master
+git merge origin staging --no-edit
+git push origin master
+
+printf "Bumping version"
+yarn version --new-version "$release_type"
+
+printf '\n[+] Back-merging master into staging for hotfixes\n'
+git checkout staging
+git merge origin master --no-edit
+git push origin staging
+
+printf '\n[+] Back-merging staging into edge for warmfixes\n'
+git checkout edge
+git merge origin staging --no-edit
+git push origin edge
+
+printf '\n[+] Promoting edge into staging\n'
+git checkout staging
+git merge origin edge --no-edit
+git push origin staging

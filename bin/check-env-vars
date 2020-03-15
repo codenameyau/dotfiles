@@ -1,0 +1,61 @@
+#!/bin/bash
+#
+# Description:
+# Checks to make sure new env variables are added to template before commiting.
+#
+
+# Enable bash safe mode.
+set -Eeuo pipefail
+
+# Colors.
+text_red='\033[0;31m'
+text_normal='\033[0m'
+
+# Ignore these environment variables.
+ignored_public_env_vars="NODE_ENV|PUBLIC_URL"
+ignored_private_env_vars="NODE_ENV|PUBLIC_URL|EXPRESS_PORT|PORT|HOST"
+
+# Check that these files have new public env variables in 'src/'.
+public_env_files=(
+  'app.json'
+  'template.env'
+  'canary-public-env/edge.env'
+  'canary-public-env/staging.env'
+  'canary-public-env/master.env'
+)
+
+# Check that these files have new private env variables in 'server/'.
+private_env_files=(
+  'app.json'
+  'template.env'
+)
+
+# Get environment variables in source code are in files to check.
+public_env_vars=$(git ls-files src*.js | xargs grep -E -o -h "process.env.[A-Z0-9_]+" | sort | uniq | grep -vE "$ignored_public_env_vars" | cut -d'.' -f3)
+private_env_vars=$(git ls-files server*.js | xargs grep -E -o -h "process.env.[A-Z0-9_]+" | sort | uniq | grep -vE "$ignored_private_env_vars" | cut -d'.' -f3)
+has_missing_env=false
+
+check_env_vars_in_files() {
+  local env_vars=$1
+  local env_files=$2
+
+  for env_var in $env_vars; do
+    for file in $env_files; do
+      if ! git grep -q "$env_var" "$file"; then
+        has_missing_env=true
+        echo -e "${text_red}Please add env variable '$env_var' => $file${text_normal}"
+      fi
+    done
+  done
+}
+
+printf "New public env variables found in src/\\n"
+check_env_vars_in_files "$public_env_vars" "${public_env_files[*]}"
+
+printf "\\nNew private env variables found in server/\\n"
+check_env_vars_in_files "$private_env_vars" "${private_env_files[*]}"
+
+if [ "$has_missing_env" == true ]; then
+  echo
+  exit 1
+fi
