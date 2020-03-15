@@ -16,12 +16,12 @@ while getopts ":w:h:" opt; do
   case "$opt" in
   w)
     echo "Resizing images to width: $OPTARG" >&2
-    ls | egrep '\.jpg|\.png' | xargs mogrify -resize "$OPTARG"
+    ls | grep -E '\.jpg|\.png' | xargs mogrify -resize "$OPTARG"
   ;;
 
   h)
     echo "Resizing images to height: $OPTARG" >&2
-    ls | egrep '\.jpg|\.png' | xargs mogrify -resize "x${OPTARG}"
+    ls | grep -E '\.jpg|\.png' | xargs mogrify -resize "x${OPTARG}"
   ;;
 
   \?)

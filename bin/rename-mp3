@@ -5,6 +5,9 @@
 # Description:
 # Lowercase all mp3 files and removes spaces
 #
+
+# Only in bash 4
 shopt -s globstar
-rename -n 's/ft\.//g; y/A-Z/a-z/; s/[\s|-]+/-/g' **/*.mp3
-rename 's/ft\.//g; y/A-Z/a-z/; s/[\s|-]+/-/g' **/*.mp3
+
+rename -n 's/ft\.//g; y/A-Z/a-z/; s/[\s|-]+/-/g' ./**/*.mp3
+rename 's/ft\.//g; y/A-Z/a-z/; s/[\s|-]+/-/g' ./**/*.mp3
