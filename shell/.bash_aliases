@@ -16,6 +16,7 @@ alias gg="git checkout -"
 alias gd="git diff HEAD~$1 HEAD"
 alias gl="git log --no-merges"
 alias gr="git reset"
+alias gp="git push"
 
 # Other git commands.
 alias git-pull-all="find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull"
