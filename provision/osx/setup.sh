@@ -60,3 +60,4 @@ wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/mas
 wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/vim/.vimrc -P ~
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall

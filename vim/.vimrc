@@ -19,7 +19,6 @@ Plugin 'VundleVim/Vundle.vim'
 "--------------------------------------------------------------------
 
 Plugin 'kien/ctrlp.vim'
-Plugin 'vim-scripts/molokai'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'mattn/emmet-vim'
@@ -82,10 +81,6 @@ set wildignore+=*node_modules*,*bower_components*,*/vendor,
 " Colorschemes
 "--------------------------------------------------------------------
 syntax on
-colorscheme molokai
-set t_Co=256
-let g:molokai_original = 1
-
 
 "--------------------------------------------------------------------
 " System Settings
