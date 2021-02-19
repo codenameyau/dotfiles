@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Do these steps first:
+# - Install iterm2 and configure preferences to remap option navigation under: 
+#   Profiles > Keys > Send Escape Sequence (ESC + B) for Option + LEFT. Don't send HEX it doesn't work.
+# 
+# - Setup SSH keys in github
+#   ssh-keygen
+
+
 # Make directories if not exist.
 mkdir -p "$HOME/Workspace"
 
@@ -24,7 +32,7 @@ brew install source-highlight bash-completion git-extras shellcheck gpg watchman
 brew install vim --with-override-system-vi
 
 # Brew GNU default commands.
-brew install gnu-sed --with-default-names
+brew install gnu-sed
 
 # Set nodejs version.
 sudo n 12
