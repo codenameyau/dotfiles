@@ -5,6 +5,7 @@
 - Install Postman: https://www.getpostman.com/
 - Install GitKraken: https://www.gitkraken.com/
 - Install VSCode: https://code.visualstudio.com/
+- Install 1Password: https://1password.com/
 
 ## Dev Setup
 - Setup GitHub SSH key: https://help.github.com/articles/connecting-to-github-with-ssh/
@@ -18,15 +19,18 @@
 - Hide Dock: `System Preferences > Dock`
 - Switch off sorting desktop by frequency: http://www.macobserver.com/tmo/answers/prevent_lions_spaces_from_automatically_changing_order
 
-### Map Keyboard Shortcuts
+### Keyboard Shortcuts
 - Remap terminal keyboard shortcuts: https://stackoverflow.com/a/81299
-- Remap iTerm2 `alt+left` and `alt+right` to escape sequence `esc+b` and `esc+f` in `Profiles > Default > Keys`. This will not work if you only change global `Keys`.
-- Remap `cmd+q` to set inverse colors in accessibility or show desktop.
+- Remap `cmd+q` to show desktop in `System Preferences > Keyboard > Shortcuts > Mission Control > Show Desktop`.
 
 ### Dev Environment Setup
 
-Run automated script: https://github.com/codenameyau/dotfiles/blob/master/provision/osx.sh
+Run automated script: https://github.com/codenameyau/dotfiles/blob/master/provision/osx/setup.sh
 
+### iTerm2
+- Download iTerm2
+- Import profile from https://github.com/codenameyau/dotfiles/blob/master/provision/iterm2-profile.json
+- Remap iTerm2 `alt+left` and `alt+right` to escape sequence `esc+b` and `esc+f` in `Profiles > Default > Keys`.
 
 ## Ruby Installation
 
@@ -67,9 +71,6 @@ gem update
 
 # Install bundler to manage gem for rails
 gem install bundler
-
-# Install nokogiri
-gem install nokogiri
 ```
 
 #### Install Ruby on Rails
