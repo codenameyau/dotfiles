@@ -19,8 +19,13 @@ setopt HIST_IGNORE_ALL_DUPS
 # SHELL CONFIGURATION
 #####################################################################
 
-# Source environment variables.
-source ~/.shell_envs
-
-# Source custom shell alias.
-source ~/.shell_alias
+# Git shortcuts
+alias ga="git add -A"
+alias gb="git branch --sort=committerdate | tail -20"
+alias gc="git commit"
+alias gs="git status"
+alias gg="git checkout -"
+alias gd="git diff HEAD~$1 HEAD"
+alias gl="git log --no-merges"
+alias gr="git reset"
+alias gp="git push"
