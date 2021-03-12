@@ -45,9 +45,23 @@ function timestamps() {
   fi
 }
 
-# Usuage: git-replace 'src/js' 'my_string' 'myString'
+# Usage: git-replace 'src/js' 'my_string' 'myString'
 function git-replace() {
   echo "Updated files:"
   git ls-files | grep $1 | xargs -n1 grep $2 -l
   git ls-files | grep $1 | xargs -n1 grep $2 -l | xargs -n1 sed -i "s/$2/$3/g"
+}
+
+# Merges master -> staging -> edge 
+function ggg() {
+  git checkout master
+  git pull origin master
+  git checkout staging
+  git pull origin staging
+  git merge master
+  git push origin staging
+  git checkout edge
+  git pull origin edge
+  git merge staging
+  git push origin edge
 }
