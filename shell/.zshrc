@@ -121,9 +121,8 @@ setopt AUTO_CD
 # Ignore duplicate entries in history.
 setopt HIST_IGNORE_ALL_DUPS
 
-# Change the terminal titlebar
-PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
-
+# Include expanded globstar.
+setopt extended_glob
 
 #####################################################################
 # SHELL CONFIGURATION
@@ -139,3 +138,5 @@ alias gd="git diff HEAD~$1 HEAD"
 alias gl="git log --no-merges"
 alias gr="git reset"
 alias gp="git push"
+
+source ~/.bash_aliases
