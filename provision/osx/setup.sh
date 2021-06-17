@@ -6,7 +6,6 @@
 # - Setup SSH keys in github
 #   ssh-keygen
 
-
 # Make directories if not exist.
 mkdir -p "$HOME/Workspace"
 
@@ -38,14 +37,12 @@ sudo n 14
 
 # Lastly run brew doctor and fix package dependencies.
 brew doctor
-brew prune
 
 # Install useful python third-party tools.
 sudo pip3 install requests virtualenv
 
 # Install common nodejs third-party tools.
 sudo npm install -g http-server eslint webpack jest tldr
-
 
 #####################################################################
 # CUSTOM CONFIG
@@ -55,8 +52,7 @@ sudo npm install -g http-server eslint webpack jest tldr
 wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig &
 wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global &
 
-# Install vim config.
-# https://github.com/codenameyau/dotfiles/tree/master/vim
+# Install vim config: https://github.com/codenameyau/dotfiles/tree/master/vim
 wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/vim/.vimrc -P ~
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
