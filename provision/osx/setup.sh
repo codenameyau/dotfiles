@@ -44,13 +44,18 @@ sudo pip3 install requests virtualenv
 # Install common nodejs third-party tools.
 sudo npm install -g http-server eslint webpack jest tldr
 
+# Install ohmyzsh
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+
 #####################################################################
 # CUSTOM CONFIG
 #####################################################################
 
 # Download files via wget to home directory.
-wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig &
-wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global &
+rm ~/.gitconfig && wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig &
+rm ~/.gitignore_global && wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global &
+rm ~/.zshrc && wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.zshrc &
+rm ~/.ohmyzshrc && wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.ohmyzshrc &
 
 # Install vim config: https://github.com/codenameyau/dotfiles/tree/master/vim
 wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/vim/.vimrc -P ~
