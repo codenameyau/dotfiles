@@ -125,6 +125,15 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt extended_glob
 
 #####################################################################
+# LESS SYNTAX HIGHLIGHT
+# https://ole.michelsen.dk/blog/syntax-highlight-files-macos-terminal-less/
+#####################################################################
+
+LESSPIPE=`which src-hilite-lesspipe.sh`
+export LESSOPEN="| ${LESSPIPE} %s"
+export LESS=' -R -X -F '
+
+#####################################################################
 # SHELL CONFIGURATION
 #####################################################################
 
@@ -138,5 +147,3 @@ alias gd="git diff HEAD~$1 HEAD"
 alias gl="git log --no-merges"
 alias gr="git reset"
 alias gp="git push"
-
-source ~/.bash_aliases
