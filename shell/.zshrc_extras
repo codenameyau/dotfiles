@@ -1,5 +1,19 @@
+#################################################
 # Kubernetes: zsh-kubectl-prompt 
+#################################################
+
+# https://github.com/zsh-users/zsh/blob/master/Functions/Misc/colors
 autoload -U colors; colors
 source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
-RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 
+function right_prompt() {
+  local color="magenta"
+
+  if [[ "$ZSH_KUBECTL_USER" =~ "admin" ]]; then
+    color="white"
+  fi
+
+  echo "%{$fg_bold[$color]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}"
+}
+
+RPROMPT='$(right_prompt)'
