@@ -146,3 +146,5 @@ alias gd="git diff HEAD~$1 HEAD"
 alias gl="git log --no-merges"
 alias gr="git reset"
 alias gp="git push"
+
+source ~/.zshrc_extras
