@@ -1,5 +1,6 @@
 #################################################
 # Kubernetes: zsh-kubectl-prompt 
+# https://github.com/superbrothers/zsh-kubectl-prompt
 #################################################
 
 # https://github.com/zsh-users/zsh/blob/master/Functions/Misc/colors

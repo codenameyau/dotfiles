@@ -47,6 +47,10 @@ sudo npm install -g http-server eslint webpack jest tldr
 # Install ohmyzsh
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
+# Install kubernetes zsh-kubectl-prompt.
+brew tap superbrothers/zsh-kubectl-prompt
+brew install zsh-kubectl-prompt
+
 #####################################################################
 # CUSTOM CONFIG
 #####################################################################
