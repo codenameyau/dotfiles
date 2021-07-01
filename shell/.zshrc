@@ -147,4 +147,14 @@ alias gl="git log --no-merges"
 alias gr="git reset"
 alias gp="git push"
 
+# Other git commands.
+alias git-pull-all="find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull"
+alias git-prune="git branch --merged | grep -v '\*' | xargs -n1 git branch -d && git fetch origin --prune"
+alias git-hide="git update-index --skip-worktree"
+alias git-hide-undo="git update-index --no-skip-worktree"
+alias git-ignore="git update-index --assume-unchanged"
+alias git-ignore-undo="git update-index --no-assume-unchanged"
+alias git-ignore-list="git ls-files -v | grep ^h"
+alias git-changelog='git log $(git tag | tail -1)..HEAD --no-merges --pretty="[%h] %s"'
+
 source ~/.zshrc_extras
