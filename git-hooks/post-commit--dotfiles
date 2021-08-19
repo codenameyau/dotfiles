@@ -1,8 +1,9 @@
 #!/bin/bash
-
+#
 # Installation:
-# curl -O https://raw.githubusercontent.com/codenameyau/dotfiles/master/git/post-commit--dotfiles && chmod ug+x post-commit--dotfiles && mv post-commit--dotfiles .git/hooks/post-commit
-
+# cd <git-repo>
+# curl -O https://raw.githubusercontent.com/codenameyau/dotfiles/master/git-hooks/post-commit--dotfiles && chmod ug+x post-commit--dotfiles && mv post-commit--dotfiles .git/hooks/post-commit
+#
 # Description:
 # Hook to update the dotfiles when changes to this repo are commited.
 
