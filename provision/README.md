@@ -32,6 +32,50 @@ Run automated script: https://github.com/codenameyau/dotfiles/blob/master/provis
 - Import profile from https://github.com/codenameyau/dotfiles/blob/master/provision/iterm2-profile.json
 - Remap iTerm2 `alt+left` and `alt+right` to escape sequence `esc+b` and `esc+f` in `Profiles > Default > Keys`.
 
+## Python Installation
+
+### Setting python3 by default on mac
+
+This should install python3.
+```sh
+# See available versions of python.
+brew search python
+
+# Installs latest python.
+brew install python
+
+# Installs specific version of python.
+brew install python@3.8
+```
+
+Unlink and link with brew.
+```sh
+brew unlink python
+
+# Basically all you need to do:
+brew link --force python@3.8
+
+# OR force the link and overwrite all conflicting files:
+brew link --force --overwrite python@3.8
+
+# OR if needed list all files that would be deleted:
+brew link --overwrite --dry-run python@3.8
+```
+
+Update symlinks without brew.
+
+```sh
+# See all the symbolic links for python.
+ls -l /usr/local/bin/python*
+
+# Run this command to link python3 to python.
+ln -s /usr/local/bin/python3 /usr/local/bin/python
+
+# To delete this link, run this. Then open a new terminal.
+rm /usr/local/bin/python
+```
+
+
 ## Ruby Installation
 
 #### Install Brew and brew packages
