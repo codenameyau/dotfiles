@@ -24,7 +24,11 @@ brew update
 brew install coreutils cmake ack wget curl htop git python3 ruby n
 
 # Brew terminal plugins (requires .bash_profile).
-brew install source-highlight bash-completion git-extras shellcheck gpg watchman jq fzf
+brew install source-highlight bash-completion git-extras shellcheck gpg watchman jq
+
+# Brew install fzf
+brew install fzf
+$(brew --prefix)/opt/fzf/install
 
 # Brew install vim and override vi.
 brew install vim --with-override-system-vi
