@@ -37,8 +37,5 @@
     "telemetry.enableTelemetry": false,
     "problems.decorations.enabled": true,
     "eslint.run": "onSave",
-    "emmet.triggerExpansionOnTab": true,
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    "emmet.triggerExpansionOnTab": true
 }
