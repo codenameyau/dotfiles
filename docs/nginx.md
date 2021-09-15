@@ -54,8 +54,8 @@ sudo nginx -s reload
 ```
 
 ### Disable HSTS
-If you have a local https server and are on Chrome, it will prevent you from visiting insecure websites with untrusted certificates.
-You can disable this feature by removing the domain from Chrome's HSTS:
+If you have a local https server and are on Mac High Sierra and above, Chrome will prevent you from visiting insecure websites with untrusted certificates.
+You can disable this feature by trusting the certificate in your keychain access, clicking on the https lock on chrome and trusting the certificate, and removing the domain from Chrome's HSTS:
 ```
 chrome://net-internals/#hsts
 ```
