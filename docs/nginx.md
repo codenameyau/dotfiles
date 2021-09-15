@@ -47,6 +47,36 @@ server {
 }
 ```
 
+With certificates
+
+```nginx
+server {
+  listen 443;
+
+  server_name app-demo.ocrolus.com;
+  ssl_certificate     /etc/ssl/_wildcard.ocrolus.com.chained.crt;
+  ssl_certificate_key /etc/ssl/_wildcard.ocrolus.com.key;
+  ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+
+  location / {
+    proxy_pass http://0.0.0.0:9000;
+  }
+}
+
+server {
+  listen 443;
+
+  server_name dashboard-demo.ocrolus.com;
+  ssl_certificate     /etc/ssl/_wildcard.ocrolus.com.chained.crt;
+  ssl_certificate_key /etc/ssl/_wildcard.ocrolus.com.key;
+  ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+  
+  location / {
+    proxy_pass http://0.0.0.0:3001;
+  }
+}
+```
+
 #### Step 4: restart nginx server
 
 ```sh
