@@ -52,3 +52,13 @@ server {
 ```sh
 sudo nginx -s reload
 ```
+
+### Disable HSTS
+If you have a local https server and are on Chrome, it will prevent you from visiting insecure websites with untrusted certificates.
+You can disable this feature by removing the domain from Chrome's HSTS:
+```
+chrome://net-internals/#hsts
+```
+
+https://virtuallywired.io/2020/01/02/fix-error-you-cannot-visit-site-right-now-because-the-website-uses-hsts/
+
