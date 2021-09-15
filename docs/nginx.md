@@ -21,8 +21,6 @@ sudo vim /etc/hosts
 ```
 
 ```sh
-127.0.0.1 dashboard-local.ocrolus.com
-127.0.0.1 cura-local.ocrolus.com
 127.0.0.1 app-local.stash.com
 ```
 
@@ -37,14 +35,14 @@ sudo vim /etc/nginx/nginx.conf
 server {
   listen 80;
 
-  server_name app-local.domain.com;
+  server_name app-local.stash.com;
 
   location /sign-up {
     proxy_pass http://127.0.0.1:3000;
   }
 
   location / {
-    proxy_pass http://127.0.0.1:8009;
+    proxy_pass http://127.0.0.1:57454;
   }
 }
 ```
