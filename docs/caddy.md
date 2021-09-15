@@ -4,6 +4,16 @@ Caddy is a simple but powerful webserver and reverse-proxy.
 
 https://caddyserver.com/docs/quick-starts/reverse-proxy
 
+### Caddyfile HTTPS
+
+Create a directory with these files:
+- Caddyfile
+- _wildcard.ocrolus.com.crt
+- _wildcard.ocrolus.com.key
+- cacert.crt
+- cakey.key
+
+Then edit the Caddyfile 
 ```caddy
 app-demo.ocrolus.com {
 	tls _wildcard.ocrolus.com.crt _wildcard.ocrolus.com.key
