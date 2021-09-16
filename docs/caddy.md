@@ -15,6 +15,10 @@ Very important: Make sure you are NOT running your applications on https.
 Only caddy should be binding to the host machine's 443 SSL port.
 
 #### Step 1: Update your `etc/hosts`
+```sh
+sudo vim /etc/hosts
+```
+
 ```
 127.0.0.1 dashboard-demo.ocrolus.com
 127.0.0.1 app-demo.ocrolus.com
