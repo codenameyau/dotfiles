@@ -318,6 +318,16 @@ comm -13 <(sort file1) <(sort file2)
 comm -23 <(sort file1) <(sort file2)
 ```
 
+### Rerunning commands
+
+```sh
+# Rerun the previous command with sudo.
+sudo !!
+
+# Rurun the previous command with substitutions.
+^before^after^
+```
+
 ## Miscellaneous
 
 ### Config Files
