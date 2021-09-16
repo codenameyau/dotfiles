@@ -28,8 +28,14 @@ sudo vim /etc/hosts
 #### Step 3: create or update the nginx config
 
 ```sh
+# Linux
 sudo vim /etc/nginx/nginx.conf
+
+# Mac
+vim /usr/local/etc/nginx/nginx.conf
 ```
+
+It is better to create a new config file inside `servers/anyname.conf`
 
 ```nginx
 server {
