@@ -35,7 +35,8 @@ sudo vim /etc/nginx/nginx.conf
 vim /usr/local/etc/nginx/nginx.conf
 ```
 
-It is better to create a new config file inside `servers/anyname.conf`
+Rather than updating the base `nginx.conf` file directory, it is better to create a new config file inside `servers/anyname.conf`, which
+is automatically included in the base `nginx.conf` file.
 
 ```nginx
 server {
