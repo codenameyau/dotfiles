@@ -1,3 +1,13 @@
+# Keyboard Shortcuts
+## Google Hangouts
+```sh
+# Toggles microphone
+cmd+d
+
+# Toggles camera
+cmd+e
+```
+
 ## OSX iTerm
 
 ### Navigation
