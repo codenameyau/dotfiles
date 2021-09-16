@@ -19,6 +19,7 @@ Only caddy should be binding to the host machine's 443 SSL port.
 sudo vim /etc/hosts
 ```
 
+Add the following lines.
 ```
 127.0.0.1 dashboard-demo.ocrolus.com
 127.0.0.1 app-demo.ocrolus.com
