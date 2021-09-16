@@ -4,6 +4,7 @@ Caddy is a simple but powerful webserver and reverse-proxy.
 
 https://caddyserver.com/docs/quick-starts/reverse-proxy
 
+## Caddy Reverse Proxy 
 ```
 brew install caddy
 ```
@@ -121,3 +122,31 @@ sudo caddy run
 # Use specified Caddyfile
 sudo caddy run --config Caddyfile
 ```
+
+## Testing Reverse Proxy
+In two separate terminal windows, spin up these two simple python http servers.
+```
+python -m http.server 9000
+python -m http.server 3001
+```
+
+Then with HTTPie, try to hit the two python servers.
+
+```sh
+http -v --verify=no https://app-demo.ocrolus.com
+http -v --verify=no https://dashboard-demo.ocrolus.com
+```
+
+Once you verify that it works, you can stop the simple python http servers. 
+Then run your own application servers on http (**do not run on https**). 
+
+```sh
+http -p Hh --verify cacert.crt https://dashboard-demo.ocrolus.com
+http -p Hh --verify cacert.crt https://app-demo.ocrolus.com
+```
+
+### Screenshots
+
+Testing Caddy reverse proxy with python HTTP servers and HTTPie.
+
+![Caddy Reverse Proxy](https://user-images.githubusercontent.com/3826772/133660001-66bc6acd-18b4-468f-81bb-3084b71ac8ca.jpg)
