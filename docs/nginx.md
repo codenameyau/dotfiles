@@ -54,7 +54,7 @@ server {
 }
 ```
 
-With certificates
+With HTTPS TLS certificates
 
 ```nginx
 server {
