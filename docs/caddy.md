@@ -4,6 +4,10 @@ Caddy is a simple but powerful webserver and reverse-proxy.
 
 https://caddyserver.com/docs/quick-starts/reverse-proxy
 
+```
+brew install caddy
+```
+
 ### Caddyfile HTTPS
 
 Create a directory with these files:
@@ -40,4 +44,8 @@ dashboard-demo.ocrolus.com {
 		header_up X-Forwarded-For {remote}
 	}
 }
+```
+Then run Caddy server
+```
+sudo caddy run
 ```
