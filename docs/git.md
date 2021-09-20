@@ -4,20 +4,16 @@
 
 ### Searching through logs
 ```sh
-# Log range.
+# Use range operator (...) to log changes. Specify ~ to be inclusive.
 git log --oneline HEAD...release/3.11.0
 git log --oneline HEAD...cc3703bb~
 
-# Log range with inclusive.
-git log --oneline HEAD...cc3703bb~
-
-# Search if commit message is in branch.
-git log master --grep=AG-458 --oneline
-
-# Search if commit message is in current branch.
+# Search if commit message is in master or any other branch.
 git log --grep=AG-458 --oneline
+git log master --grep=AG-458 --oneline
+git log dev --grep=AG-458 --oneline
 
-# Removes branch name.
+# Pipe to cat to remove branch name and other git metadata.
 git log --grep=AG-458 --oneline | cat
 ```
 
@@ -30,11 +26,11 @@ git checkout -b ancestor
 ```
 
 ### Ammend a commit already in branch.
+After rebasing, while your editor is open, specify which commits to edit (e) after step 1.
+
 ```sh
 git rebase -i release/3.11.0
-
-# Then while your editor is open, specify which commits to edit (e).
-git add src/
+git add files
 git commit --amend
 git rebase --continue
 ```
