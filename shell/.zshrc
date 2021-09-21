@@ -94,14 +94,6 @@ plugins=(git)
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
 #####################################################################
@@ -123,18 +115,33 @@ setopt HIST_IGNORE_ALL_DUPS
 # Include expanded globstar.
 setopt extended_glob
 
+# Share history between all sessions.
+setopt SHARE_HISTORY
+
+# Increase history size.
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
+
 #####################################################################
-# LESS SYNTAX HIGHLIGHT
-# https://ole.michelsen.dk/blog/syntax-highlight-files-macos-terminal-less/
+# THIRD-PARTY PACKAGES
 #####################################################################
 
+# Less syntax highlighting.
+# https://ole.michelsen.dk/blog/syntax-highlight-files-macos-terminal-less/
 LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R -X -F '
 
+# Better cmd-r history with fzf.
+# https://github.com/junegunn/fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
 #####################################################################
 # SHELL CONFIGURATION
 #####################################################################
+
+PROMPT_COMMAND='echo -en "\033]0; $("pwd") \a"'
 
 # Git shortcuts
 alias ga="git add -A"
@@ -157,4 +164,5 @@ alias git-ignore-undo="git update-index --no-assume-unchanged"
 alias git-ignore-list="git ls-files -v | grep ^h"
 alias git-changelog='git log $(git tag | tail -1)..HEAD --no-merges --pretty="[%h] %s"'
 
+# Source organization extras.
 source ~/.zshrc_extras
