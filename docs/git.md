@@ -34,3 +34,14 @@ git add files
 git commit --amend
 git rebase --continue
 ```
+
+### Ignoring changes
+```sh
+git update-index --skip-worktree files
+git update-index --no-skip-worktree files
+```
+
+```sh
+git update-index --assume-unchanged files
+git update-index --no-assume-unchanged files
+```
