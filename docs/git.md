@@ -25,6 +25,15 @@ git checkout $(git merge-base master 2a8b1c3abfa)
 git checkout -b ancestor
 ```
 
+### Run with config to ignore git hooks
+git -c core.hooksPath=/dev/null cherry-pick --continue
+git -c core.hooksPath=/dev/null cherry-pick
+
+
+### Search master but only look for commits that match these patterns
+git log master --oneline | grep -e AG-462 -e AG-495 -e AG-411 -e AG-01 -e AG-469
+
+
 ### Ammend a commit already in branch.
 After rebasing, while your editor is open, specify which commits to edit (e) after step 1.
 
