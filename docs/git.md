@@ -17,6 +17,17 @@ git log dev --grep=AG-458 --oneline
 git log --grep=AG-458 --oneline | cat
 ```
 
+### Show commit changes
+```sh
+git show <commit>
+```
+
+### Show stash commits changes
+```sh
+git stash list 
+git stash show -p <stashid>
+```
+
 ### Common ancestors
 Finds most recent common ancestor for history rewrite and releases.
 ```sh
