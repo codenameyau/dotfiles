@@ -26,13 +26,16 @@ git checkout -b ancestor
 ```
 
 ### Run with config to ignore git hooks
+```sh
 git -c core.hooksPath=/dev/null cherry-pick --continue
 git -c core.hooksPath=/dev/null cherry-pick
-
+```
 
 ### Search master but only look for commits that match these patterns
+```sh
 git log master --oneline | grep -e AG-462 -e AG-495 -e AG-411 -e AG-01 -e AG-469
-
+git log master --oneline | grep -E 'AG-(462|495|411|469)'
+```
 
 ### Ammend a commit already in branch.
 After rebasing, while your editor is open, specify which commits to edit (e) after step 1.
