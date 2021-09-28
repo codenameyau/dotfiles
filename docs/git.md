@@ -28,6 +28,12 @@ git stash list
 git stash show -p <stashid>
 ```
 
+### Diff for files
+Shows the diff between two tags only including files in the helm/ directory.
+```sh
+git diff 1.15.3 1.19.14 -- helm/
+```
+
 ### Common ancestors
 Finds most recent common ancestor for history rewrite and releases.
 ```sh
