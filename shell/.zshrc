@@ -164,5 +164,10 @@ alias git-ignore-undo="git update-index --no-assume-unchanged"
 alias git-ignore-list="git ls-files -v | grep ^h"
 alias git-changelog='git log $(git tag | tail -1)..HEAD --no-merges --pretty="[%h] %s"'
 
+# Tickets for PO sign off.
+function tickets() {
+  git log --oneline "$1"..."$2" | grep -o -E '(AG|DASH)-\d+' | sort --unique | awk '{print "https://jira.ocrolus.com/browse/" $0}'
+}
+
 # Source organization extras.
 source ~/.zshrc_extras
