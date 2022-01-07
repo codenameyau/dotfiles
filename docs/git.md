@@ -2,6 +2,11 @@
 
 ## Helpful Commands
 
+### Get JIRA changelog between tags
+```sh
+git log --oneline 3.14.3...3.15.0 | grep -o -E '(AG|DASH)-\d+' | sort --unique | awk '{print "https://jira.ocrolus.com/browse/" $0}'
+```
+
 ### Searching through logs
 ```sh
 # Use range operator (...) to log changes. Specify ~ to be inclusive.
