@@ -65,3 +65,7 @@ function ggg() {
   git merge staging
   git push origin edge
 }
+
+function tickets() {
+  git log --oneline "$1"..."$2" | grep -o -E '(AG|DASH)-\d+' | sort --unique | awk '{print "https://jira.ocrolus.com/browse/" $0}'
+}
