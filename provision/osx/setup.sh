@@ -37,7 +37,7 @@ brew install vim --with-override-system-vi
 brew install gnu-sed
 
 # Set nodejs version (LTS).
-sudo n 14
+sudo n 16
 
 # Lastly run brew doctor and fix package dependencies.
 brew doctor
