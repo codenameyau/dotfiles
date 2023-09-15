@@ -23,6 +23,8 @@
 - Remap terminal keyboard shortcuts: https://stackoverflow.com/a/81299
 - Remap `cmd+q` to show desktop in `System Preferences > Keyboard > Shortcuts > Mission Control > Show Desktop`.
 
+![Show Desktop](https://user-images.githubusercontent.com/3826772/268161284-ec16e492-bbf7-4783-8ea4-58f7baa5990f.png)
+
 ### Dev Environment Setup
 
 Run automated script: https://github.com/codenameyau/dotfiles/blob/master/provision/osx/setup.sh
