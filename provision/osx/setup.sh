@@ -31,16 +31,16 @@ brew install fzf
 $(brew --prefix)/opt/fzf/install
 
 # https://fig.io/
-brew install fig
+# brew install fig
 
 # Brew install vim and override vi.
-brew install vim --with-override-system-vi
+# brew install vim --with-override-system-vi
 
 # Brew GNU default commands.
 brew install gnu-sed
 
 # Set nodejs version (LTS).
-sudo n 16
+sudo n 18
 
 # Lastly run brew doctor and fix package dependencies.
 brew doctor
