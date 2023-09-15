@@ -20,11 +20,20 @@ fi
 
 brew update
 
+# Install ohmyzsh
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+
 # Brew install default packages.
 brew install coreutils cmake ack wget curl htop git python3 ruby n
 
 # Brew terminal plugins (requires .bash_profile).
 brew install source-highlight bash-completion git-extras shellcheck gpg watchman jq
+
+# Download files via wget to home directory for configs.
+rm ~/.gitconfig && wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig &
+rm ~/.gitignore_global && wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global &
+rm ~/.zshrc && wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.zshrc &
+rm ~/.ohmyzshrc && wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.ohmyzshrc &
 
 # https://github.com/junegunn/fzf
 brew install fzf
@@ -51,22 +60,9 @@ sudo pip3 install requests virtualenv
 # Install common nodejs third-party tools.
 sudo npm install -g http-server eslint webpack jest tldr
 
-# Install ohmyzsh
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-
 # Install kubernetes zsh-kubectl-prompt.
 brew tap superbrothers/zsh-kubectl-prompt
 brew install zsh-kubectl-prompt
-
-#####################################################################
-# CUSTOM CONFIG
-#####################################################################
-
-# Download files via wget to home directory.
-rm ~/.gitconfig && wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitconfig &
-rm ~/.gitignore_global && wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.gitignore_global &
-rm ~/.zshrc && wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.zshrc &
-rm ~/.ohmyzshrc && wget -q -N -P "$HOME" https://raw.githubusercontent.com/codenameyau/dotfiles/master/shell/.ohmyzshrc &
 
 # Install vim config: https://github.com/codenameyau/dotfiles/tree/master/vim
 wget https://raw.githubusercontent.com/codenameyau/dotfiles/master/vim/.vimrc -P ~
