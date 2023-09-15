@@ -18,3 +18,6 @@ function right_prompt() {
 }
 
 RPROMPT='$(right_prompt)'
+
+# Git extras
+source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
