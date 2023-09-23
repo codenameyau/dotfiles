@@ -40,6 +40,9 @@ shift-j
 <num> + shift-g
 <num> + gg
 
+# Switch to file explorer
+ctrl-p
+
 # Comment multiple lines with visual block.
 ctrl-v
 <move cursor up/down>
