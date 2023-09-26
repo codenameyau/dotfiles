@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+- [Configuration](#configuration)
 - [Headless Raspbian Installation](#headless-raspbian-installation)
 - [Connect via Ethernet to Computer](#connect-via-ethernet-to-computer)
 - [Connect via Wireless Connection](#connect-via-wireless-connection)
@@ -10,6 +11,12 @@
 - [Changing hostname](#changing-hostname)
 - [SSH to Home Network](#ssh-to-home-network)
 
+## Configuration
+Run inside your Raspberry Pi.
+
+```
+sudo raspi-config
+```
 
 ## Headless Raspbian Installation
 
