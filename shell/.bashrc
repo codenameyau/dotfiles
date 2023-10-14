@@ -19,17 +19,21 @@ export PATH=$PATH:/opt/cabal/bin:/snap/bin
 HISTCONTROL=ignoreboth
 
 # Ignore history
-HISTIGNORE='cd*:rm*'
+HISTIGNORE='cd*:rm*:ls*'
 
 # Append to the history file, don't overwrite it
 shopt -s histappend
 
 # See HISTSIZE and HISTFILESIZE in docs.
-HISTSIZE=100
-HISTFILESIZE=200
+HISTSIZE=9999
+HISTFILESIZE=9999
 
 # Clear history when exiting a session.
 # unset HISTFILE
+
+# Change editor to vim
+export VISUAL=vim
+export EDITOR=vim
 
 #####################################################################
 # TERMINAL PROFILE
@@ -135,17 +139,17 @@ alias pbpaste='xsel --clipboard --output'
 # ADDITIONAL BASH CONFIG
 #####################################################################
 
-# https://github.com/codenameyau/shiny-prompt
-if [ -f ~/.bash_prompt ]; then
-  source ~/.bash_prompt
-fi
+# # https://github.com/codenameyau/shiny-prompt
+# if [ -f ~/.bash_prompt ]; then
+#   source ~/.bash_prompt
+# fi
 
-# Alias definitions.
-if [ -f ~/.bash_aliases ]; then
-  source ~/.bash_aliases
-fi
+# # Alias definitions.
+# if [ -f ~/.bash_aliases ]; then
+#   source ~/.bash_aliases
+# fi
 
-# Put custom commands in this file.
-if [ -f ~/.bash_extras ]; then
-  source ~/.bash_extras
-fi
+# # Put custom commands in this file.
+# if [ -f ~/.bash_extras ]; then
+#   source ~/.bash_extras
+# fi
