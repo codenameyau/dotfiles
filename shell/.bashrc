@@ -153,3 +153,5 @@ alias pbpaste='xsel --clipboard --output'
 # if [ -f ~/.bash_extras ]; then
 #   source ~/.bash_extras
 # fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
