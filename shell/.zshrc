@@ -6,7 +6,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/$(whoami)/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -68,14 +68,16 @@ ZSH_THEME="robbyrussell"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-source $ZSH/oh-my-zsh.sh
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# Must be set before oh-my-zsh.sh is sourced.
 plugins=(git)
+
+[ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
 
@@ -146,7 +148,11 @@ export LESS=' -R -X -F '
 # SHELL CONFIGURATION
 #####################################################################
 
-PROMPT_COMMAND='echo -en "\033]0; $("pwd") \a"'
+# Set the terminal tab title to the current directory before each prompt.
+# (zsh uses precmd hooks; PROMPT_COMMAND is bash-only.)
+autoload -Uz add-zsh-hook
+_set_terminal_title() { print -Pn "\e]0;%~\a"; }
+add-zsh-hook precmd _set_terminal_title
 
 # Git shortcuts
 alias ga="git add -A"
@@ -154,10 +160,14 @@ alias gb="git branch --sort=committerdate | tail -20"
 alias gc="git commit"
 alias gs="git status"
 alias gg="git checkout -"
-alias gd="git diff HEAD~$1 HEAD"
 alias gl="git log --no-merges"
 alias gr="git reset"
 alias gp="git push"
+
+# Diff of the last N commits (default 1). ex. gd 3
+# (oh-my-zsh's git plugin, or an older version of this file, may define gd as an alias.)
+unalias gd 2>/dev/null
+function gd() { git diff "HEAD~${1:-1}" HEAD; }
 
 # Other git commands.
 alias git-pull-all="find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull"
@@ -171,8 +181,16 @@ alias git-changelog='git log $(git tag | tail -1)..HEAD --no-merges --pretty="[%
 
 # Tickets for PO sign off.
 function tickets() {
-  git log --oneline "$1"..."$2" | grep -o -E '(AG|DASH)-\d+' | sort --unique | awk '{print "https://jira.ocrolus.com/browse/" $0}'
+  git log --oneline "$1"..."$2" | grep -o -E '(AG|DASH)-[0-9]+' | sort --unique | awk '{print "https://jira.ocrolus.com/browse/" $0}'
 }
 
+# Custom prompt (virtualenv, exit status, git branch). Needs oh-my-zsh's git_prompt_info.
+if [ -f ~/.ohmyzshrc ] && (( $+functions[git_prompt_info] )); then
+  source ~/.ohmyzshrc
+fi
+
 # Source organization extras.
-source ~/.zshrc_extras
+[ -f ~/.zshrc_extras ] && source ~/.zshrc_extras
+
+# Machine-specific settings and secrets (not tracked in git).
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local

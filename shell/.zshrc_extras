@@ -5,19 +5,30 @@
 
 # https://github.com/zsh-users/zsh/blob/master/Functions/Misc/colors
 autoload -U colors; colors
-source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
 
-function right_prompt() {
-  local color="magenta"
+# Homebrew lives in /opt/homebrew (Apple Silicon) or /usr/local (Intel).
+# HOMEBREW_PREFIX is set by `brew shellenv`; avoid calling `brew --prefix` (slow).
+brew_prefix="${HOMEBREW_PREFIX:-$([ -d /opt/homebrew ] && echo /opt/homebrew || echo /usr/local)}"
 
-  if [[ "$ZSH_KUBECTL_USER" =~ "admin" ]]; then
-    color="white"
-  fi
+if [ -f "$brew_prefix/etc/zsh-kubectl-prompt/kubectl.zsh" ]; then
+  source "$brew_prefix/etc/zsh-kubectl-prompt/kubectl.zsh"
 
-  echo "%{$fg_bold[$color]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}"
-}
+  function right_prompt() {
+    local color="magenta"
 
-RPROMPT='$(right_prompt)'
+    if [[ "$ZSH_KUBECTL_USER" =~ "admin" ]]; then
+      color="white"
+    fi
+
+    echo "%{$fg_bold[$color]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}"
+  }
+
+  RPROMPT='$(right_prompt)'
+fi
 
 # Git extras
-source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
+if [ -f "$brew_prefix/opt/git-extras/share/git-extras/git-extras-completion.zsh" ]; then
+  source "$brew_prefix/opt/git-extras/share/git-extras/git-extras-completion.zsh"
+fi
+
+unset brew_prefix

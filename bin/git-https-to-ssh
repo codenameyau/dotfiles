@@ -31,17 +31,27 @@ validate() {
   fi
 }
 
-remote=$(git remote -v | tail -1)
-remote_url=$(expr "$remote" : .*'\(http.*\) ')
-remote_user=$(expr "$remote_url" : .*github.com/'\(.*\)'/)
-remote_repo=$(expr "$remote_url" : .*/'\(.*\)'.git)
+# Note: if your gitconfig has url."git@github.com:".insteadOf, git already uses ssh
+# and get-url reports the rewritten ssh url, so there is nothing to convert.
+remote_url=$(git remote get-url origin 2>/dev/null)
+validate "$remote_url" "Could not find a remote named origin"
+
+if [[ $remote_url != https://github.com/* ]]; then
+  echo "Remote is not a GitHub https url: $remote_url" && exit 1
+fi
+
+remote_path=${remote_url#https://github.com/}
+remote_path=${remote_path%/}
+remote_path=${remote_path%.git}
+remote_user=${remote_path%%/*}
+remote_repo=${remote_path#*/}
+[ "$remote_repo" = "$remote_path" ] && remote_repo=""
 new_remote_url="git@github.com:$remote_user/$remote_repo.git"
 
-validate "$remote_url" "Could not validate repository https url"
 validate "$remote_user" "Could not validate repository user"
 validate "$remote_repo" "Could not validate repository name"
 
-git remote set-url origin new_remote_url
+git remote set-url origin "$new_remote_url"
 
 echo "Old Remote: $remote_url"
 echo "New Remote: $new_remote_url"

@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 """
 You can also use this online OTP timed generator.
 https://codepen.io/Sudeepto/full/JbLbxe

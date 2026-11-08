@@ -18,12 +18,12 @@ Plugin 'VundleVim/Vundle.vim'
 " Place all plugins here. Here are examples of different formats
 "--------------------------------------------------------------------
 
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'terryma/vim-multiple-cursors'
+Plugin 'dense-analysis/ale'
+Plugin 'mg979/vim-visual-multi'
 
 " Plugin on GitHub repo.
 " Plugin 'tpope/vim-fugitive'

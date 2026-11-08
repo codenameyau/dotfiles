@@ -4,42 +4,36 @@
 # Package Installation
 #####################################################################
 
-# Core utils.
-sudo apt install -y build-essential
+# Core utils. software-properties-common provides add-apt-repository.
+sudo apt install -y build-essential software-properties-common curl
 
 # Install git and git-lfs (large file storage).
-sudo add-apt-repository ppa:git-core/ppa
+sudo add-apt-repository -y ppa:git-core/ppa
 sudo apt update -y
-sudo apt install -y git
-sudo apt install -y software-properties-common
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | os=linuxmint dist=sonya sudo -E bash
-sudo apt install git-lfs
+sudo apt install -y git git-lfs
 git lfs install
 
-# Install snap.
-sudo apt install snapd
+# Install snap. Linux Mint 20+ blocks snapd by default; remove the block first.
+sudo rm -f /etc/apt/preferences.d/nosnap.pref
+sudo apt update -y
+sudo apt install -y snapd
 
 # Install heroku.
-sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
-sudo apt update -y
-curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
-sudo apt install -y heroku
+curl -fsSL https://cli-assets.heroku.com/install-ubuntu.sh | sh
 
 # Install other third party packages.
 sudo apt install -y xsel terminator jq
 
-# Install node.js
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+# Install node.js (current LTS).
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt install -y nodejs
 
 # Install npm packages.
 sudo npm install -g tldr http-server
 
-# Install brave.
-sudo apt install apt-transport-https curl
-curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
-source /etc/os-release
-echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-${UBUNTU_CODENAME}.list
+# Install brave: https://brave.com/linux/
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+sudo curl -fsSLo /etc/apt/sources.list.d/brave-browser-release.sources https://brave-browser-apt-release.s3.brave.com/brave-browser.sources
 sudo apt update -y
 sudo apt install -y brave-browser
 

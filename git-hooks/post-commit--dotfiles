@@ -1,47 +1,36 @@
 #!/bin/bash
 #
-# Installation:
-# cd <git-repo>
-# curl -O https://raw.githubusercontent.com/codenameyau/dotfiles/master/git-hooks/post-commit--dotfiles && chmod ug+x post-commit--dotfiles && mv post-commit--dotfiles .git/hooks/post-commit
+# Installation (from the root of this dotfiles repo; setup.sh does this for you):
+# cp git-hooks/post-commit--dotfiles .git/hooks/post-commit && chmod ug+x .git/hooks/post-commit
 #
 # Description:
-# Hook to update the dotfiles when changes to this repo are commited.
+# Hook to update the dotfiles in $HOME when changes to them are committed to this repo.
+# Only files that already exist in $HOME are updated, matching update.sh.
 
-commited_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
+# Files changed by the commit that was just made. --root handles the first commit.
+committed_files="$(git diff-tree -r --root --name-only --no-commit-id HEAD)"
 
-run_if_updated() {
-  echo "$commited_files" | grep --quiet "$1" && eval "$2"
-}
+# Copy shell/<file> to ~/<file> if the commit changed it and ~/<file> already exists.
+update_if_committed() {
+  local file="$1"
 
-# TODO: Fix this. It doesn't work and has inverse behavior.
-check_if_different() {
-  if [ ! cmp --silent "$1" "$2" ]; then
-    eval "$3"
+  if grep --quiet --line-regexp --fixed-strings "shell/$file" <<< "$committed_files" && [ -f ~/"$file" ]; then
+    cp "shell/$file" ~/"$file"
+    echo "[+] Updated ~/$file"
   fi
 }
 
 echo "Running post-commit hook on dotfiles"
 
-if [ -f ~/.bash_aliases ]; then
-  run_if_updated "./shell/.bash_aliases" "~/.bash_aliases" "cp shell/.bash_aliases ~/.bash_aliases"
-  echo "[+] Updated ~/.bash_aliases"
-fi
+update_if_committed .bash_aliases
+update_if_committed .bash_extras
+update_if_committed .bashrc
+update_if_committed .bash_profile
+update_if_committed .zshrc
+update_if_committed .zshrc_extras
+update_if_committed .gitconfig
+update_if_committed .gitignore_global
 
-if [ -f ~/.gitconfig ]; then
-  run_if_updated "shell/.gitconfig" "~/.gitconfig" "cp shell/.gitconfig ~/.gitconfig"
-  echo "[+] Updated ~/.gitconfig"
-fi
-
-if [ -f ~/.bashrc ]; then
-  run_if_updated "shell/.bashrc" "cp shell/.bashrc ~/.bashrc"
-  echo "[+] Updated ~/.bashrc"
-  source ~/.bashrc
-fi
-
-if [ -f ~/.bash_profile ]; then
-  run_if_updated "shell/.bash_profile" "cp shell/.bash_profile ~/.bash_profile"
-  echo "[+] Updated ~/.bash_profile"
-  source ~/.bash_profile
-fi
-
+# Sourcing here would only affect this hook's own process, not your open shells.
+echo "Open a new terminal or re-source your shell config to pick up changes."
 echo # new line
