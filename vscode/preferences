@@ -33,8 +33,7 @@
         "editor.tabSize": 4
     },
     "typescript.check.npmIsInstalled": false,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
     "problems.decorations.enabled": true,
     "eslint.run": "onSave",
     "emmet.triggerExpansionOnTab": true

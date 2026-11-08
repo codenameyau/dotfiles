@@ -139,19 +139,19 @@ alias pbpaste='xsel --clipboard --output'
 # ADDITIONAL BASH CONFIG
 #####################################################################
 
-# # https://github.com/codenameyau/shiny-prompt
-# if [ -f ~/.bash_prompt ]; then
-#   source ~/.bash_prompt
-# fi
+# https://github.com/codenameyau/shiny-prompt
+if [ -f ~/.bash_prompt ]; then
+  source ~/.bash_prompt
+fi
 
-# # Alias definitions.
-# if [ -f ~/.bash_aliases ]; then
-#   source ~/.bash_aliases
-# fi
+# Alias definitions.
+if [ -f ~/.bash_aliases ]; then
+  source ~/.bash_aliases
+fi
 
-# # Put custom commands in this file.
-# if [ -f ~/.bash_extras ]; then
-#   source ~/.bash_extras
-# fi
+# Put custom commands in this file.
+if [ -f ~/.bash_extras ]; then
+  source ~/.bash_extras
+fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -3,13 +3,12 @@
   "configurations": [
     {
       "type": "node",
-      "protocol": "inspector",
       "request": "attach",
       "name": "Attach to Backend",
       "processId": "${command:PickProcess}",
       "skipFiles": [
-        "${workspaceRoot}/node_modules/**/*.js",
-        "${workspaceRoot}/lib/**/*.js"
+        "${workspaceFolder}/node_modules/**/*.js",
+        "${workspaceFolder}/lib/**/*.js"
       ]
     }
   ]

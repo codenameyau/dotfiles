@@ -1,21 +1,15 @@
+#!/bin/bash
 # More can be found here.
-# https://github.com/mathiasbynens/dotfiles/blob/master/.macos
+# https://github.com/mathiasbynens/dotfiles/blob/main/.macos
 
 #####################################################################
 # Screenshots
 #####################################################################
 
-# Save screenshots as PNG.
-defaults write com.apple.screencapture type png;killall SystemUIServer
-
-# Save screenshots as JPG.
-defaults write com.apple.screencapture type jpg;killall SystemUIServer
-
 # Save screenshots to the desktop
 defaults write com.apple.screencapture location -string "${HOME}/Desktop"
 
-# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-defaults write com.apple.screencapture type -string "jpg"
+# Save screenshots in PNG format (other options: bmp, gif, jpg, pdf, tiff)
 defaults write com.apple.screencapture type -string "png"
 
 
@@ -58,15 +52,19 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # OSX CONFIG
 #####################################################################
 
-# Close any open System Preferences panes, to prevent overriding.
-osascript -e 'tell application "System Preferences" to quit'
+# Close System Settings (called System Preferences before macOS 13), so it
+# doesn't overwrite these changes when it quits.
+for app in "System Settings" "System Preferences"; do
+  pgrep -xq "$app" && osascript -e "tell application \"$app\" to quit"
+done
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-# Require password immediately after sleep or screen saver begins
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
+# Require password immediately after sleep or screen saver begins.
+# (The old com.apple.screensaver askForPassword keys are ignored since macOS 10.13.)
+# Prompts for your login password.
+sysadminctl -screenLock immediate -password -
 
 # Show icons for hard drives, servers, and removable media on the desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
@@ -76,12 +74,6 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
-
-# Disable Dashboard
-defaults write com.apple.dashboard mcx-disabled -bool true
-
-# Don’t show Dashboard as a Space
-defaults write com.apple.dock dashboard-in-overlay -bool true
 
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
@@ -97,3 +89,11 @@ defaults write com.apple.dock showhidden -bool true
 
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
+
+
+#####################################################################
+# APPLY
+#####################################################################
+
+# Restart the affected apps so the changes take effect.
+killall Dock Finder SystemUIServer 2>/dev/null

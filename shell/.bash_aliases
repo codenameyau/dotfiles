@@ -13,10 +13,14 @@ alias gb="git branch --sort=committerdate | tail -20"
 alias gc="git commit"
 alias gs="git status"
 alias gg="git checkout -"
-alias gd="git diff HEAD~$1 HEAD"
 alias gl="git log --no-merges"
 alias gr="git reset"
 alias gp="git push"
+
+# Diff of the last N commits (default 1). ex. gd 3
+# (oh-my-zsh's git plugin, or an older version of this file, may define gd as an alias.)
+unalias gd 2>/dev/null
+function gd() { git diff "HEAD~${1:-1}" HEAD; }
 
 # Other git commands.
 alias git-pull-all="find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull"
@@ -67,5 +71,5 @@ function ggg() {
 }
 
 function tickets() {
-  git log --oneline "$1"..."$2" | grep -o -E '(AG|DASH)-\d+' | sort --unique | awk '{print "https://jira.ocrolus.com/browse/" $0}'
+  git log --oneline "$1"..."$2" | grep -o -E '(AG|DASH)-[0-9]+' | sort --unique | awk '{print "https://jira.ocrolus.com/browse/" $0}'
 }
